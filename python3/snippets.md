@@ -1,8 +1,60 @@
 || BASICOS
 	
+	Conceptos:
+
+		Lenguajes de programación:
+
+			Lenguajes de alto nivel:
+			como Python diseñado para ser fácil de leer y escribir para la gente.
+
+			Las computadoras sólo ejecutan programas escritos en lenguajes de bajo nivel. Los programas de alto nivel tienen que traducirse antes de ejecutarse.
+
+			Son portables, lo que significa que pueden ejecutarse en tipos diferentes de computadores.
+
+			Lenguaje de bajo nivel: 
+			Diseñado para ser fácil	de ejecutar para un computador; también se lo llama “lenguaje de máquina” o “lenguaje ensamblador”.
+
+			Sus programas sólo pueden ser ejecutarse en un tipo de computador y deben reescribirse para ejecutarlos en otro.
+
+			Interpretes y compiladores:
+			Programas que traducen lenguajes de alto nivel a lenguajes de bajo nivel.
+
+			Un intérprete lee un programa de
+			alto nivel y lo ejecuta, Traduce el programa poco a poco, leyendo y ejecutando cada comando.
+	
+				codigo fuente -> interprete -> salida
+
+			Un compilador lee el programa y lo traduce todo al mismo tiempo, antes de
+			ejecutar cualquiera de las instrucciones.
+	
+				codigo fuente -> compilador -> codigo objeto -> ejecutor -> salida
+
+			Python es de alto nivel e interpretado.
+
+		Programas:
+		Son una secuencia de instrucciones que especifican cómo resolver un problema informático desde resolver operaciónes matemática, una función de buscar o hasta compilar un programa.
+
+		Todos están compuestos por:
+
+			Entrada:
+			Recibir datos del teclado, o un archivo u otro aparato.
+
+			Salida:
+			Mostrar datos en el monitor o enviar datos a un archivo u otro aparato.
+
+			Matemáticas:
+			En las instrucciones se encuentran operaciones basicas como la adición, la multiplicación y más complejas.
+
+			Operación condicional:
+			Probar la veracidad de alguna condición y ejecutar una secuencia de instrucciones apropiada.
+
+			Repetición:
+			Ejecutar alguna acción repetidas veces, normalmente con alguna variación.
+
+	Practica:
 	# Si no mostras con print(), los cálculos, los valores de las varibles, etc; se van a ejecutar pero vas a ver el resultado del código en el interprete.
 
-	# Error sintácto hace fallar todo el programa.
+	# Error sintácto y de identación hace fallar todo el programa.
 
 	#prompt
 
@@ -20,17 +72,21 @@
 		he definido y he salido de la función
 		hola, mundo!
 		he llamado a la función
-		>>>		
+		>>>
 
-|| FUNCIONES MATEMATICAS
+
+|| OPERACIONES MATEMÁTICAS
 
 	ORDEN DE OPERACIONES:
 
-		PENDAS:
+	PEMDAS: 
+	Paréntesis, exponenciación(**), multiplicación/división y adición y sustracción.
+
+	Si hay igualdad signo/orden: 
+	Se calcula de izquierda a derecha.
 
 
-		igualdad:
-
+|| FUNCIONES MATEMÁTICAS
 
 	Tenemos que importarlo con una sentencia import:
 	>>> import math
@@ -45,11 +101,13 @@
 
 || FUNCIONES
 	
-	Parámetro: es el nombre de la variable, se usa en la definición.
+	Parámetro: 
+	Es el nombre de la variable, se usa en la definición.
 	
-	Argumento: es el valor para la variable/parametro, se usa en la llamada.
+	Argumento:
+	Es el valor para la variable/parametro, se usa en la llamada.
 	
-	definición:	
+	Definición:	
 		
 		def sumarMismo (num): #parámetro/nom var
 		print (num + num)
@@ -59,15 +117,23 @@
 		sumarMismo(2)  #argum de func/valor/variable
 		4              #valor retorno
 
-	Return:
-
-
-
-
 	Variables y argumentos locales:
+	Variable creada dentro de la función que solo puede usarse aquí.
 
+		def catDoble(parte1, parte2):
+			cat = parte1 + parte2
+			imprimeDoble(cat)
 
+		cantus1 = "Die Jesu domine, "
+		cantus2 = "Dona eis requiem."
+		
+		catDoble(cantus1, cantus2)
+		Jesu domine, Dona eis requiem. Die Jesu domine, Dona eis requiem.
 
+		*cuando se termina de ejecutar, la VARIABLE SE DESTRUEYE.
+
+			>>> print cat
+			NameError: cat
 
 	Variables globales como argumento:
 
@@ -94,11 +160,60 @@
 		>>> id(func1)
 		39199700
 
+	Return:
+
+
+
+
+
+	Análisis sintácticos del interprete:
+
+		Definición incompleta: el interprete mostrará puntos (...)
+
+		Objeto función: se crea al definirla y tiene tipo function.
+
+			print(imprimir_letra)
+			function imprimir_letra at 0xb7e99e9c
+
+			type(imprimir_letra)
+			<class 'function'>
+
+	Funciones productivas y nulas:
+	lskadjf
+
+		Productivas:
+
+
+
+		Nulas:
+
+
+		
+
+
+
+
 || FLUJO DE EJECUCIÓN
 	
 	sentencias/def función > sentencias > llamada función (<< sentenc función) > sentencias.
 
 	*leer flujo, no de inicio a fin.
+
+
+|| DIAGRAMAS:
+
+	Es un dibujo que informa sobre el valor y ubicación de las variables. A la izquierda va el nombre que junta a las variables globales, el nombre de la función y despues la llamada. En el recuadro (frame) van las variables. Sigue el flujo de ejecución.
+	
+	de Estado:
+	Muestran el valor de cada variable
+
+	de Pila (stack diagram):
+	Muestran el valor y la función a la que pertenecen.
+
+	Trackback / rastreo:
+	Cuando hay un error en las funciones, puede mostrar un camino con una lista de funciones en el interprete, sigue el flujo de ejecución al igual que el stack de pila.
+
+		*La ultima función que aparece es la que intentamos ejecutar.
 
 
 || COMBINACIONES
@@ -180,7 +295,9 @@
 
 		x = math.exp(math.log(x+1))
 
-		>>> imprimeDoble(’Jamón’*4)
+		OPERAR ARGUMENTOS:
+
+		>>> imprimeDoble('Jamón'*4)
 		JamónJamónJamónJamón JamónJamónJamónJamón
 		
 		>>> imprimeDoble(math.cos(math.pi))
@@ -189,4 +306,18 @@
 
 || DEBUGGEAR
 	
-	Un error sintáctico hace fallar todo el programa.
+	Se trata de corregir los errores en los programas informaticos (bugs). La programación es un proceso de depuración hasta que el programa haga lo que querramos.
+
+	Sintáctico:
+	Error en la estructura y en las reglas del lenguaje de programación. Hace fallar todo el programa, al igual que el error de identación. No son permisivos.
+
+	En tiempo de ejecución:
+	No aparece hasta que se ejecuta el programa se llaman excepciones.
+
+	Semánticos:
+	Error de lógica en su programa, se ejecutará sin ningún mensaje de error, pero el resultado no será el deseado.
+    Requiere trabajar al revés, observando el resultado del programa para averiguar lo que hace.
+
+	Estudiar las claves para inducir los procesos y eventos llevaron a los resultados. Con una hipostesis correcta podemos predecir comportamientos para modificar el programa y llegar a un resultado correcto o esperado.
+
+	Hay que leer el código, entender cada línea para corregir los errores.
