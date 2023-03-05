@@ -15,7 +15,7 @@ la solución de manera creativa, y expresar una solución con claridad y precisi
 	|| LEGUAJES DE ALTO Y BAJO NIVEL: INTERPRETADOS Y COMPILADOS
 
 los computadores sólo ejecutan programas escritos en lenguajes de bajo nivel. Los programas de alto
-nivel tienen que traducirse antes de ejecutarse.Lleva tiempo, lo
+nivel tienen que traducirse antes de ejecutarse. Lleva tiempo, lo
 cual es una pequeña desventaja.
 
 la programación en lenguajes
@@ -321,8 +321,6 @@ muestra un valor.
 	error de programación (bug): Un error en un programa.
 		depuración: El proceso de encontrar y corregir errores de programación.
 	
-
-	
 	
 	|| VARIABLES, EXPRESIONES Y SENTENCIAS
 
@@ -389,6 +387,9 @@ imprimir variables: a print le pasamos su nombre y nos devuelve el valor de la v
 	
 	>>> print mensaje 
 	"Que onda?"
+
+	en py3: print (mensaje)
+			"Que honda?"
 
 nombres significativos para sus
 variables: esto permite documentar para qué se usa la variable.
@@ -892,12 +893,12 @@ Escriba una función llamada nueveLineas que use
 tresLineas para imprimir nueve lı́neas en blanco. ¿Cómo imprimirı́a 27 lı́neas nuevas?
 		
 		def nueveLineas(9, tresLineas):
-		   9*tresLineas
+		   print(9*tresLineas)
 		
 		o
 		
 		def nueveLineas(tresLineas):
-		  tresLineas*tresLineas*tresLineas
+		  print(tresLineas*tresLineas*tresLineas)
 
 
 ACTIVIDAD:
@@ -1136,3 +1137,72 @@ he definido y he salido de la función
 hola, mundo!
 he llamado a la función
 >>> 
+
+	Preguntas:
+
+1. ¿Qué sucede si llama usted a una función y no hace nada con el resultado
+
+(es decir, no lo asigna a una variable ni lo usa como parte de una expresión
+más amplia)?
+
+	---
+	type()
+	Traceback (most recent call last):
+	TypeError: type() takes 1 or 3 arguments
+
+	print()
+
+	---
+	def error_sint(num1, num2):
+	 num1 + num2
+
+	error_sint(2, 1)
+	<function error_sint at 0xb775865c>
+
+	O
+
+	def error_sint(num1, num2):
+	 num1 + num2
+
+	error_sint(2, 1)
+
+	print (error_sint(2, 1))
+	None
+
+	*no guarde la expresión en var ni la pase a una func.
+	pero lanza dos errores distintos.
+	---
+	def error_sint(num1, num2):
+	calcu = num1 + num2
+
+	error_sint(2, 1) 
+
+	print (error_sint)
+	*cree una var local, llame e imprimi a la func, no a la var.
+
+	O
+
+	def error_sint(num1, num2):
+	calcu = num1 + num2
+
+	error_sint(2, 1)
+
+	print (calcu) 
+	*llame func, despues imprimi var
+
+	Traceback (most recent call last):
+	NameError: name 'calcu' is not defined,
+
+	---
+	def error_sint(num1, num2):
+	print(num1 + num2)
+
+	error_sint(1, 2)
+	3
+	*ejecuta correctamente.
+
+2. ¿Qué sucede si usa una función sin resultado como parte de una expresión,
+por ejemplo nueva linea() + 7?
+
+	TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+
