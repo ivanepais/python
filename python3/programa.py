@@ -11,6 +11,11 @@ print ("he definido y he salido de la función")
 
 hola_mundo()
 
+def error_sint(num1, num2):
+	calcu = num1 + num2
+	print (calcu)
+
+
 print("he llamado a la función")
 
 def sumarMismo (num):
@@ -38,6 +43,14 @@ bizcochoBueno = " pan de leche"
 print (fruta + bizcochoBueno)
 
 print('Chiste '*3)
+
+17
+17+2
+print (17)
+
+type()
+print()
+
 
 
 
