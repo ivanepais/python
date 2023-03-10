@@ -48,8 +48,54 @@ print('Chiste '*3)
 17+2
 print (17)
 
-type()
 print()
+
+math.sqrt(5) #
+
+# Función Justificar
+
+def justificar_derecha (cadena):
+	print(" "*70 + cadena)
+	print(len(cadena))
+
+justificar_derecha("palabra")  
+
+
+# Objeto de función
+
+def hacer_2veces(f):
+	f()
+	f()
+
+def imprimir_spam():
+	print('spam')
+
+hacer_2veces(imprimir_spam)
+
+# Grilla
+
+def grid ():
+	print ("+ - - - - + - - - - +")
+	print ("|         |         |")
+	print ("|         |         |")
+	print ("|         |         |")
+	print ("+ - - - - + - - - - +")
+	print ("|         |         |")
+	print ("|         |         |")
+	print ("|         |         |")
+	print ("+ - - - - + - - - - +")
+grid()
+
+print('+', '-')
+
+print('+', end=' ')
+print('-')
+
+
+#interfaz
+
+import turtle
+bob = turtle.Turtle()
 
 
 
