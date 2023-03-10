@@ -160,6 +160,10 @@
 		>>> id(func1)
 		39199700
 
+	Objeto de función:
+	Es un valor que puedes asignar a una variable o pasarlo co-
+	mo argumento.
+
 	Return:
 
 
@@ -179,16 +183,32 @@
 			<class 'function'>
 
 	Funciones productivas y nulas:
-	lskadjf
 
 		Productivas:
+		Devuelven un resultado, como las matemáticas; esperando usarlo en una variable o usarlo en una expresión.
+
+		En modo terminal, math.sqrt(5) da 2.2360679774997898
+
+		en modo script, el resultado se pierde: no almacena ni muestra el resultado,
+
+
+		Nulas o void function:
+		Realizan una acción pero no devuelven un valor, muestran algo en pantalla o tienen algún efecto.
+
+		Si asignamos su resultado a una variable nos devuelve el valor none de tipo none.
+
+		Ventajas de las funciones:
+
+			Ponerle nombre a un grupo de sentencias, hace al programa más facil de leer y depurar
+
+			Elimina el código repetitivo con solo llamar a la función creada en diferentes lugares.
+
+			Dividir un programa largo en funciones te permite depurar las partes una a la vez y luego reunirlas en un todo funcional.
+
+			Son útiles para muchos programas. Una vez que escribes y depuras una, la puedes reutilizar.
 
 
 
-		Nulas:
-
-
-		
 
 
 
@@ -297,6 +317,18 @@
 
 		OPERAR ARGUMENTOS:
 
+		def impr_2veces(bruce):
+			print(bruce)
+			print(bruce)
+
+			>>> impr_2veces('Spam')
+			Spam
+			Spam
+
+			>>> impr_2veces('Spam '*4)
+			Spam Spam Spam Spam
+			Spam Spam Spam Spam
+
 		>>> imprimeDoble('Jamón'*4)
 		JamónJamónJamónJamón JamónJamónJamónJamón
 		
@@ -321,3 +353,160 @@
 	Estudiar las claves para inducir los procesos y eventos llevaron a los resultados. Con una hipostesis correcta podemos predecir comportamientos para modificar el programa y llegar a un resultado correcto o esperado.
 
 	Hay que leer el código, entender cada línea para corregir los errores.
+
+
+|| DISEÑO DE INTERFAZ
+	Diseñar funciones que interactúen entre sí.	
+
+	Modelo turtle:
+	Permite crear imágenes utilizando gráficas.
+
+		import turtle
+		bob = turtle.Turtle() 
+		#Crea ventana con una flecha que representa a la tortuga.
+
+	turtle vs Turtle:
+
+		Modelo turtle:
+		Proporciona una función llamada Turtle ('T'
+		mayús) que crea un objeto Turtle, el cual asignamos a una variable, aquí es bob.
+
+		Al imprimir bob se muestra algo como:
+
+			<turtle.Turtle object at 0xb7bfbf4c>
+
+		refiere a un objeto con tipo Turtle
+
+	mainloop:
+	Le dice a la ventana que espere a que el usuario haga algo.
+
+	METODOS/ACCIONES
+	Lo que realizará nuestro objeto tortuga llamada bob.
+
+		LLamar a un metodo:
+		Es similar a una función, sintaxis: objeto.fd(). El objeto puede estar en una variable, etc.
+
+		método fd (forward):
+		Está asociado con el objeto tortuga que llamamos bob. En la llamada le defimos que se mueva hacia adelante en (100) px, distancia asociada al tamaño real de la pantalla.
+
+		bk (backward):
+		Retroceder.
+
+		lt (left turn) y lr (right turn):
+		El argumento/valor es en grados (90 = 90°) gira sobre su eje hacia estos lados.
+
+		pu (pen up) y pd (pen down):
+		Sostiene una pluma, que está arriba o abajo; si la pluma está abajo, la tortuga deja un rastro cuando se mueve.
+
+	DIBUJAR:
+	Agregar varias líneas de código.
+
+		ángulo recto:
+
+			bob.fd(100)
+			bob.lt(90)
+			bob.fd(100)
+
+			bob.fd(100)
+			bob.bk(100)
+			bob.lt(90)
+			bob.fd(100)
+
+		cuadrado:
+
+			bob.fd(100)
+			bob.bk(100)
+			bob.lt(90)
+			bob.fd(100)
+			bob.rt(90)
+			bob.fd(100)
+			bob.rt(90)
+			bob.fd(100)
+
+	REPETICIÓN o BUCLES:
+	Hacerlo de forma más concisa.
+
+		for i in range(4):
+		print('Hola!')
+
+		Hola!
+		Hola!
+		Hola!
+		Hola!
+
+		for:
+		Similar a una definición de función, el cuerpo con sangrías. El FLUJO DE EJECUCIÓN pasa por el cuerpo
+		y luego vuelve hacia arriba. 
+
+			En el ejemplo, pasa por el cuerpo cuatro veces: EJECUTA CUATRO VECES EL GRUPO DE SENTENCIAS.
+
+				for i in range(4): #avanza y gira *4
+					bob.fd(100)
+					bob.lt(90)
+
+	ENCAPSULAMIENTO:	
+	Envolver un pedazo de código en una función. 
+
+	El código definido apropiadamente sirve como documentación para pasar valores.
+	Puede ser reutilizado tan solo llamando a la función dando otros valores, sin tener que escribir más código.
+
+		def cuadrado (t):
+			for i in range(4):
+				t.fd(100) 	
+				t.lt(90)
+
+		#t variable, es la acción que va a tomar nuestro objeto definido anteriormente, avanza, gira *4
+
+			>>>cuadrado (bob) 
+		
+		#bob valor, es nuestra variable que tiene el metodo u objeto tortuga.	
+	
+		#t = bob.fd(100)
+
+		t se refiere a la misma tortuga bob , por lo que t.lt(90) tiene el mismo efecto que bob.lt(90). 
+
+		¿por qué no llamar al parámetro bob ? 
+
+		La idea es que t puede ser cualquier tortuga, no solo bob, así que podrías crear una segunda tortuga y pasarla como argumento a cuadrado
+
+	GENERALIZACIÓN:
+	Acto de agregar un parámetro a una función para pasarle valores en la llamada. 
+
+	Hace que la función sea más general: sin tener que determinar los valores en el cuerpo de la definición.
+
+		def cuadrado(t, longitud):
+			for i in range(4):
+				t.fd(longitud)
+				t.lt(90)
+		
+		cuadrado(bob, 100)
+
+		#agregar un parámetro longitud a cuadrado:
+		#definimos la variable longitud en metodo fd.
+
+		Dibujar polígonos regulares con cualquier número de lados:		
+			def poligono(t, n, longitud):
+				angulo = 360 / n
+				
+				for i in range(n): 
+					t.fd(longitud)
+					t.lt(angulo)
+			
+			poligono(bob, 7, 70)
+
+			#n = lados = cant repeticion en la func, longitud y ángulos como valores en la llamada.
+
+			#python 2: angulo = 360.0/n, así usa la conversión de typos.
+
+		Argumentos de palabra clave:
+
+		Incluir los nombres de los parámetros en la lista de argumentos: evitamos olvidar que son o cúal era su orden.
+			
+			poligono(bob, n=7, longitud=70)
+
+			# o en la definicion de func:
+
+			def poligono (tortuga/objeto, lados, longitud)
+
+		
+
