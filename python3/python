@@ -43,166 +43,41 @@ Respuesta:		8								6
 print:		print('Hola, mundo')												print 'Hola, mundo'
 
 
-
-		|| Errores 
-
->>> print ("hola, mundo)
-  File "<stdin>", line 1
-    print ("hola, mundo)
-                                             ^			// marca dónde está el error sintáctico. 
-SyntaxError: EOL while scanning string literal
-
-
->>> 011                                                                        
-  File "<stdin>", line 1
-    011
-      ^
-SyntaxError: invalid token
-
-
->>> print ("hola, mundo)
-  File "<stdin>", line 1
-    print ("hola, mundo)
-                       ^
-SyntaxError: EOL while scanning string literal:
-
-En Python 3, los ceros iniciales no están permitidos en los números. P.ej:
-
-05
-0123
-
-Etc. no están permitidos, pero deben escribirse como 5 y 123 en su lugar.
-
-Sin embargo, en Python 2, el cero inicial significa que el número es un número octal (base ocho), por lo que 04 o 03 significarían 4 y 3 en octal, respectivamente, pero 08 no sería válido porque no es un número octal válido.
-
-En Python 3, la sintaxis de octales cambió a esto:
-
-0o10
-0o4
-
-(Además de permitir otras bases como binarias y hexadecimales usando los prefijos 0b o 0x).
-
-En cuanto a su otra pregunta, un token en Python es la forma en que el intérprete de Python divide su código en partes, para que pueda entenderlo (ver aquí). Aquí, cuando el tokenizador intenta dividir su código, no espera ver el cero allí y, por lo tanto, arroja un error.
-
-Sugeriría (de manera similar a las otras respuestas) que suelte el cero inicial ((2016,4,3)) o los represente usando cadenas ("2016","04","03")).
-
-	
-	|| Ejercicio funciones
-
-	#prompt
-
-def hola_mundo():
-	print ("hola, mundo!")
-
-print ("he definido y he salido de la función")
-
-hola_mundo()
-
-print("he llamado a la función")
-	
-	#interprete		
-
-he definido y he salido de la función
-hola, mundo!
-he llamado a la función
->>> 
-
-	Preguntas:
-
-1. ¿Qué sucede si llama usted a una función y no hace nada con el resultado
-
-(es decir, no lo asigna a una variable ni lo usa como parte de una expresión
-más amplia)?
-
-	---
-	type()
-	Traceback (most recent call last):
-	TypeError: type() takes 1 or 3 arguments
-
-	print()
-
-	---
-	def error_sint(num1, num2):
-	 num1 + num2
-
-	error_sint(2, 1)
-	<function error_sint at 0xb775865c>
-
-	O
-
-	def error_sint(num1, num2):
-	 num1 + num2
-
-	error_sint(2, 1)
-
-	print (error_sint(2, 1))
-	None
-
-	*no guarde la expresión en var ni la pase a una func.
-	pero lanza dos errores distintos.
-	---
-	def error_sint(num1, num2):
-	calcu = num1 + num2
-
-	error_sint(2, 1) 
-
-	print (error_sint)
-	*cree una var local, llame e imprimi a la func, no a la var.
-
-	O
-
-	def error_sint(num1, num2):
-	calcu = num1 + num2
-
-	error_sint(2, 1)
-
-	print (calcu) 
-	*llame func, despues imprimi var
-
-	Traceback (most recent call last):
-	NameError: name 'calcu' is not defined,
-
-	---
-	def error_sint(num1, num2):
-	print(num1 + num2)
-
-	error_sint(1, 2)
-	3
-	*ejecuta correctamente.
-
-2. ¿Qué sucede si usa una función sin resultado como parte de una expresión,
-por ejemplo nueva linea() + 7?
-
-	TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
-
-
 PSEUDOCÓDIGO:
+
 Pensar como se crea o puede llegar a crear cada objeto.
 
 	Las instrucciones (comandos, órdenes) basicas:
 	
 	entrada:
+
 		Recibir datos del teclado, o un archivo u otro aparato.
 
 	salida:
+
 		Mostrar datos en el monitor o enviar datos a un archivo u otro aparato.
 
 	matemáticas:
+
 	 	Operaciones básicas de matemáticas como la adición y la multiplicación.
 
 	operación condicional:
+
 		Probar la veracidad de alguna condición y ejecutar una secuencia de instrucciones apropiada.
 
 	repetición: 
+
 		Ejecutar alguna acción repetidas veces, normalmente con alguna variación.
 
 
 || CREAR FUNCIONES:
 
 	encapsular: 
+
 		Meter el código que crea los objetos en las definiciones de función.
 
 	generalizar:
+
 		Crear variables genericas  en el cuerpo de la función, sin valores determinados para pasarles valores en la llamada.
 
 		Así los objetos son diferentes en dimensiones, formas, aspecto, etc.
@@ -216,6 +91,7 @@ Pensar como se crea o puede llegar a crear cada objeto.
 
 
 	depuración:
+
 		corregir errores es programar.
 
 
