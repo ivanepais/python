@@ -1,47 +1,5 @@
 // ANOTACIONES
 
-	|| RECAPITULANDO: FUNCIONES
-
-	Parámetros:
-		Valores que especificamos en la funcion que definimos.
-		Es una variable que representa y guarda los valores que le pasamos cuando llamamos a la funcion
-		(el primer paso de una funcion es la definicion o la tarea que va a ejecutar y el segundo es la llamada
-		que es la ejecución con distintos valores o argumentos.)
-		Si no indicamos o necesitamos parámetros no le podemos pasar valores en la llamada o ejecución.
-		Puede ser usado en el cuerpo de la función para después, en la llamada, darle un valor como a cualqueir variable (nombreVar = valor)
-		
-			Argumentos:
-				Valor que le asignamos a un parámetro cuando llamamos a la función.
-		
-			Ej: 
-				def mostrar_doble (num):		def sumar (num1, num2):
-					print (num * 2)					print (num1 + num2)
-
-llamada:		mostrar_doble(4)				sumar(2, 4)
-Respuesta:		8								6		
-			
-			
-			Return:
-				Valor-respuesta de una funcion que puede ser guardado en una variable.
-				Cuando se ejecuta la sentencia return, la función se detiene inmediatamente.
-				Si no definimos return, el valor de retorno es NONE; que se usa para representar 
-				casos donde no hay valor especifico asignado. No podríamos usar la respuesta de la llamada
-				como variable porque no guarda valor.
-			
-			Ej:                                                                                  Ej: valor de retorno none
-				def sumar (x, y):							print (resultado)
-					return x + y
-				
-				resultado = sumar (2, 2)
-				4
-
-
-		|| PYTHON 2 VS PYTHON 3
-			
-		             P3                                                             vs                                                                   P2
-					
-print:		print('Hola, mundo')												print 'Hola, mundo'
-
 
 PSEUDOCÓDIGO:
 

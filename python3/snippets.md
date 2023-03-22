@@ -569,13 +569,16 @@
 		
 			cuadrado(bob, 100)
 
-			#agregar un parámetro longitud a cuadrado:
-			#definimos la variable longitud en metodo fd.
+			agregar un parámetro longitud a cuadrado:
+				definimos la variable longitud en metodo fd.
 
 		
-		Dibujar polígonos regulares con cualquier número de lados:		
+		Dibujar polígonos regulares con cualquier número de lados:	
+
+			Tambien requiere una generalización:
+
 			def poligono(t, n, longitud):
-				angulo = 360 / n
+				angulo = 360.0 / n
 				
 				for i in range(n): 
 					t.fd(longitud)
@@ -583,10 +586,10 @@
 			
 			poligono(bob, 7, 70)
 
-			#n = lados = cant repeticion en la func, longitud y ángulos como valores en la llamada.
+			n = lados = cant repeticion en la func, longitud y ángulos como valores en la llamada.
 
-			#python 2: angulo = 360.0/n, así usa la conversión de typos.
-
+			python 2: angulo = 360.0/n, así usa la conversión de typos.
+			
 
 		Argumentos de palabra clave:
 
