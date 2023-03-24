@@ -102,16 +102,111 @@ requiere otra generalización.
 Pista: los ángulos exteriores de un polígono regular con n lados son de 360/n grados.
 
 '''
-
+'''
 def poligono (t, longitud, n):
 
-	angulo = 360.0/n
+	angulo = 360/n
 
 	for i in range(n): 
 		t.fd(longitud)
 		t.lt(angulo)
 			
-poligono(bob, 7, 70)
+poligono(bob, 40, 10)
+'''
+
+import math
+'''
+def circulo(t, r):
+	perimetro = 2 * math.pi * r
+	n = 50
+	longitud = perimetro / n
+	poligono(t, n, longitud)
+
+circulo (bob, 10)
+'''
+
+'''
+def arco(t, r, angulo):
+	
+	longitud_arco = 2 * math.pi * r * angulo / 360
+	
+	n = int(longitud_arco / 3) + 1
+	
+	longitud_paso = longitud_arco / n
+	
+	angulo_paso = angulo / n
+	
+	for i in range(n):
+		t.fd(longitud_paso)
+		t.lt(angulo_paso)
+
+arco (bob, 5, 20)
+'''
+
+def polilinea(t, n, longitud, angulo):
+	
+	for i in range(n):
+		t.fd(longitud)
+		t.lt(angulo)
+
+#reescribir poligono y arco para que utilice a polilinea
+def poligono(t, n, longitud):
+	
+	angulo = 360.0 / n
+	
+	polilinea(t, n, longitud, angulo)
+
+
+def arco(t, r, angulo):
+	
+	longitud_arco = 2 * math.pi * r * angulo / 360
+	
+	n = int(longitud_arco / 3) + 1
+	
+	longitud_paso = longitud_arco / n
+	
+	angulo_paso = float(angulo) / n
+	
+	polilinea(t, n, longitud_paso, angulo_paso)
+
+#circulo para que utilice a arco :
+def circulo(t, r):
+	
+	arco(t, r, 360)
+
+''' llamadas:
+
+polilinea(t, n, longitud, angulo)
+poligono(t, n, longitud)
+arco(t, r, angulo)
+circulo(t, r)
+'''
+#polilinea(bob, 5, 40, 20)
+#poligono(bob, 5, 60)
+#arco(bob, 50, 90)
+circulo(bob, 70)
+
+'''
+def poligono(tortuga, lados, longitud):
+    # Crea una ventana de dibujo
+    #ventana = turtle.Screen()
+
+    # Crea una tortuga para dibujar
+    #tortuga = turtle.Turtle()
+
+    # Calcula el ángulo de giro según el número de lados
+    angulo = 360 / lados
+
+    # Dibuja el polígono
+    for i in range(lados):
+        tortuga.forward(longitud)
+        tortuga.right(angulo)
+
+    # Cierra la ventana de dibujo cuando el usuario hace clic en ella
+    #ventana.exitonclick()
+
+poligono (bob, 5, 45)
+'''
 
 '''
 DISEÑO DE INTERFAZ
