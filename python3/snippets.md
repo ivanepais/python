@@ -78,7 +78,7 @@
 
 			hola_mundo()
 
-			print("he llamado a la función")
+			print ("he llamado a la función")
 	
 
 		#interprete		
@@ -412,7 +412,6 @@
 		Error de lógica en su programa, se ejecutará sin ningún mensaje de error, pero el resultado no será el deseado.
    
    		Requiere trabajar al revés, observando el resultado del programa para averiguar lo que hace.
-
 		
 		Estudiar las claves para inducir los procesos y eventos llevaron a los resultados. Con una hipostesis correcta podemos predecir comportamientos para modificar el programa y llegar a un resultado correcto o esperado.
 
@@ -601,5 +600,136 @@
 
 				def poligono (tortuga/objeto, lados, longitud)
 
-		
 
+	DISEÑO DE INTERFAZ:
+
+		La interfaz de una función es un resumen de cómo esta se utiliza: 
+
+			¿cuáles son los parámetros? 
+
+			¿Qué hace la función? 
+
+			¿Y cuál es el valor de retorno? 
+
+		Una interfaz es “limpia” si permite a la sentencia llamadora hacer lo que quiere sin lidiar con detalles innecesarios.
+
+
+		Circulo: 
+
+			radio, r , como parámetro.
+
+			calcula el perímetro de un círculo con radio r utilizando la fórmula 2πr.
+
+			math.pi , tenemos que importar math.cos al comienzo del script. Es una buena practica.
+
+
+	REFACTORIZACIÓN:
+
+		Reorganizar un programa para mejorar las interfaces y facilitar la reutilización de código. 
+
+		A veces no se cuenta con el tiempo para evitarlo y diseñar mejor el programa.
+
+			Ej: notamos que había código similar
+			en arco y poligono , así que “lo factorizamos” en polilinea .
+
+			Si hubiéramos planificado con anticipación, podríamos haber escrito polilinea primero y haber evitado la refactorización.
+
+
+|| PLAN DE DESARROLLO
+
+	Es un proceso para escribir programas.
+
+		Ej: “encapsulamiento y generalización”.
+
+		1. Comenzar escribiendo un programa pequeño sin definiciones de función.
+
+		2. Una vez que el programa funciona, identifica una parte coherente, encapsula la parte en una función y dale un nombre.
+
+		3. Generaliza la función agregando parámetros apropiados.
+	
+		4. Repite los pasos 1–3 hasta que tengas un conjunto de funciones eficaces. Copia y pega código que funcione para evitar repetir (y volver a depurar).
+
+		5. Busca oportunidades para mejorar el programa refactorizando. Por ejemplo, si tienes código similar en muchos lugares, considera factorizarlo dentro de una función
+		general apropiada.
+
+
+			def polilinea(t, n, longitud, angulo):
+				
+				for i in range(n):
+					t.fd(longitud)
+					t.lt(angulo)
+
+			#reescribir poligono y arco para que utilice a polilinea 
+
+			def poligono(t, n, longitud):
+				
+				angulo = 360.0 / n
+				
+				polilinea(t, n, longitud, angulo)
+
+
+			def arco(t, r, angulo):
+				
+				longitud_arco = 2 * math.pi * r * angulo / 360
+				
+				n = int(longitud_arco / 3) + 1
+				
+				longitud_paso = longitud_arco / n
+				
+				angulo_paso = float(angulo) / n
+				
+				polilinea(t, n, longitud_paso, angulo_paso)
+
+			#circulo para que utilice a arco :
+			def circulo(t, r):
+				
+				arco(t, r, 360)
+
+			llamadas:
+
+				polilinea(t, n, longitud, angulo)
+				poligono(t, n, longitud)
+				arco(t, r, angulo)
+				circulo(t, r)
+			
+				polilinea(bob, 5, 40, 20)
+				poligono(bob, 5, 60)
+				arco(bob, 50, 90)
+				circulo(bob, 70)
+
+
+	Docstring:
+
+		Es una cadena al comienzo de una función que explica la interfaz
+
+		def polilinea(t, n, longitud, angulo):
+			"""
+				Dibuja n segmentos de línea con la longitud dada
+				y el ángulo (en grados) entre ellos. t es una tortuga.
+			"""
+			for i in range(n):
+				t.fd(longitud)
+				t.lt(angulo)
+
+		Explica de manera concisa lo que hace la función, sin detalles (si no es obvio).
+
+
+	Depuración:
+
+		Una interfaz es como un contrato entre una función y la sentencia llamadora. La llamadora acepta proporcionar ciertos argumentos y la función acepta hacer cierto trabajo.
+
+		Requisitos: 
+
+			Precondiciones:
+
+				Se supone que son verdaderos antes de que la función comience a ejecutarse.
+
+				Son responsabilidad de la llamadora. Si la llamadora viola una precondición (¡debidamente documentada!) y la función no funciona de forma correcta, el error está en la llamadora, no en la función.
+
+			Postcondiciones:
+
+				Son las condiciones al final de la función. 
+
+				Ej, incluyen el efecto previsto de la función (como al dibujar segmentos de línea) y cualquier efecto secundario (como mover la tortuga o hacer otros cambios).
+
+		Si las precondiciones se satisfacen y las postcondiciones no, el error está en la función. Si tus pre y post condiciones están claras, pueden ayudar con la depuración.
