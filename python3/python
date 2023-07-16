@@ -145,3 +145,115 @@
 	Crear formulas en variables para pasarselas a las funciones, metodos nativos o creadas, etc.
 
 	import math, al inicio del programa.
+
+
+
+|| INTERFAZ
+	
+
+
+
+
+|| ESTRUCTURA DE DATOS
+
+	Se utilizan para organizar y almacenar información de manera eficiente.
+
+		Cadena/String (cadena de caracter): 
+
+
+
+		Vector/Matriz/Array (formación o matrix): 
+
+			Es una cantidad de elementos en un orden específico, generalmente todos del mismo tipo (según el lenguaje, los elementos individuales pueden verse forzados a ser del mismo tipo o pueden ser de casi cualquier tipo).
+
+			Pueden ser de longitud fija o de tamaño variable.
+
+
+		Listas/List/Linked list: 
+
+			Es una colección ordenada de elementos, donde cada elemento se identifica por un índice.
+
+			Son versatiles y pueden contener elementos de diferentes tipos de datos. 
+
+			Se utilizan para almacenar y manipular conjuntos de datos de manera flexible.
+
+			La principal ventaja de una lista enlazada sobre una matriz es que los valores siempre se pueden insertar y eliminar de manera eficiente sin reubicar el resto de la lista.
+
+
+		Tuplas/celdas/Tuple/record/estructure (registros o estructura/struct-structure/rows): 
+
+			Es un valor que contiene otros valores, normalmente en un número y una secuencia fijos y normalmente indexados por nombres. Los elementos de los registros suelen denominarse campos o miembros (fields or members).
+
+			Similares a las listas, pero son inmutables, no se pueden modificar después de su creación. 
+
+			Se utilizan para almacenar un conjunto de valores relacionados y se accede a ellos mediante índices.
+
+
+		Diccionario/hash table (vector asiciativo o mapa/hash): 
+
+			Almacenan elementos como pares clave-valor. Cada elemento se identifica por una clave única y se puede acceder al valor correspondiente utilizando esa clave. 
+
+			Utilizan una función hash para asignar claves a índices en una matriz, lo que permite un acceso en tiempo constante en el caso promedio.
+
+			Son útiles cuando necesitas almacenar y recuperar datos de forma rápida y eficiente utilizando una clave personalizada. 
+
+			Pueden ocurrir colisiones (collisions) de hash, lo que puede afectar su rendimiento. Se emplean técnicas como el encadenamiento y el direccionamiento (chaining and open addressing) abierto para manejar las colisiones.
+
+
+		Conjuntos/sets:
+
+			Es una colección desordenada de elementos únicos.
+
+			Se utilizan cuando necesitas almacenar elementos sin duplicados y realizar operaciones como intersección, unión y diferencia de conjuntos de manera eficiente.
+
+
+		Colas/queues: 
+
+			Es una estructura de datos donde el primer elemento que se agrega es el primero en ser eliminado (FIFO: First-In, First-Out).
+
+			Se utilizan para mantener un orden de elementos y son útiles en situaciones donde el orden de llegada es importante, como la gestión de tareas en un sistema.
+
+
+		Pilas/Stacks: 
+
+			Es una estructura de datos donde el último elemento que se agrega es el primero en ser eliminado (LIFO: Last-In, First-Out).
+
+			Se utilizan para realizar operaciones como deshacer/rehacer, seguimiento de llamadas de funciones y otras situaciones en las que el último elemento agregado es el más relevante.
+
+
+		Árboles/Trees: 
+
+			Es una estructura de datos no lineal compuesta por nodos. Cada nodo puede tener cero o más nodos hijos.
+
+			Se utilizan en muchas aplicaciones, como estructuras de búsqueda, representación de jerarquías y algoritmos de recorrido.
+
+
+		Grafos/Graph: 
+
+			Es una estructura de datos compuesta por vértices y aristas que conectan los vértices. 
+
+			Los grafos se utilizan para representar relaciones y conexiones entre elementos.
+
+
+		Clases/Class: 
+
+			Es una plantilla para la creación de objetos de datos según un modelo predefinido. 
+
+			Las clases se utilizan como representación abstracta de conceptos, incluyen campos como los registros y operaciones que pueden consultar el valor de los campos o cambiar sus valores.
+
+
+	Python: 
+
+		Tiene una jerarquía estandarizada: 
+
+
+
+		Ejemplos: 
+
+
+
+
+
+|| POO
+
+

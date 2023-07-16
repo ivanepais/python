@@ -1,609 +1,49 @@
-|| BASICOS
+# Ayuda rapida, info, anotaciones
+
+|| PSEUDOCÓDIGO:
+
+	Pensar como se crea o puede llegar a crear cada objeto.
+
+	Las instrucciones (comandos, órdenes) basicas:
 	
-	Conceptos:
+	entrada:
 
-		Lenguajes de programación:
+		Recibir datos del teclado, o un archivo u otro aparato.
 
-			Lenguajes de alto nivel:
-				
-				Como Python diseñado para ser fácil de leer y escribir para la gente.
+	salida:
 
-				Las computadoras sólo ejecutan programas escritos en lenguajes de bajo nivel. Los programas de alto nivel tienen que traducirse antes de ejecutarse.
+		Mostrar datos en el monitor o enviar datos a un archivo u otro aparato.
 
-				Son portables, lo que significa que pueden ejecutarse en tipos diferentes de computadores.
+	matemáticas:
 
+	 	Operaciones básicas de matemáticas como la adición y la multiplicación.
 
-			Lenguaje de bajo nivel: 
-				
-				Diseñado para ser fácil	de ejecutar para un computador; también se lo llama “lenguaje de máquina” o “lenguaje ensamblador”.
+	operación condicional:
 
-				Sus programas sólo pueden ser ejecutarse en un tipo de computador y deben reescribirse para ejecutarlos en otro.
+		Probar la veracidad de alguna condición y ejecutar una secuencia de instrucciones apropiada.
 
-			
-			Interpretes y compiladores:
-				
-				Programas que traducen lenguajes de alto nivel a lenguajes de bajo nivel.
+	repetición: 
 
-				Un intérprete lee un programa de alto nivel y lo ejecuta, Traduce el programa poco a poco, leyendo y ejecutando cada comando.
-	
-					codigo fuente -> interprete -> salida
+		Ejecutar alguna acción repetidas veces, normalmente con alguna variación.
 
-				Un compilador lee el programa y lo traduce todo al mismo tiempo, antes de ejecutar cualquiera de las instrucciones.
-	
-					codigo fuente -> compilador -> codigo objeto -> ejecutor -> salida
 
-				Python es de alto nivel e interpretado.
+|| CREAR FUNCIONES:
 
+	encapsular: 
 
-		Programas:
-			
-			Son una secuencia de instrucciones que especifican cómo resolver un problema informático desde resolver operaciónes matemática, una función de buscar o hasta compilar un programa.
+		Meter el código que crea los objetos en las definiciones de función.
 
-		
-			Están compuestos por:
 
-			Entrada:
-				
-				Recibir datos del teclado, o un archivo u otro aparato.
+	generalizar:
 
-			Salida:
-				
-				Mostrar datos en el monitor o enviar datos a un archivo u otro aparato.
+		Crear variables genericas  en el cuerpo de la función, sin valores determinados para pasarles valores en la llamada.
 
-			Matemáticas:
-			
-				En las instrucciones se encuentran operaciones basicas como la adición, la multiplicación y más complejas.
+		Así los objetos son diferentes en dimensiones, formas, aspecto, etc.
 
-			Operación condicional:
-				
-				Probar la veracidad de alguna condición y ejecutar una secuencia de instrucciones apropiada.
 
-			Repetición:
-				
-				Ejecutar alguna acción repetidas veces, normalmente con alguna variación.
+	diseño de interfaz:
 
-
-	Practica:
-		
-		# Si no mostras con print(), los cálculos, los valores de las varibles, etc; se van a ejecutar pero vas a ver el resultado del código en el interprete.
-
-		# Error sintácto y de identación hace fallar todo el programa.
-
-		#prompt
-
-			def hola_mundo():
-				print ("hola, mundo!")
-
-			print ("he definido y he salido de la función")
-
-			hola_mundo()
-
-			print ("he llamado a la función")
-	
-
-		#interprete		
-
-			he definido y he salido de la función
-		
-			hola, mundo!
-			
-			he llamado a la función
-		
-			>>>
-
-
-
-|| OPERACIONES MATEMÁTICAS
-
-	ORDEN DE OPERACIONES:
-
-	PEMDAS: 
-		
-		Paréntesis, exponenciación(**), multiplicación/división y adición y sustracción.
-
-		Si hay igualdad signo/orden: 
-			
-			Se calcula de izquierda a derecha.
-
-
-
-|| FUNCIONES MATEMÁTICAS
-
-	Tenemos que importarlo con una sentencia import:
-	
-		>>> import math
-
-	Crea un objeto de módulo llamado math.
-
-		import math   #importar
-
-		print (math)  #verificar
-		<module 'math' (built-in)>
-
-
-
-|| FUNCIONES
-	
-	Parámetro: 
-		
-		Es el nombre de la variable, se usa en la definición.
-	
-	Argumento:
-		
-		Es el valor para la variable/parametro, se usa en la llamada.
-	
-	Definición:	
-		
-		def sumarMismo (num): #parámetro/nom var
-			print (num + num)
-
-	Llamada:	
-		
-		sumarMismo(2)  #argum de func/valor/variable
-		4              #valor retorno
-
-	
-	Variables y argumentos locales:
-		
-		Variable creada dentro de la función que solo puede usarse aquí.
-
-		def catDoble(parte1, parte2):
-			cat = parte1 + parte2
-			imprimeDoble(cat)
-
-		cantus1 = "Die Jesu domine, "
-		cantus2 = "Dona eis requiem."
-		
-		catDoble(cantus1, cantus2)
-		Jesu domine, Dona eis requiem. Die Jesu domine, Dona eis requiem.
-
-		*cuando se termina de ejecutar, la VARIABLE SE DESTRUEYE.
-
-			>>> print cat
-			NameError: cat
-
-
-	Variables globales como argumento:
-
-		>>> latoya = ’Dafne, es mitad laurel mitad ninfa’
-	
-		>>> imprimeDoble(latoya)
-		Dafne, es mitad laurel mitad ninfa. Dafne, es mitad laurel mitad ninfa.
-
-		El nombre de la variable que pasamos como argumento -llamada- (latoya) no tiene nada que ver con el nombre del parámetro-definición- (paso). En imprimeDoble llamamos a todo el mundo paso.
-
-
-	Asignar función a una variable:
-
-		>>> nereida = type("32")
-		>>> print nereida
-		<type ’string’>
-
-		>>> yanira = id(3)
-
-		>>> yanira = 3
-		>>> id(yanira)
-		134882108
-	
-		>>> func1 = id(3)
-		>>> id(func1)
-		39199700
-
-
-	Objeto de función:
-
-		Es un valor que puedes asignar a una variable o pasarlo como argumento.
-
-	
-	Return:
-
-		Valor-respuesta de una funcion que puede ser guardado en una variable.
-		
-		Cuando se ejecuta la sentencia return, la función se detiene inmediatamente.
-		
-		Si no definimos return, el valor de retorno es NONE; que se usa para representar casos donde no hay valor especifico asignado. No podríamos usar la respuesta de la llamada como variable porque no guarda valor.
-
-			def sumar (x, y):							
-				
-				return x + y
-				
-			resultado = sumar (2, 2)
-			4
-
-
-	Análisis sintácticos del interprete:
-
-		Definición incompleta: 
-
-			el interprete mostrará puntos (...)
-
-		Objeto función: 
-
-			se crea al definirla y tiene tipo function.
-
-				print(imprimir_letra)
-				function imprimir_letra at 0xb7e99e9c
-
-				type(imprimir_letra)
-				<class 'function'>
-
-
-	Funciones productivas y nulas:
-
-		Productivas:
-			
-			Devuelven un resultado, como las matemáticas; esperando usarlo en una variable o usarlo en una expresión.
-
-			En modo terminal, math.sqrt(5) da 2.2360679774997898
-
-			en modo script, el resultado se pierde: no almacena ni muestra el resultado,
-
-
-		Nulas o void function:
-			
-			Realizan una acción pero no devuelven un valor, muestran algo en pantalla o tienen algún efecto.
-
-			Si asignamos su resultado a una variable nos devuelve el valor none de tipo none.
-
-
-		Ventajas de las funciones:
-
-			Ponerle nombre a un grupo de sentencias, hace al programa más facil de leer y depurar
-
-			Elimina el código repetitivo con solo llamar a la función creada en diferentes lugares.
-
-			Dividir un programa largo en funciones te permite depurar las partes una a la vez y luego reunirlas en un todo funcional.
-
-			Son útiles para muchos programas. Una vez que escribes y depuras una, la puedes reutilizar.
-
-
-
-|| FLUJO DE EJECUCIÓN
-	
-	sentencias/def función > sentencias > llamada función (<< sentenc función) > sentencias.
-
-	*leer flujo, no de inicio a fin.
-
-
-
-|| DIAGRAMAS:
-
-	Es un dibujo que informa sobre el valor y ubicación de las variables. A la izquierda va el nombre que junta a las variables globales, el nombre de la función y despues la llamada. En el recuadro (frame) van las variables. Sigue el flujo de ejecución.
-	
-	de Estado:
-		
-		Muestran el valor de cada variable
-
-	de Pila (stack diagram):
-		
-		Muestran el valor y la función a la que pertenecen.
-
-	Trackback / rastreo:
-		
-		Cuando hay un error en las funciones, puede mostrar un camino con una lista de funciones en el interprete, sigue el flujo de ejecución al igual que el stack de pila.
-
-		*La ultima función que aparece es la que intentamos ejecutar.
-
-
-
-|| COMBINACIONES
-
-	CONVERSIÓN DE TIPOS:
-		
-		Es una función interna o nativa de python para convertir valores; llamamos al tipo y de damos un valor. Si no es posible da error.
-
-			>>> int("32")
-			32
-
-			>>> int("Hola")
-			ValueError: invalid literal for int(): Hola
-
-			>>> int(3.99999)
-			3    #redondea hacia abajo.
-
-			>>> str(32)
-			’32’
-
-			>>> str(3.14149)
-			’3.14149’
-
-		
-		La función float que convierte enteros y cadenas en números en coma flotante:
-
-			>>> float(32)
-			32.0
-
-			>>> float("3.14159")   #cadena
-			3.14159
-
-		
-		Python distingue entre el valor entero 1 y el valor
-		de coma flotante 1.0.
-
-			Ej: float()
-
-			>>> minuto = 59
-			>>> float(minuto) / 60.0
-			0.983333333333
-
-
-	COERCIÓN DE TIPOS:
-		
-		Son reglas de la conversión automática de tipos, si uno de los operandos matemáticos es tipo float, el otro se convierte automáticamente en float.
-
-			>>> minuto = 59
-			>>> minuto / 60.0
-			0.983333333333
-
-		Al usar un denomidador que es float, el otro se convierte en flotante y hace la operación sin enteros, sin redondear, etc.
-
-	
-	REGLAS DE COMPOSICIÓN:
-		
-		Los lenguajes de programación pueden tomar pequeños bloques de construcción y componerlos.
-
-		Casi en cualquier lugar que puedes poner un valor, puedes poner una expresión arbitraria, con una excepción: el lado izquierdo de una sentencia de asignación tiene que ser un nombre de variable.
-
-		Usar cualquier tipo de expresión como argumento en la llamada de una función o en sentencias, variables, etc.
-
-
-		Cadenas:
-
-			fruta = "plátano"
-			bizcochoBueno = " pan de leche"
-			print (fruta + bizcochoBueno)
-
-			print('Chiste '*3)
-
-			print ("Número de minutos desde la medianoche:",60+2)
-
-
-			# calcula el porcentaje de la hora que ha pasado ya
-			minuto = 60
-			porcentaje = (minuto * 100) / 60.0
-
-			El resultado queda asignado a x.
-
-			x = math.cos(angulo + pi/2)
-
-			x = math.exp(math.log(10.0))
-
-			x = math.sin(grados / 360.0 * 2 * math.pi)
-
-			x = math.exp(math.log(x+1))
-
-		
-		OPERAR ARGUMENTOS:
-
-			def impr_2veces(bruce):
-				print(bruce)
-				print(bruce)
-
-			>>> impr_2veces('Spam')
-				Spam
-				Spam
-
-			>>> impr_2veces('Spam '*4)
-				Spam Spam Spam Spam
-				Spam Spam Spam Spam
-
-			>>> imprimeDoble('Jamón'*4)
-			JamónJamónJamónJamón JamónJamónJamónJamón
-		
-			>>> imprimeDoble(math.cos(math.pi))
-			-1.0 -1.0
-
-
-
-|| DEBUGGEAR
-	
-	Se trata de corregir los errores en los programas informaticos (bugs). La programación es un proceso de depuración hasta que el programa haga lo que querramos.
-
-	Sintáctico:
-		
-		Error en la estructura y en las reglas del lenguaje de programación. Hace fallar todo el programa, al igual que el error de identación. No son permisivos.
-
-	En tiempo de ejecución:
-		
-		No aparece hasta que se ejecuta el programa se llaman excepciones.
-
-	Semánticos:
-		
-		Error de lógica en su programa, se ejecutará sin ningún mensaje de error, pero el resultado no será el deseado.
-   
-   		Requiere trabajar al revés, observando el resultado del programa para averiguar lo que hace.
-		
-		Estudiar las claves para inducir los procesos y eventos llevaron a los resultados. Con una hipostesis correcta podemos predecir comportamientos para modificar el programa y llegar a un resultado correcto o esperado.
-
-		Hay que leer el código, entender cada línea para corregir los errores.
-
-
-
-|| DISEÑO DE INTERFAZ
-	
-	Diseñar funciones que interactúen entre sí.	
-
-	Modelo turtle:
-	
-		Permite crear imágenes utilizando gráficas.
-
-		import turtle
-		bob = turtle.Turtle() 
-		#Crea ventana con una flecha que representa a la tortuga.
-
-
-	turtle vs Turtle:
-
-		Modelo turtle:
-			
-			Proporciona una función llamada Turtle ('T' mayús) que crea un objeto Turtle, el cual asignamos a una variable, aquí es bob.
-
-		Al imprimir bob se muestra algo como:
-
-			<turtle.Turtle object at 0xb7bfbf4c>
-
-			refiere a un objeto con tipo Turtle
-
-
-	mainloop:
-		
-		Le dice a la ventana que espere a que el usuario haga algo.
-
-
-	METODOS/ACCIONES
-		
-		Lo que realizará nuestro objeto tortuga llamada bob.
-
-		LLamar a un metodo:
-			
-			Es similar a una función, sintaxis: objeto.fd(). El objeto puede estar en una variable, etc.
-
-
-		Método fd (forward):
-			
-			Está asociado con el objeto tortuga que llamamos bob. En la llamada le defimos que se mueva hacia adelante en (100) px, distancia asociada al tamaño real de la pantalla.
-
-		bk (backward):
-			
-			Retroceder.
-
-		lt (left turn) y lr (right turn):
-			
-			El argumento/valor es en grados (90 = 90°) gira sobre su eje hacia estos lados.
-
-		pu (pen up) y pd (pen down):
-			
-			Sostiene una pluma, que está arriba o abajo; si la pluma está abajo, la tortuga deja un rastro cuando se mueve.
-
-		
-		DIBUJAR:
-			
-			Agregar varias líneas de código.
-
-			ángulo recto:
-
-				bob.fd(100)
-				bob.lt(90)
-				bob.fd(100)
-
-				bob.fd(100)
-				bob.bk(100)
-				bob.lt(90)
-				bob.fd(100)
-
-			cuadrado:
-
-				bob.fd(100)
-				bob.bk(100)
-				bob.lt(90)
-				bob.fd(100)
-				bob.rt(90)
-				bob.fd(100)
-				bob.rt(90)
-				bob.fd(100)
-
-
-		REPETICIÓN o BUCLES:
-			
-			Hacerlo de forma más concisa.
-
-			for i in range(4):
-				print('Hola!')
-
-			Hola!
-			Hola!
-			Hola!
-			Hola!
-
-
-		for:
-			
-			Similar a una definición de función, el cuerpo con sangrías. El FLUJO DE EJECUCIÓN pasa por el cuerpo y luego vuelve hacia arriba. 
-
-			En el ejemplo, pasa por el cuerpo cuatro veces: EJECUTA CUATRO VECES EL GRUPO DE SENTENCIAS.
-
-				for i in range(4): #avanza y gira *4
-					bob.fd(100)
-					bob.lt(90)
-
-		
-	ENCAPSULAMIENTO:	
-		
-		Envolver un pedazo de código en una función. 
-
-		El código definido apropiadamente sirve como documentación para pasar valores.
-
-		Puede ser reutilizado tan solo llamando a la función dando otros valores, sin tener que escribir más código.
-
-			def cuadrado (t):
-				for i in range(4):
-					t.fd(100) 	
-					t.lt(90)
-
-			#t variable, es la acción que va a tomar nuestro objeto definido anteriormente, avanza, gira *4
-
-				>>>cuadrado (bob) 
-		
-			#bob valor, es nuestra variable que tiene el metodo u objeto tortuga.	
-	
-			#t = bob.fd(100)
-
-			t se refiere a la misma tortuga bob , por lo que t.lt(90) tiene el mismo efecto que bob.lt(90). 
-
-		¿por qué no llamar al parámetro bob? 
-
-		La idea es que t puede ser cualquier tortuga, no solo bob, así que podrías crear una segunda tortuga y pasarla como argumento a cuadrado.
-
-
-	GENERALIZACIÓN:
-		
-		Acto de agregar un parámetro a una función para pasarle valores en la llamada. 
-
-		Hace que la función sea más general: sin tener que determinar los valores en el cuerpo de la definición.
-
-			def cuadrado (t, longitud):
-				for i in range(4):
-					t.fd(longitud)
-					t.lt(90)
-		
-			cuadrado(bob, 100)
-
-			agregar un parámetro longitud a cuadrado:
-				definimos la variable longitud en metodo fd.
-
-		
-		Dibujar polígonos regulares con cualquier número de lados:	
-
-			Tambien requiere una generalización:
-
-			def poligono(t, n, longitud):
-				angulo = 360.0 / n
-				
-				for i in range(n): 
-					t.fd(longitud)
-					t.lt(angulo)
-			
-			poligono(bob, 7, 70)
-
-			n = lados = cant repeticion en la func, longitud y ángulos como valores en la llamada.
-
-			python 2: angulo = 360.0/n, así usa la conversión de typos.
-			
-
-		Argumentos de palabra clave:
-
-			Incluir los nombres de los parámetros en la lista de argumentos: evitamos olvidar que son o cúal era su orden.
-			
-				poligono(bob, n=7, longitud=70)
-
-				# o en la definicion de func:
-
-				def poligono (tortuga/objeto, lados, longitud)
-
-
-	DISEÑO DE INTERFAZ:
-
-		La interfaz de una función es un resumen de cómo esta se utiliza: 
+		Explica como se utiliza la función: 
 
 			¿cuáles son los parámetros? 
 
@@ -611,33 +51,35 @@
 
 			¿Y cuál es el valor de retorno? 
 
-		Una interfaz es “limpia” si permite a la sentencia llamadora hacer lo que quiere sin lidiar con detalles innecesarios.
+		Una interfaz es “limpia” si permite a la sentencia llamadora hacer lo que quiere sin lidiar con detalles innecesarios.		
 
-
-		Circulo: 
-
-			radio, r , como parámetro.
-
-			calcula el perímetro de un círculo con radio r utilizando la fórmula 2πr.
-
-			math.pi , tenemos que importar math.cos al comienzo del script. Es una buena practica.
-
-
-	REFACTORIZACIÓN:
+	refactorización:
 
 		Reorganizar un programa para mejorar las interfaces y facilitar la reutilización de código. 
 
-		A veces no se cuenta con el tiempo para evitarlo y diseñar mejor el programa.
 
-			Ej: notamos que había código similar
-			en arco y poligono , así que “lo factorizamos” en polilinea .
+	depuración:
 
-			Si hubiéramos planificado con anticipación, podríamos haber escrito polilinea primero y haber evitado la refactorización.
+		Corregir errores es programar.
+
+
+			hipótesis:
+
+				Con una hipostesis correcta podemos predecir comportamientos para modificar el programa y llegar a un resultado correcto o esperado.
+
+				Hay que leer el código, entender cada línea para corregir los errores.
+
+
+			flujo de ejecución:
+
+				sentencias/def función > sentencias > llamada función (<< sentenc función) > sentencias.
+
+				*leer flujo, no de inicio a fin.
 
 
 || PLAN DE DESARROLLO
 
-	Es un proceso para escribir programas.
+	un proceso para escribir programas.
 
 		Ej: “encapsulamiento y generalización”.
 
@@ -653,83 +95,512 @@
 		general apropiada.
 
 
-			def polilinea(t, n, longitud, angulo):
+|| TÉCNICAS
+	
+	Paso a paso:
+
+		Escribir las ideas que vamos aplicar en cada línea de código, paso a paso; antes de escribir una variable, función, etc.
+
+		Esto nos dará una idea general sobre como empezar el programa.
+
+		Dividir el programa en muchas funciones, cada una debería hacer una sola cosa.
+
+
+	Abtraer problemas:
+
+		Leer y pensar en el problema, sin programar.
+
+		Hacer pruebas son entradas simples que nos de una salida esperada.
+
+		Buscar patrones, escribir el algoritmo a alto nivel.
+
+		Ir iterando cada vez más a bajo nivel.
+
+		Una vez con la solución, encontrar cosas para mejorar, patrones para abstraer; herramientas del lenguaje que nos ayuden.
+
+		No hay una sola posible solución, primero hacemos que funciones, despues lo hacemos legible.
+
+
+	Autoevaluación:
+
+		Cosas que no entendemos, Por qué es?, Qué conceptos están en juego? Que no los tenemos claro.
+
+		Probar otras cosas y ver las consecuencias. Fallas en el razonamiento, Cuales? Por qué?
+
+		Entender el tema, las operaciones, los pasos a seguir y ejecutarlos.
+
+
+	Implementación avanzada:
+
+		A veces resolvemos un problema pero que para un nivel inicial.
+
+		Pero podemos usar conceptos avanzados: estructuras de control correctas, que el código sea eficiente (complejidad, orden de ejecución), código limpio, legible, modular, estructuras de datos.
+
+
+
+|| BUENAS PRACTICAS:
+	
+	Escribir las variables, const, func y documentar en inglés.
+
+	Crear formulas en variables para pasarselas a las funciones, metodos nativos o creadas, etc.
+
+	import math, al inicio del programa.
+
+
+
+|| INTERFAZ
+	
+	La interfaz de una función es un resumen de cómo esta se utiliza: 
+
+		¿cuáles son los parámetros? 
+
+		¿Qué hace la función? 
+
+		¿Y cuál es el valor de retorno? 
+
+	Es “limpia” si permite a la llamada hacer lo que quiere sin lidiar con detalles innecesarios.
+
+
+|| ESTRUCTURA DE DATOS
+
+	Se utilizan para organizar y almacenar información de manera eficiente.
+
+		Cadena/String (cadena de caracter): 
+
+
+
+		Vector/Matriz/Array (formación o matrix): 
+
+			Es una cantidad de elementos en un orden específico, generalmente todos del mismo tipo (según el lenguaje, los elementos individuales pueden verse forzados a ser del mismo tipo o pueden ser de casi cualquier tipo).
+
+			Pueden ser de longitud fija o de tamaño variable.
+
+
+		Listas/List/Linked list: 
+
+			Es una colección ordenada de elementos, donde cada elemento se identifica por un índice.
+
+			Son versatiles y pueden contener elementos de diferentes tipos de datos. 
+
+			Se utilizan para almacenar y manipular conjuntos de datos de manera flexible.
+
+			La principal ventaja de una lista enlazada sobre una matriz es que los valores siempre se pueden insertar y eliminar de manera eficiente sin reubicar el resto de la lista.
+
+
+		Tuplas/celdas/Tuple/record/estructure (registros o estructura/struct-structure/rows): 
+
+			Es un valor que contiene otros valores, normalmente en un número y una secuencia fijos y normalmente indexados por nombres. Los elementos de los registros suelen denominarse campos o miembros (fields or members).
+
+			Similares a las listas, pero son inmutables, no se pueden modificar después de su creación. 
+
+			Se utilizan para almacenar un conjunto de valores relacionados y se accede a ellos mediante índices.
+
+
+		Diccionario/hash table (vector asiciativo o mapa/hash): 
+
+			Almacenan elementos como pares clave-valor. Cada elemento se identifica por una clave única y se puede acceder al valor correspondiente utilizando esa clave. 
+
+			Utilizan una función hash para asignar claves a índices en una matriz, lo que permite un acceso en tiempo constante en el caso promedio.
+
+			Son útiles cuando necesitas almacenar y recuperar datos de forma rápida y eficiente utilizando una clave personalizada. 
+
+			Pueden ocurrir colisiones (collisions) de hash, lo que puede afectar su rendimiento. Se emplean técnicas como el encadenamiento y el direccionamiento (chaining and open addressing) abierto para manejar las colisiones.
+
+
+		Conjuntos/sets:
+
+			Es una colección desordenada de elementos únicos.
+
+			Se utilizan cuando necesitas almacenar elementos sin duplicados y realizar operaciones como intersección, unión y diferencia de conjuntos de manera eficiente.
+
+
+		Colas/queues: 
+
+			Es una estructura de datos donde el primer elemento que se agrega es el primero en ser eliminado (FIFO: First-In, First-Out).
+
+			Se utilizan para mantener un orden de elementos y son útiles en situaciones donde el orden de llegada es importante, como la gestión de tareas en un sistema.
+
+
+		Pilas/Stacks: 
+
+			Es una estructura de datos donde el último elemento que se agrega es el primero en ser eliminado (LIFO: Last-In, First-Out).
+
+			Se utilizan para realizar operaciones como deshacer/rehacer, seguimiento de llamadas de funciones y otras situaciones en las que el último elemento agregado es el más relevante.
+
+
+		Árboles/Trees: 
+
+			Es una estructura de datos no lineal compuesta por nodos. Cada nodo puede tener cero o más nodos hijos.
+
+			Se utilizan en muchas aplicaciones, como estructuras de búsqueda, representación de jerarquías y algoritmos de recorrido.
+
+
+		Grafos/Graph: 
+
+			Es una estructura de datos compuesta por vértices y aristas que conectan los vértices. 
+
+			Los grafos se utilizan para representar relaciones y conexiones entre elementos.
+
+
+		Clases/Class: 
+
+			Es una plantilla para la creación de objetos de datos según un modelo predefinido. 
+
+			Las clases se utilizan como representación abstracta de conceptos, incluyen campos como los registros y operaciones que pueden consultar el valor de los campos o cambiar sus valores.
+
+
+	Python: 
+
+		Tiene una jerarquía estandarizada de tipos de datos: 
+
+		Es una estructura de clasificación o relación entre los diferentes tipos de datos disponibles en el lenguaje. 
+
+		Se basa en la relación de herencia entre los tipos de datos y cómo se relacionan entre sí y comportamiento entre los diferentes tipos. 
+
+		Además, esta jerarquía permite la conversión entre tipos, la realización de operaciones específicas de cada tipo y el uso de funciones y métodos comunes disponibles para los tipos de datos en cada nivel de la jerarquía.
+
+		    1. Object (Objeto): La clase base de todos los objetos en Python. Todos los tipos de datos en Python son subclases directas o indirectas de la clase object. Proporciona métodos y funcionalidades comunes a todos los objetos, como __str__, __repr__, __eq__, etc.
+
+		    2. Tipos numéricos: Python tiene varios tipos numéricos, incluyendo int (entero), float (coma flotante) y complex (complejo). Estos tipos están relacionados entre sí y se pueden convertir entre sí según las reglas de conversión definidas.
+
+		    3. Tipos secuenciales: Los tipos de datos secuenciales incluyen str (cadena de caracteres), list (lista) y tuple (tupla). Estos tipos de datos se utilizan para almacenar y manipular conjuntos de valores ordenados.
+
+		    4. Tipos de mapeo: El tipo de dato dict (diccionario) es un tipo de mapeo que almacena pares clave-valor. Los diccionarios se utilizan para asociar y acceder a valores utilizando una clave.
+
+		    5. Tipos de conjuntos: Los tipos de datos de conjuntos incluyen set (conjunto) y frozenset (conjunto inmutable). Estos tipos de datos se utilizan para almacenar conjuntos de elementos únicos.
+
+
+			Vacio/None: 
+
+				None (class: Nonetype)
+
+
+			Numeros/Numbers:  
+
+				Enteros/Integral:
+
+					Enteros/Integer (class: int)
+
+					Booleanos/Booleans (class: bool)
+
+
+				Reales/Real (class: float)
+
+
+				Complejos/Complex (class: complex)
+
+
+			Secuencias/Sequences: 
+
+				Inmutables: 
+
+					Strings (class: str) 
+
+					Tuples/registros/rows/celdas (class: tuple)
+
+					Bytes (class: bytes)
+
+				Mutables: 
+
+					List (class: list) 
+
+					Bytes Arrays (class: bytearray)
+
+
+			Conjuntos/Set types: 
+
+				Sets (class: set)
+
+				Frozen sets (class: frozenset)
+
+
+			Diccionario/Mapas/Mappings (hash): 
+
+				Dictionaries (class: dict)
+
+
+			Llamadas/Callable: 
+
+				Functions 
+
+				Methods
+
+				Classes
+
+
+			Modulos/Modules
+
+
+		Características: 
+
+			Array/Vector/Matriz: 
+
+				index -> elements 
+
+				0 1 2 -> var, const, etc
+
+				Indexación (index).
+				Longitud/tamaño (length/size).
+				Proceso de copiar (copying).
+
+				Es bueno para: 
 				
-				for i in range(n):
-					t.fd(longitud)
-					t.lt(angulo)
+					Almacenar (storing) un número fijo de cosas y hacer algo con cada una de esas cosas. 
 
-			#reescribir poligono y arco para que utilice a polilinea 
+				Es malo para:
+					
+					Añadir o quitar elementos.
+					Ordenar (sorting) cosas en muchos casos.
+					Pensado para POO.
 
-			def poligono(t, n, longitud):
+
+			Stack/Pila: 
+
+				push() pop() -> elements
+
+				característica:
+					
+					Pushing (entrada).
+					Popping (salida).
+					Size (tamaño).
+
+				Es bueno para:
 				
-				angulo = 360.0 / n
-				
-				polilinea(t, n, longitud, angulo)
+					Lidiar con un flujo de cosas que necesitan ser manejadas en ciertos grupos.
+
+				Es malo para:
+
+					Almacenamiento a largo plazo y acceso a conjuntos de datos complejos, al igual que apilar cosas de su piso no es un gran sistema de archivo.
 
 
-			def arco(t, r, angulo):
-				
-				longitud_arco = 2 * math.pi * r * angulo / 360
-				
-				n = int(longitud_arco / 3) + 1
-				
-				longitud_paso = longitud_arco / n
-				
-				angulo_paso = float(angulo) / n
-				
-				polilinea(t, n, longitud_paso, angulo_paso)
+			Linked list: 
 
-			#circulo para que utilice a arco :
-			def circulo(t, r):
-				
-				arco(t, r, 360)
+				elements -> link -> elements
 
-			llamadas:
+				característica:
+					
+					Obtener el siguiente elemento (get). 
+					Insertar elemento (insert). 
+					eliminar elemento (remove). 
 
-				polilinea(t, n, longitud, angulo)
-				poligono(t, n, longitud)
-				arco(t, r, angulo)
-				circulo(t, r)
-			
-				polilinea(bob, 5, 40, 20)
-				poligono(bob, 5, 60)
-				arco(bob, 50, 90)
-				circulo(bob, 70)
+				Es bueno para:
 
+					Lidiar con una lista que cambia dinámicamente, es decir, donde puede necesitar insertar o eliminar elementos de cualquier parte de la lista.
 
-	Docstring:
+				Es malo para:
+					
+					Es solo una lista. Casi siempre mejor que una matriz.
 
-		Es una cadena al comienzo de una función que explica la interfaz
+			Tree: 
 
-		def polilinea(t, n, longitud, angulo):
-			"""
-				Dibuja n segmentos de línea con la longitud dada
-				y el ángulo (en grados) entre ellos. t es una tortuga.
-			"""
-			for i in range(n):
-				t.fd(longitud)
-				t.lt(angulo)
+				elements -> link -> child elements
 
-		Explica de manera concisa lo que hace la función, sin detalles (si no es obvio).
+				característica:
+					
+					Obtener "children"
+					Insertar child
+					Eliminar elemento
+
+				Es bueno para:
+					
+					Almacenar cosas que pertenecen a los árboles
+					crear conjuntos de datos de búsqueda rápida (es decir, árboles de decisión)
+
+				Es malo para:
+					
+					Es solo una lista. Siempre será mejor que una matriz
 
 
-	Depuración:
+		Ejemplos de estructuras de datos en python: 
 
-		Una interfaz es como un contrato entre una función y la sentencia llamadora. La llamadora acepta proporcionar ciertos argumentos y la función acepta hacer cierto trabajo.
+			1. Listas: 
 
-		Requisitos: 
+				Una lista es una colección ordenada y mutable de elementos. Puede contener elementos de diferentes tipos y se define utilizando corchetes ([]). Las listas permiten agregar, eliminar y modificar elementos.
 
-			Precondiciones:
+				```python:
 
-				Se supone que son verdaderos antes de que la función comience a ejecutarse.
+					# Definir una lista
+					lista = ["manzana", "banana", "naranja"]
 
-				Son responsabilidad de la llamadora. Si la llamadora viola una precondición (¡debidamente documentada!) y la función no funciona de forma correcta, el error está en la llamadora, no en la función.
+					# Acceder a elementos de la lista
+					print(lista[0])  # Salida: "manzana"
+					print(lista[2])  # Salida: "naranja"
 
-			Postcondiciones:
+					# Modificar un elemento de la lista
+					lista[1] = "pera"
+					print(lista)  # Salida: ["manzana", "pera", "naranja"]
 
-				Son las condiciones al final de la función. 
+					# Agregar elementos a la lista
+					lista.append("uva")
+					print(lista)  # Salida: ["manzana", "pera", "naranja", "uva"]
 
-				Ej, incluyen el efecto previsto de la función (como al dibujar segmentos de línea) y cualquier efecto secundario (como mover la tortuga o hacer otros cambios).
+					# Eliminar elementos de la lista
+					del lista[0]
+					print(lista)  # Salida: ["pera", "naranja", "uva"]
 
-		Si las precondiciones se satisfacen y las postcondiciones no, el error está en la función. Si tus pre y post condiciones están claras, pueden ayudar con la depuración.
+					# Obtener la longitud de la lista
+					print(len(lista))  # Salida: 3
+
+					# Iterar sobre los elementos de la lista
+					for fruta in lista:
+					    print(fruta)
+
+					# Comprobar si un elemento está presente en la lista
+					print("banana" in lista)  # Salida: False
+
+					# Ordenar la lista
+					lista.sort()
+					print(lista)  # Salida: ["naranja", "pera", "uva"]
+
+					# Copiar una lista
+					copia_lista = lista.copy()
+					print(copia_lista)  # Salida: ["naranja", "pera", "uva"]
+
+					# Concatenar listas
+					lista2 = ["kiwi", "mango"]
+					lista_concatenada = lista + lista2
+					print(lista_concatenada)  # Salida: ["naranja", "pera", "uva", "kiwi", "mango"]
+
+				```
+
+				hemos creado una lista llamada lista que contiene tres elementos: "manzana", "banana" y "naranja". 
+				Hemos demostrado cómo acceder a elementos individuales utilizando el índice, cómo modificar un elemento de la lista, cómo agregar elementos a la lista utilizando el método append, cómo eliminar elementos de la lista utilizando la instrucción del, cómo obtener la longitud de la lista utilizando la función len, cómo iterar sobre los elementos de la lista utilizando un bucle for, cómo comprobar la existencia de un elemento utilizando el operador in, cómo ordenar la lista utilizando el método sort, cómo copiar una lista utilizando el método copy, y cómo concatenar listas utilizando el operador +.
+
+
+		   	2. Tuplas: 
+
+		   		Una tupla es similar a una lista, pero es inmutable, lo que significa que no se pueden modificar después de su creación. Se definen utilizando paréntesis (()). Las tuplas se utilizan cuando se necesita una secuencia inmutable de elementos.
+
+		   		
+
+		   		```python:
+
+		   			# Definir una tupla
+					tupla = ("manzana", "banana", "naranja")
+
+					# Acceder a elementos de la tupla
+					print(tupla[0])  # Salida: "manzana"
+					print(tupla[2])  # Salida: "naranja"
+
+					# Intentar modificar un elemento de la tupla generará un error
+					tupla[1] = "pera"  # Generará un error TypeError: 'tuple' object does not support item assignment
+
+					# Obtener la longitud de la tupla
+					print(len(tupla))  # Salida: 3
+
+					# Iterar sobre los elementos de la tupla
+					for fruta in tupla:
+					    print(fruta)
+
+					# Comprobar si un elemento está presente en la tupla
+					print("banana" in tupla)  # Salida: True
+
+					# Concatenar tuplas
+					tupla2 = ("uva", "kiwi")
+					tupla_concatenada = tupla + tupla2
+					print(tupla_concatenada)  # Salida: ("manzana", "banana", "naranja", "uva", "kiwi")
+
+					# Desempaquetar una tupla
+					nombre, edad, ciudad = ("Juan", 30, "Madrid")
+					print(nombre, edad, ciudad)  # Salida: "Juan 30 Madrid"
+
+		   		```
+
+		   		Este ejemplo contiene tres elementos: "manzana", "banana" y "naranja". Hemos demostrado cómo acceder a elementos individuales utilizando el índice, cómo obtener la longitud de la tupla utilizando la función len, cómo iterar sobre los elementos de la tupla utilizando un bucle for, y cómo comprobar la existencia de un elemento utilizando el operador in. Además, hemos demostrado cómo concatenar tuplas utilizando el operador + y cómo desempaquetar una tupla para asignar sus elementos a variables individuales.
+
+
+		    3. Conjuntos: 
+
+		    	Un conjunto es una colección desordenada de elementos únicos. No permite elementos duplicados y se define utilizando llaves ({}). Los conjuntos son útiles para operaciones de conjunto, como unión, intersección y diferencia.
+
+		    	```python: 
+
+		    		# Definir un conjunto (set)
+					conjunto = {1, 2, 3, 4, 5}
+
+					# Agregar elementos al conjunto
+					conjunto.add(6)
+					conjunto.add(7)
+
+					# Mostrar el conjunto
+					print(conjunto)  # Salida: {1, 2, 3, 4, 5, 6, 7}
+
+					# Eliminar un elemento del conjunto
+					conjunto.remove(3)
+
+					# Verificar la existencia de un elemento en el conjunto
+					print(4 in conjunto)  # Salida: True
+					print(8 in conjunto)  # Salida: False
+
+					# Obtener la longitud del conjunto
+					print(len(conjunto))  # Salida: 6
+
+					# Iterar sobre los elementos del conjunto
+					for elemento in conjunto:
+					    print(elemento)
+
+					# Realizar operaciones de conjunto
+					conjunto1 = {1, 2, 3}
+					conjunto2 = {3, 4, 5}
+
+					union = conjunto1.union(conjunto2)
+					print(union)  # Salida: {1, 2, 3, 4, 5}
+
+					interseccion = conjunto1.intersection(conjunto2)
+					print(interseccion)  # Salida: {3}
+
+					diferencia = conjunto1.difference(conjunto2)
+					print(diferencia)  # Salida: {1, 2}
+
+		    	```	
+
+		    	En este ejemplo, hemos definido un conjunto (set) llamado conjunto que contiene los números del 1 al 7.
+
+				Hemos demostrado cómo agregar elementos al conjunto utilizando el método add, cómo eliminar un elemento del conjunto utilizando el método remove, cómo verificar la existencia de un elemento en el conjunto utilizando el operador in, cómo obtener la longitud del conjunto utilizando la función len, y cómo iterar sobre los elementos del conjunto utilizando un bucle for.
+
+				Además, hemos realizado algunas operaciones comunes de conjuntos. Hemos creado dos conjuntos adicionales, conjunto1 y conjunto2, y hemos utilizado los métodos union, intersection y difference para realizar operaciones de unión, intersección y diferencia entre ellos.
+
+				Los conjuntos en Python son colecciones de elementos únicos y no ordenados. Se utilizan para almacenar y operar con conjuntos de elementos distintos. Los conjuntos proporcionan operaciones eficientes para realizar operaciones de conjuntos como uniones, intersecciones y diferencias.
+		    	
+
+		    4. Diccionarios: 
+
+		    	Un diccionario es una estructura de datos que almacena pares clave-valor. Cada elemento del diccionario tiene una clave única asociada a un valor. Se definen utilizando llaves ({}). Los diccionarios permiten acceder, agregar y modificar elementos utilizando sus claves.
+
+		    		
+
+
+
+		    5. Cadenas de caracteres: 
+
+		    	Una cadena es una secuencia de caracteres. En Python, las cadenas se representan entre comillas simples (') o comillas dobles ("). Las cadenas son inmutables y se utilizan para almacenar texto y manipularlo.
+
+		    6. Pilas (Stacks): 
+
+		    	Una pila es una estructura de datos que sigue el principio LIFO (Last In, First Out). Los elementos se agregan y eliminan solo desde el extremo superior de la pila. Puede implementarse utilizando una lista o mediante la clase "deque" del módulo 'collections'.
+
+		    7. Colas (Queues): 
+
+		    	Una cola es una estructura de datos que sigue el principio FIFO (First In, First Out). Los elementos se agregan al final de la cola y se eliminan desde el frente. Puede implementarse utilizando una lista o mediante la clase "deque" del módulo 'collections'.
+
+		    8. Árboles: 
+
+		    	Un árbol es una estructura de datos no lineal compuesta por nodos. Cada nodo puede tener cero o más nodos hijos. Los árboles se utilizan en muchas aplicaciones, como estructuras de búsqueda, representación de jerarquías y algoritmos de recorrido.
+
+		    9. Grafos: 
+
+		    	Un grafo es una estructura de datos compuesta por vértices y aristas que conectan los vértices. Los grafos se utilizan para representar relaciones y conexiones entre elementos.
+
+
+
+		Estructuras de datos del modulo collections: 
+
+			1. 
+			2. 
+			3. 
+
+
+
+
+
+|| POO
