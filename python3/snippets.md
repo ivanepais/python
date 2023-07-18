@@ -36,7 +36,7 @@
 
 	generalizar:
 
-		Crear variables genericas  en el cuerpo de la función, sin valores determinados para pasarles valores en la llamada.
+		Crear variables genericas en el cuerpo de la función, sin valores determinados para pasarles valores en la llamada.
 
 		Así los objetos son diferentes en dimensiones, formas, aspecto, etc.
 
@@ -132,7 +132,7 @@
 
 	Implementación avanzada:
 
-		A veces resolvemos un problema pero que para un nivel inicial.
+		A veces resolvemos un problema pero que es para un nivel inicial.
 
 		Pero podemos usar conceptos avanzados: estructuras de control correctas, que el código sea eficiente (complejidad, orden de ejecución), código limpio, legible, modular, estructuras de datos.
 
@@ -161,12 +161,383 @@
 	Es “limpia” si permite a la llamada hacer lo que quiere sin lidiar con detalles innecesarios.
 
 
-|| ESTRUCTURA DE DATOS
+
+|| ESTRUCTURAS DE CONTROL
+	
+	Son componentes que permiten controlar el flujo de ejecución de un programa.
+
+	Determinan el orden en que se ejecutan las instrucciones y permiten tomar decisiones y repetir acciones según ciertas condiciones.
+
+	1. if-else (si, entonces): 
+
+		Permite tomar decisiones en base a una condición. 
+
+		Si la condición es verdadera, se ejecuta un bloque de código; de lo contrario, se ejecuta otro bloque de código.
+
+		```python:
+
+			if condicion:
+			    # Bloque de código si la condición es verdadera
+			else:
+			    # Bloque de código si la condición es falsa
+
+		```
+
+	2. "for" (para):
+
+		Se utiliza para iterar sobre una secuencia de elementos (como una lista, tupla, cadena -tipos de secuencia en python-.) y ejecutar un bloque de código para cada elemento.
+
+		```python: 
+
+			for elemento in secuencia:
+    			# Bloque de código a ejecutar para cada elemento
+
+		```
+
+	3. "while" (mientras):
+			
+		Permite repetir la ejecución de un bloque de código mientras una condición sea verdadera.
+
+		```python: 
+
+			while condicion:
+    			# Bloque de código a repetir mientras la condición sea verdadera
+
+		```
+
+	4. "break":
+		
+		Se utiliza para salir de un bucle de manera prematura cuando se cumple una condición.
+
+		```python:
+
+			for elemento in secuencia:
+   			if condicion:
+        		break
+
+		```
+
+	5. "continue":
+		
+		Se utiliza para saltar la ejecución de una iteración en un bucle y pasar a la siguiente iteración.
+
+		```python: 
+
+			for elemento in secuencia:
+		    if condicion:
+		        continue
+		    # Resto del código para la iteración actual
+
+		```
+
+	Ejemplos: 
+
+		1. if-else: 	
+
+			```python: 
+
+				# Ejemplo 1: Verificar si un número es par o impar
+				numero = 10
+
+				if numero % 2 == 0:
+				    print("El número es par")
+				else:
+				    print("El número es impar")
+
+				# Salida: El número es par
+
+				# Ejemplo 2: Calificar el rendimiento de un estudiante
+				puntaje = 85
+
+				if puntaje >= 90:
+				    calificacion = "A"
+				elif puntaje >= 80:
+				    calificacion = "B"
+				elif puntaje >= 70:
+				    calificacion = "C"
+				elif puntaje >= 60:
+				    calificacion = "D"
+				else:
+				    calificacion = "F"
+
+				print("La calificación es:", calificacion)
+
+				# Salida: La calificación es: B
+
+				# Ejemplo 3: Verificar si una cadena es una vocal o una consonante
+				letra = "a"
+
+				if letra.lower() in "aeiou":
+				    print("Es una vocal")
+				else:
+				    print("Es una consonante")
+
+				# Salida: Es una vocal
+
+			```
+
+			En el primer ejemplo, verificamos si un número es par o impar utilizando el operador de módulo (%). Si el resto de la división del número entre 2 es 0, entonces es par; de lo contrario, es impar.
+
+			En el segundo ejemplo, calificamos el rendimiento de un estudiante según su puntaje. Utilizamos múltiples bloques "if-elif-else" para evaluar diferentes condiciones y asignar una calificación correspondiente en función del rango de puntajes.
+
+			En el tercer ejemplo, verificamos si una letra es una vocal o una consonante. Utilizamos el método lower() para convertir la letra a minúscula y luego verificamos si está presente en el conjunto de vocales. Si es así, se imprime que es una vocal; de lo contrario, se imprime que es una consonante.
+
+			Estos ejemplos ilustran cómo utilizar la estructura de control "if-else" para tomar decisiones en base a condiciones y ejecutar diferentes bloques de código en función de los resultados. La estructura "if-else" es una herramienta poderosa para implementar lógica condicional en un programa y permitir que el programa tome diferentes caminos según las condiciones evaluadas.
+
+
+		2. for: 
+
+			```python: 
+
+				# Ejemplo 1: Iterar sobre una lista
+				numeros = [1, 2, 3, 4, 5]
+
+				for numero in numeros:
+				    print(numero)
+
+				# Salida:
+				# 1
+				# 2
+				# 3
+				# 4
+				# 5
+
+				# Ejemplo 2: Iterar sobre una cadena de texto
+				mensaje = "Hola, mundo!"
+
+				for caracter in mensaje:
+				    print(caracter)
+
+				# Salida:
+				# H
+				# o
+				# l
+				# a
+				# ,
+				#  
+				# m
+				# u
+				# n
+				# d
+				# o
+				# !
+
+				# Ejemplo 3: Iterar sobre un rango de números
+				for i in range(1, 6):
+				    print(i)
+
+				# Salida:
+				# 1
+				# 2
+				# 3
+				# 4
+				# 5
+
+				# Ejemplo 4: Utilizar la función enumerate para obtener índices y valores
+				frutas = ["manzana", "banana", "cereza"]
+
+				for indice, fruta in enumerate(frutas):
+				    print(f"Índice: {indice}, Fruta: {fruta}")
+
+				# Salida:
+				# Índice: 0, Fruta: manzana
+				# Índice: 1, Fruta: banana
+				# Índice: 2, Fruta: cereza
+
+				# Ejemplo 5: Utilizar la estructura "for-else" para buscar un elemento
+				numeros = [1, 2, 3, 4, 5]
+				buscar = 6
+
+				for numero in numeros:
+				    if numero == buscar:
+				        print("Número encontrado")
+				        break
+				else:
+				    print("Número no encontrado")
+
+				# Salida: Número no encontrado
+
+			```
+
+			En el primer ejemplo, utilizamos la estructura "for" para iterar sobre una lista de números. En cada iteración, el valor actual se asigna a la variable "numero" y se imprime.
+
+			En el segundo ejemplo, iteramos sobre una cadena de texto, y en cada iteración, se asigna un caracter a la variable "caracter" y se imprime.
+
+			En el tercer ejemplo, utilizamos la función "range" para generar un rango de números del 1 al 5, y luego iteramos sobre ese rango. En cada iteración, el valor actual se asigna a la variable "i" y se imprime.
+
+			En el cuarto ejemplo, utilizamos la función "enumerate" para obtener tanto los índices como los valores de una lista. En cada iteración, la función "enumerate" devuelve una tupla con el índice y el valor correspondiente, que se desempaqueta en las variables "indice" y "fruta" respectivamente, y se imprime.
+
+			En el quinto ejemplo, utilizamos la estructura "for-else" para buscar un elemento en una lista. Si el elemento se encuentra, se imprime "Número encontrado" y se sale del bucle usando "break". Si el bucle se ejecuta hasta el final sin encontrar el número, se ejecuta el bloque "else" y se imprime "Número no encontrado".
+
+			Estos ejemplos demuestran algunas de las aplicaciones de la estructura de control "for" en Python. Esta estructura es muy útil para iterar sobre secuencias de elementos como listas, cadenas, rangos, entre otros. Puedes utilizarla para realizar operaciones en cada elemento de una secuencia, procesar datos, buscar elementos, generar secuencias numéricas y mucho más.
+
+
+		3. while:
+
+			```python:
+
+				# Ejemplo 1: Contador descendente
+				contador = 5
+
+				while contador > 0:
+				    print(contador)
+				    contador -= 1
+
+				# Salida:
+				# 5
+				# 4
+				# 3
+				# 2
+				# 1
+
+				# Ejemplo 2: Suma acumulativa
+				suma = 0
+				numero = 1
+
+				while numero <= 10:
+				    suma += numero
+				    numero += 1
+
+				print("La suma es:", suma)  # Salida: La suma es: 55
+
+				# Ejemplo 3: Búsqueda de un elemento en una lista
+				numeros = [4, 6, 2, 8, 5]
+				buscar = 6
+				encontrado = False
+				indice = 0
+
+				while indice < len(numeros):
+				    if numeros[indice] == buscar:
+				        encontrado = True
+				        break
+				    indice += 1
+
+				if encontrado:
+				    print("Número encontrado")
+				else:
+				    print("Número no encontrado")
+
+				# Salida: Número encontrado
+
+				# Ejemplo 4: Validación de entrada de usuario
+				contrasena_correcta = "abc123"
+				contrasena = input("Ingrese la contraseña: ")
+
+				while contrasena != contrasena_correcta:
+				    print("Contraseña incorrecta. Inténtelo nuevamente.")
+				    contrasena = input("Ingrese la contraseña: ")
+
+				print("Contraseña correcta. Acceso concedido.")
+
+				# Salida:
+				# Ingrese la contraseña: 123
+				# Contraseña incorrecta. Inténtelo nuevamente.
+				# Ingrese la contraseña: abc123
+				# Contraseña correcta. Acceso concedido.
+
+			```
+
+			En el primer ejemplo, utilizamos la estructura "while" para crear un contador descendente. Mientras el contador sea mayor que 0, se imprime su valor y se decrementa en cada iteración.
+
+			En el segundo ejemplo, utilizamos el "while" para realizar una suma acumulativa. Mientras el número sea menor o igual a 10, se suma al total acumulado y se incrementa en cada iteración. Al final, se imprime el resultado de la suma.
+
+			En el tercer ejemplo, utilizamos el "while" para buscar un elemento en una lista. Mientras el índice sea menor que la longitud de la lista, se verifica si el elemento en esa posición coincide con el valor buscado. Si se encuentra, se establece la variable "encontrado" como True y se sale del bucle usando "break".
+
+			En el cuarto ejemplo, utilizamos el "while" para validar la entrada de una contraseña. Mientras la contraseña ingresada por el usuario no coincida con la contraseña correcta, se muestra un mensaje de error y se solicita nuevamente la contraseña. Una vez que se ingresa la contraseña correcta, se imprime un mensaje de acceso concedido.
+
+			La estructura de control "while" es útil cuando se necesita repetir un bloque de código mientras se cumpla una condición. Puedes usarla para realizar operaciones iterativas, contar o decrementar valores, buscar elementos en una lista, validar entradas de usuario y mucho más. Recuerda asegurarte de que la condición cambie en algún momento para evitar bucles infinitos.
+
+
+		4. break: 
+
+			```python: 
+
+				# Ejemplo 1: Búsqueda de un elemento en una lista
+				numeros = [1, 3, 5, 7, 9, 2, 4, 6, 8, 10]
+				buscar = 6
+
+				for numero in numeros:
+				    if numero == buscar:
+				        print("Número encontrado")
+				        break
+
+				# Salida: Número encontrado
+
+				# Ejemplo 2: Salida anticipada de un bucle infinito
+				while True:
+				    respuesta = input("¿Quieres salir? (s/n): ")
+
+				    if respuesta.lower() == "s":
+				        print("Saliendo del bucle...")
+				        break
+
+				# Salida:
+				# ¿Quieres salir? (s/n): n
+				# ¿Quieres salir? (s/n): n
+				# ¿Quieres salir? (s/n): s
+				# Saliendo del bucle...
+
+			```	
+
+			En el primer ejemplo, utilizamos la estructura "for" para buscar un elemento en una lista. En cada iteración, comparamos el número actual con el valor buscado. Si encontramos una coincidencia, imprimimos un mensaje y salimos del bucle utilizando la sentencia "break". Esto evita que el bucle continúe iterando innecesariamente una vez que se ha encontrado el número buscado.
+
+			En el segundo ejemplo, utilizamos un bucle "while True" para crear un bucle infinito. Solicitamos al usuario que ingrese una respuesta ("s" o "n") y, si la respuesta es "s", imprimimos un mensaje y salimos del bucle usando "break". Esto nos permite tener un bucle infinito hasta que el usuario decida salir ingresando "s".
+
+			La sentencia "break" es utilizada para salir de un bucle de manera prematura. Se puede utilizar en cualquier estructura de control de bucle (como "for" y "while") para detener la ejecución del bucle y continuar con el código que sigue después del bucle. La principal utilidad de "break" es evitar que el bucle continúe ejecutándose una vez que se ha cumplido una condición o se ha alcanzado un resultado deseado.
+
+
+		5. continue: 
+
+			```python: 
+
+				# Ejemplo 1: Imprimir solo los números pares
+				numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+				for numero in numeros:
+				    if numero % 2 != 0:
+				        continue
+				    print(numero)
+
+				# Salida:
+				# 2
+				# 4
+				# 6
+				# 8
+				# 10
+
+				# Ejemplo 2: Saltear una iteración en un bucle while
+				contador = 0
+
+				while contador < 5:
+				    contador += 1
+				    if contador == 3:
+				        continue
+				    print(contador)
+
+				# Salida:
+				# 1
+				# 2
+				# 4
+				# 5
+
+			```
+
+			En el primer ejemplo, utilizamos la estructura "for" para iterar sobre una lista de números. Usando la sentencia "continue", verificamos si el número es impar. Si es así, se salta la iteración actual y pasa a la siguiente iteración sin ejecutar el código que sigue después del "continue". Esto nos permite imprimir solo los números pares en este caso.
+
+			En el segundo ejemplo, utilizamos un bucle "while" para contar hasta 5. Usando la sentencia "continue", verificamos si el contador es igual a 3. Si es así, se salta la iteración actual y pasa a la siguiente iteración sin imprimir el valor actual del contador. Esto nos permite saltar la iteración cuando el contador es 3.
+
+			La sentencia "continue" se utiliza para saltar la ejecución de una iteración en un bucle y pasar a la siguiente iteración. Puede ser útil cuando se desea omitir ciertas iteraciones según una condición específica, evitando que se ejecuten ciertas líneas de código en esas iteraciones particulares.
+
+
+
+
+|| ESTRUCTURAS DE DATOS
 
 	Se utilizan para organizar y almacenar información de manera eficiente.
 
 		Cadena/String (cadena de caracter): 
 
+			Una cadena es una secuencia de caracteres. En Python, las cadenas se representan entre comillas simples (') o comillas dobles ("). Las cadenas son inmutables y se utilizan para almacenar texto y manipularlo.
 
 
 		Vector/Matriz/Array (formación o matrix): 
@@ -466,6 +837,8 @@
 				hemos creado una lista llamada lista que contiene tres elementos: "manzana", "banana" y "naranja". 
 				Hemos demostrado cómo acceder a elementos individuales utilizando el índice, cómo modificar un elemento de la lista, cómo agregar elementos a la lista utilizando el método append, cómo eliminar elementos de la lista utilizando la instrucción del, cómo obtener la longitud de la lista utilizando la función len, cómo iterar sobre los elementos de la lista utilizando un bucle for, cómo comprobar la existencia de un elemento utilizando el operador in, cómo ordenar la lista utilizando el método sort, cómo copiar una lista utilizando el método copy, y cómo concatenar listas utilizando el operador +.
 
+				Las listas en Python son estructuras de datos versátiles que permiten almacenar y manipular conjuntos ordenados de elementos. Son mutables, lo que significa que se pueden modificar después de su creación. Las listas son útiles para almacenar colecciones de elementos que pueden cambiar en tamaño o contenido a lo largo del programa.
+
 
 		   	2. Tuplas/registros/rows/celdas: 
 
@@ -507,6 +880,8 @@
 		   		```
 
 		   		Este ejemplo contiene tres elementos: "manzana", "banana" y "naranja". Hemos demostrado cómo acceder a elementos individuales utilizando el índice, cómo obtener la longitud de la tupla utilizando la función len, cómo iterar sobre los elementos de la tupla utilizando un bucle for, y cómo comprobar la existencia de un elemento utilizando el operador in. Además, hemos demostrado cómo concatenar tuplas utilizando el operador + y cómo desempaquetar una tupla para asignar sus elementos a variables individuales.
+
+		   		Las tuplas son secuencias inmutables en Python, lo que significa que no se pueden modificar después de su creación. Sin embargo, permiten acceder a elementos individuales, realizar iteraciones y otras operaciones básicas. Son útiles cuando se necesita almacenar un conjunto de valores que no cambiarán a lo largo del programa, como coordenadas, días de la semana, información de un punto de datos fijo, entre otros.
 
 
 		    3. Conjuntos/set: 
@@ -1062,6 +1437,16 @@
 
 		    ```	
 
+		    	En este ejemplo, hemos implementado un grafo no dirigido utilizando una lista de adyacencia. La clase Grafo representa el grafo y contiene métodos para agregar vértices, agregar aristas, obtener los vértices y los vértices adyacentes, y para imprimir el grafo en forma de lista de adyacencia.
+
+				Hemos creado un grafo con cinco vértices (A, B, C, D, E) y hemos agregado aristas para conectar los vértices. Cada vértice se representa como una clave en el diccionario grafo, y el valor asociado a cada vértice es una lista que contiene los vértices adyacentes a él.
+
+				Luego, hemos utilizado los métodos obtener_vertices y obtener_adyacentes para obtener información sobre el grafo. Hemos obtenido la lista de vértices y los vértices adyacentes al vértice "B". Finalmente, hemos utilizado el método imprimir_grafo para imprimir el grafo en forma de lista de adyacencia.
+
+				Los grafos son estructuras de datos utilizadas para representar relaciones entre elementos. Se utilizan en una variedad de aplicaciones, como redes sociales, algoritmos de búsqueda y rutas, sistemas de recomendación, y muchos otros problemas que involucran conexiones y relaciones entre entidades.
+
+
+
 		    10. bytes: 
 
 		    	El tipo de dato bytes en Python se utiliza para representar secuencias de bytes inmutables. Se utilizan en situaciones donde se requiere un manejo preciso de datos binarios, como en la lectura y escritura de archivos binarios, el cifrado de datos y la comunicación de datos a través de redes.
@@ -1102,7 +1487,6 @@
 		    	En este ejemplo, hemos definido una secuencia de bytes utilizando el prefijo b. La secuencia de bytes contiene los bytes A (valor decimal 65), B (valor decimal 66), C (valor decimal 67) y D (valor decimal 68).
 
 				Hemos demostrado cómo acceder a elementos individuales de la secuencia de bytes utilizando el índice, cómo convertir la secuencia de bytes en una cadena hexadecimal utilizando el método hex(), cómo obtener la longitud de la secuencia de bytes utilizando la función len, cómo iterar sobre los bytes de la secuencia de bytes utilizando un bucle for, cómo comprobar la existencia de un byte utilizando el operador in, cómo convertir la secuencia de bytes en una lista de enteros, y cómo convertir la secuencia de bytes en una cadena de caracteres utilizando el método decode().
-
 
 
 		    11. byte array:
@@ -1257,7 +1641,6 @@
 
 						Las funciones permiten descomponer problemas complejos en tareas más pequeñas y manejables, lo que facilita el proceso de resolución de problemas.
 
-
 					5. Recursión:
 
 						Las funciones pueden llamarse a sí mismas, lo que permite la implementación de algoritmos recursivos para problemas que se resuelven de manera iterativa.
@@ -1280,8 +1663,6 @@
 					print(suma)  # Salida: 8
 
 				```
-
-
 
 				```python:
 
