@@ -1,4 +1,4 @@
-# python
+# Thinking python
 
 || INTRODUCCIÓN
 	

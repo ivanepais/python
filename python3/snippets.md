@@ -1,4 +1,4 @@
-# Ayuda rapida, info, anotaciones
+# Pyton, ayuda rapida, info, anotaciones
 
 || PSEUDOCÓDIGO:
 
@@ -25,6 +25,7 @@
 	repetición: 
 
 		Ejecutar alguna acción repetidas veces, normalmente con alguna variación.
+
 
 
 || CREAR FUNCIONES:
@@ -58,6 +59,9 @@
 		Reorganizar un programa para mejorar las interfaces y facilitar la reutilización de código. 
 
 
+	Recursión: Las funciones pueden llamarse a sí mismas, lo que permite la implementación de algoritmos recursivos para problemas que se resuelven de manera iterativa.
+
+
 	depuración:
 
 		Corregir errores es programar.
@@ -77,6 +81,7 @@
 				*leer flujo, no de inicio a fin.
 
 
+
 || PLAN DE DESARROLLO
 
 	un proceso para escribir programas.
@@ -93,6 +98,7 @@
 
 		5. Busca oportunidades para mejorar el programa refactorizando. Por ejemplo, si tienes código similar en muchos lugares, considera factorizarlo dentro de una función
 		general apropiada.
+
 
 
 || TÉCNICAS
@@ -137,6 +143,13 @@
 		Pero podemos usar conceptos avanzados: estructuras de control correctas, que el código sea eficiente (complejidad, orden de ejecución), código limpio, legible, modular, estructuras de datos.
 
 
+	Código complejo: 
+
+		Desestructurarlo en partes más simples.
+
+		Soluciones simples y escalables. Argumentarlas y justificarlas. 
+
+
 
 || BUENAS PRACTICAS:
 	
@@ -145,6 +158,16 @@
 	Crear formulas en variables para pasarselas a las funciones, metodos nativos o creadas, etc.
 
 	import math, al inicio del programa.
+
+
+
+|| INSTRUCCIONES
+
+
+
+
+|| MÉTODOS 
+
 
 
 
