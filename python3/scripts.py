@@ -248,6 +248,60 @@ lista_concatenada = lista + lista2
 print(lista_concatenada)  # Salida: ["naranja", "pera", "uva", "kiwi", "mango"]
 
 
+# Crear una lista
+numeros = [1, 2, 3, 4, 5]
+
+# Acceder a elementos de una lista
+print(numeros[0])  # Salida: 1
+print(numeros[3])  # Salida: 4
+
+# Modificar elementos de una lista
+numeros[2] = 10
+print(numeros)  # Salida: [1, 2, 10, 4, 5]
+
+# Iterar sobre una lista
+for numero in numeros:
+    print(numero)
+
+# Salida:
+# 1
+# 2
+# 10
+# 4
+# 5
+
+# Obtener la longitud de una lista
+print(len(numeros))  # Salida: 5
+
+# Agregar elementos al final de una lista
+numeros.append(6)
+print(numeros)  # Salida: [1, 2, 10, 4, 5, 6]
+
+# Insertar elementos en una posición específica
+numeros.insert(2, 3)
+print(numeros)  # Salida: [1, 2, 3, 10, 4, 5, 6]
+
+# Eliminar elementos de una lista
+numeros.remove(3)
+print(numeros)  # Salida: [1, 2, 10, 4, 5, 6]
+
+# Ordenar una lista
+numeros.sort()
+print(numeros)  # Salida: [1, 2, 4, 5, 6, 10]
+
+# Revertir el orden de una lista
+numeros.reverse()
+print(numeros)  # Salida: [10, 6, 5, 4, 2, 1]
+
+# Copiar una lista
+copia_numeros = numeros.copy()
+print(copia_numeros)  # Salida: [10, 6, 5, 4, 2, 1]
+
+# Convertir una lista en una tupla
+numeros_tupla = tuple(numeros)
+print(numeros_tupla)  # Salida: (10, 6, 5, 4, 2, 1)
+
+
 
 #...............
 
@@ -288,6 +342,51 @@ print(tupla_concatenada)  # Salida: ("manzana", "banana", "naranja", "uva", "kiw
 nombre, edad, ciudad = ("Juan", 30, "Madrid")
 print(nombre, edad, ciudad)  # Salida: "Juan 30 Madrid"
 
+
+# Crear una tupla
+frutas = ("manzana", "banana", "cereza")
+
+# Acceder a elementos de una tupla
+print(frutas[0])  # Salida: manzana
+print(frutas[1])  # Salida: banana
+
+# Iterar sobre una tupla
+for fruta in frutas:
+    print(fruta)
+
+# Salida:
+# manzana
+# banana
+# cereza
+
+# Obtener la longitud de una tupla
+print(len(frutas))  # Salida: 3
+
+# Comprobar si un elemento está presente en una tupla
+if "manzana" in frutas:
+    print("La manzana está en la tupla")
+
+# Salida: La manzana está en la tupla
+
+# Concatenar tuplas
+numeros1 = (1, 2, 3)
+numeros2 = (4, 5, 6)
+numeros_concatenados = numeros1 + numeros2
+print(numeros_concatenados)  # Salida: (1, 2, 3, 4, 5, 6)
+
+# Desempaquetar una tupla
+fruta1, fruta2, fruta3 = frutas
+print(fruta1)  # Salida: manzana
+print(fruta2)  # Salida: banana
+print(fruta3)  # Salida: cereza
+
+# Convertir una tupla en una lista
+frutas_lista = list(frutas)
+print(frutas_lista)  # Salida: ['manzana', 'banana', 'cereza']
+
+# Convertir una lista en una tupla
+frutas_tupla = tuple(frutas_lista)
+print(frutas_tupla)  # Salida: ('manzana', 'banana', 'cereza')
 
 
 
@@ -348,6 +447,58 @@ print(len(diccionario))  # Salida: 3
 # Iterar sobre las claves y valores del diccionario
 for clave, valor in diccionario.items():
     print(clave + ":", valor)
+
+
+# Crear un diccionario
+persona = {
+    "nombre": "Juan",
+    "edad": 30,
+    "ciudad": "México"
+}
+
+# Acceder a valores de un diccionario
+print(persona["nombre"])  # Salida: Juan
+print(persona["edad"])  # Salida: 30
+
+# Modificar valores de un diccionario
+persona["edad"] = 35
+print(persona)  # Salida: {'nombre': 'Juan', 'edad': 35, 'ciudad': 'México'}
+
+# Iterar sobre un diccionario
+for clave, valor in persona.items():
+    print(clave + ":", valor)
+
+# Salida:
+# nombre: Juan
+# edad: 35
+# ciudad: México
+
+# Obtener las claves de un diccionario
+claves = persona.keys()
+print(claves)  # Salida: dict_keys(['nombre', 'edad', 'ciudad'])
+
+# Obtener los valores de un diccionario
+valores = persona.values()
+print(valores)  # Salida: dict_values(['Juan', 35, 'México'])
+
+# Comprobar si una clave está presente en un diccionario
+if "nombre" in persona:
+    print("La clave 'nombre' está presente")
+
+# Salida: La clave 'nombre' está presente
+
+# Añadir una nueva clave y valor a un diccionario
+persona["ocupacion"] = "Programador"
+print(persona)  # Salida: {'nombre': 'Juan', 'edad': 35, 'ciudad': 'México', 'ocupacion': 'Programador'}
+
+# Eliminar una clave y su valor de un diccionario
+del persona["ciudad"]
+print(persona)  # Salida: {'nombre': 'Juan', 'edad': 35, 'ocupacion': 'Programador'}
+
+# Obtener la longitud de un diccionario
+longitud = len(persona)
+print(longitud)  # Salida: 3
+
 
 
 
