@@ -160,17 +160,6 @@
 	import math, al inicio del programa.
 
 
-
-|| INSTRUCCIONES
-
-
-
-
-|| MÉTODOS 
-
-
-
-
 || INTERFAZ
 	
 	La interfaz de una función es un resumen de cómo esta se utiliza: 
@@ -182,6 +171,230 @@
 		¿Y cuál es el valor de retorno? 
 
 	Es “limpia” si permite a la llamada hacer lo que quiere sin lidiar con detalles innecesarios.
+
+
+
+|| INSTRUCCIONES
+	
+	Son declaraciones que componen el código fuente del programa y le indican a Python qué acciones realizar.
+
+	1. Asignación: 
+
+		Permiten asignar un valor a una variable. Se utilizan para crear y actualizar variables en Python.
+
+		```python: 
+
+			x = 10
+			
+			nombre = "Juan"
+
+		```
+
+
+	2. Control de flujo: 
+
+		Permiten controlar el flujo de ejecución del programa y tomar decisiones basadas en condiciones.
+
+		"if": 
+
+			Se utiliza para ejecutar un bloque de código si se cumple una condición.
+
+			```python: 
+
+				edad = 25
+				if edad >= 18:
+				    print("Eres mayor de edad")
+
+			```
+
+		"else": 
+
+			Se utiliza junto con "if" para ejecutar un bloque de código si la condición no se cumple.
+
+			```python: 
+
+				edad = 15
+
+				if edad >= 18:
+				    print("Eres mayor de edad")
+
+				else:
+				    print("Eres menor de edad")
+								
+			```
+
+		"elif": 
+
+			Se utiliza para evaluar múltiples condiciones.
+
+			```python: 
+
+				puntaje = 85
+
+				if puntaje >= 90:
+				    print("A")
+
+				elif puntaje >= 80:
+				    print("B")
+
+				else:
+				    print("C")
+
+			```
+
+		"while": 
+
+			Se utiliza para crear un bucle que se ejecuta mientras se cumpla una condición.
+
+			```python: 
+
+				contador = 1
+
+				while contador <= 5:
+				    print(contador)
+				    contador += 1
+
+			```
+
+		"for": 
+
+			Se utiliza para iterar sobre una secuencia (por ejemplo, listas, tuplas, diccionarios).
+
+			```python: 
+
+				frutas = ["manzana", "banana", "cereza"]
+
+				for fruta in frutas:
+				    print(fruta)
+
+			```
+
+
+	3. Funciones: 
+
+		Permiten definir funciones, que son bloques de código que pueden ser llamados varias veces en el programa.
+
+		```python: 
+
+			def saludar(nombre):
+			    print("Hola, " + nombre)
+
+			saludar("Juan")
+
+		```
+
+
+	4. "try-except": 
+
+		Se utiliza para manejar excepciones (errores) que puedan ocurrir durante la ejecución del programa.
+
+		```python: 
+
+			try:
+		    resultado = 10 / 0
+
+			except ZeroDivisionError:
+		   		print("Error: No se puede dividir entre cero")
+
+		```	
+
+
+	5. "import": 
+
+		Se utiliza para importar módulos y bibliotecas en Python.
+
+		```python: 
+
+			import math
+
+			raiz_cuadrada = math.sqrt(25)
+
+		```
+
+
+	6. "return": 
+
+		Se utiliza para devolver un valor desde una función.
+
+		```python: 
+
+			def suma(a, b):
+			    return a + b
+
+			resultado = suma(3, 5)  # resultado será igual a 8
+
+		``` 
+
+
+|| Métodos (=/= fx nativ ^ =/= clases)
+	
+	Son funciones que se aplican a objetos y realizan operaciones específicas en esos objetos. 
+
+	Cada tipo de dato en Python puede tener sus propios métodos que se utilizan para realizar acciones específicas relacionadas con ese tipo de dato. Los métodos se invocan utilizando la sintaxis de punto, es decir, objeto.metodo().
+
+	
+	1. listas:
+
+        append(): Agrega un elemento al final de la lista.
+
+        insert(): Inserta un elemento en una posición específica de la lista.
+
+        remove(): Elimina la primera aparición de un elemento de la lista.
+
+        pop(): Elimina y devuelve el último elemento de la lista (o un índice específico).
+
+        sort(): Ordena la lista en orden ascendente.
+
+        reverse(): Invierte el orden de los elementos en la lista.
+
+
+    2. Cadenas (strings):
+
+        upper(): Devuelve una copia de la cadena en mayúsculas.
+
+        lower(): Devuelve una copia de la cadena en minúsculas.
+
+        capitalize(): Devuelve una copia de la cadena con el primer carácter en mayúscula.
+
+        count(): Cuenta cuántas veces aparece un subconjunto de caracteres en la cadena.
+
+        split(): Divide la cadena en una lista de subcadenas utilizando un separador específico.
+
+
+    3. Diccionarios:
+
+        keys(): Devuelve una vista de las claves del diccionario.
+
+        values(): Devuelve una vista de los valores del diccionario.
+
+        items(): Devuelve una vista de los pares clave-valor del diccionario.
+
+        get(): Devuelve el valor asociado con una clave, o un valor predeterminado si la clave no está presente.
+
+
+   4. Conjuntos (sets):
+
+        add(): Agrega un elemento al conjunto.
+
+        remove(): Elimina un elemento del conjunto. Si el elemento no existe, se produce un error.
+
+        discard(): Elimina un elemento del conjunto. Si el elemento no existe, no se produce un error.
+
+        union(): Devuelve la unión de dos conjuntos.
+
+        intersection(): Devuelve la intersección de dos conjuntos.
+
+
+    5. Matemáticos:
+
+        abs(): Devuelve el valor absoluto de un número.
+
+        round(): Redondea un número a un número entero o con un número específico de decimales.
+
+        max(): Devuelve el valor más grande de una secuencia.
+
+        min(): Devuelve el valor más pequeño de una secuencia.
+	
 
 
 
