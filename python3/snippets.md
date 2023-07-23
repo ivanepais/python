@@ -174,6 +174,87 @@
 
 
 
+|| OPERADORES
+	
+	Relacionales:
+
+    	==: Comprueba si dos valores son iguales.
+
+    	!=: Comprueba si dos valores son diferentes.
+
+	    <: Comprueba si el valor de la izquierda es menor que el valor de la derecha.
+
+	    >: Comprueba si el valor de la izquierda es mayor que el valor de la derecha.
+
+	    <=: Comprueba si el valor de la izquierda es menor o igual que el valor de la derecha.
+
+	    >=: Comprueba si el valor de la izquierda es mayor o igual que el valor de la derecha.
+
+	    ```python:
+
+	    	x = 10
+			y = 5
+
+			print(x == y)  # Salida: False
+			print(x != y)  # Salida: True
+			print(x < y)   # Salida: False
+			print(x > y)   # Salida: True
+			print(x <= y)  # Salida: False
+			print(x >= y)  # Salida: True
+
+	    ```
+
+	Lógicos:
+
+	    and: Devuelve True si ambas condiciones son verdaderas.
+	    
+	    or: Devuelve True si al menos una de las condiciones es verdadera.
+
+	    not: Devuelve la negación de la condición.   
+
+
+	"in": 
+
+		Se utiliza para comprobar si un elemento está presente en una secuencia (como una lista, tupla, cadena o conjunto). 
+
+		Si el elemento está presente, el operador devuelve True; de lo contrario, devuelve False.
+
+		```python: 
+
+			# Ejemplo con lista
+			numeros = [1, 2, 3, 4, 5]
+			print(3 in numeros)  # Salida: True
+			print(6 in numeros)  # Salida: False
+
+			# Ejemplo con cadena
+			mensaje = "Hola, mundo"
+			print("mundo" in mensaje)  # Salida: True
+			print("python" in mensaje)  # Salida: False
+
+		```
+
+	"not in": 
+
+		Es la negación del operador "in". Se utiliza para comprobar si un elemento NO está presente en una secuencia. Si el elemento NO está presente, el operador devuelve True; de lo contrario, devuelve False.
+
+		```python:
+
+			# Ejemplo con lista
+			numeros = [1, 2, 3, 4, 5]
+			print(6 not in numeros)  # Salida: True
+			print(3 not in numeros)  # Salida: False
+
+			# Ejemplo con cadena
+			mensaje = "Hola, mundo"
+			print("python" not in mensaje)  # Salida: True
+			print("mundo" not in mensaje)  # Salida: False
+
+
+		```
+
+
+
+
 || INSTRUCCIONES
 	
 	Son declaraciones que componen el código fuente del programa y le indican a Python qué acciones realizar.
@@ -395,6 +476,104 @@
 
         min(): Devuelve el valor más pequeño de una secuencia.
 	
+
+|| Funciones nativas 
+	
+	Las funciones integradas, incorporadas, predefinidas o internas son parte del lenguaje Python y están disponibles para su uso directamente sin necesidad de importar ningún módulo adicional.
+
+	1. Funciones de entrada/salida:
+
+    	print(): Imprime un mensaje en la consola.
+
+    	input(): Lee una entrada del usuario desde la consola.
+
+    	```python: 
+
+    		nombre = input("Ingrese su nombre: ")
+
+			print("Hola, " + nombre)
+
+    	```
+
+    2. Funciones de conversión de tipos de datos:
+
+    	int(): Convierte un valor a un número entero.
+
+	    float(): Convierte un valor a un número de punto flotante (decimal).
+
+	    str(): Convierte un valor a una cadena de texto.
+
+	    list(): Convierte un valor a una lista.
+
+	    tuple(): Convierte un valor a una tupla.
+
+	    ```python: 
+
+	    	numero_texto = "10"
+			numero_entero = int(numero_texto)
+			print(numero_entero)  # Salida: 10
+			
+			pi = 3.14159
+			pi_texto = str(pi)
+			print("El valor de pi es: " + pi_texto)  # Salida: El valor de pi es: 3.14159
+
+	    ```
+
+	3. Funciones matemáticas:
+
+	    abs(): Devuelve el valor absoluto de un número.
+
+	    round(): Redondea un número a un número entero o con un número específico de decimales.
+
+	    max(): Devuelve el valor más grande de una secuencia.
+
+	    min(): Devuelve el valor más pequeño de una secuencia.
+
+	    ```python: 
+
+	    	numero = -5
+			absoluto = abs(numero)
+			print(absoluto)  # Salida: 5
+
+			decimal = 3.14159
+			redondeado = round(decimal, 2)
+			print(redondeado)  # Salida: 3.14
+
+	    ```
+
+	4. Funciones de secuencias:
+
+   		len(): Devuelve la longitud de una secuencia (cadena, lista, tupla, etc.).
+
+    	range(): Genera una secuencia de números enteros.
+
+    	```python: 
+
+    		texto = "Hola, mundo"
+			longitud = len(texto)
+			print(longitud)  # Salida: 12
+
+			numeros = list(range(1, 6))
+			print(numeros)  # Salida: [1, 2, 3, 4, 5]
+
+    	```
+
+   	5. Funciones de manejo de listas:
+
+    	sorted(): Ordena una lista.
+
+    	sum(): Devuelve la suma de los elementos de una lista.
+
+    	```python: 
+
+    		numeros = [5, 2, 8, 3, 1]
+			numeros_ordenados = sorted(numeros)
+			print(numeros_ordenados)  # Salida: [1, 2, 3, 5, 8]
+
+			suma = sum(numeros)
+			print(suma)  # Salida: 19
+
+    	```
 
 
 
