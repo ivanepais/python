@@ -190,7 +190,7 @@
 
 	    >=: Comprueba si el valor de la izquierda es mayor o igual que el valor de la derecha.
 
-	    ```python:
+	    ```python
 
 	    	x = 10
 			y = 5
@@ -212,7 +212,7 @@
 
 	    not: Devuelve la negación de la condición.   
 
-	    ```python: 
+	    ```python 
 
 	    	edad = 25
 			es_adulto = edad >= 18
@@ -223,7 +223,6 @@
 			else:
 			    print("No puede conducir")
 
-
 	    ```
 
 
@@ -233,7 +232,7 @@
 
 		Si el elemento está presente, el operador devuelve True; de lo contrario, devuelve False.
 
-		```python: 
+		```python
 
 			# Ejemplo con lista
 			numeros = [1, 2, 3, 4, 5]
@@ -251,7 +250,7 @@
 
 		Es la negación del operador "in". Se utiliza para comprobar si un elemento NO está presente en una secuencia. Si el elemento NO está presente, el operador devuelve True; de lo contrario, devuelve False.
 
-		```python:
+		```python
 
 			# Ejemplo con lista
 			numeros = [1, 2, 3, 4, 5]
@@ -277,7 +276,7 @@
 
 		Permiten asignar un valor a una variable. Se utilizan para crear y actualizar variables en Python.
 
-		```python: 
+		```python
 
 			x = 10
 			
@@ -294,7 +293,7 @@
 
 			Se utiliza para ejecutar un bloque de código si se cumple una condición.
 
-			```python: 
+			```python
 
 				edad = 25
 				if edad >= 18:
@@ -306,7 +305,7 @@
 
 			Se utiliza junto con "if" para ejecutar un bloque de código si la condición no se cumple.
 
-			```python: 
+			```python 
 
 				edad = 15
 
@@ -322,7 +321,7 @@
 
 			Se utiliza para evaluar múltiples condiciones.
 
-			```python: 
+			```python 
 
 				puntaje = 85
 
@@ -341,7 +340,7 @@
 
 			Se utiliza para crear un bucle que se ejecuta mientras se cumpla una condición.
 
-			```python: 
+			```python 
 
 				contador = 1
 
@@ -355,7 +354,7 @@
 
 			Se utiliza para iterar sobre una secuencia (por ejemplo, listas, tuplas, diccionarios).
 
-			```python: 
+			```python 
 
 				frutas = ["manzana", "banana", "cereza"]
 
@@ -369,7 +368,7 @@
 
 		Permiten definir funciones, que son bloques de código que pueden ser llamados varias veces en el programa.
 
-		```python: 
+		```python 
 
 			def saludar(nombre):
 			    print("Hola, " + nombre)
@@ -383,7 +382,7 @@
 
 		Se utiliza para manejar excepciones (errores) que puedan ocurrir durante la ejecución del programa.
 
-		```python: 
+		```python
 
 			try:
 		    resultado = 10 / 0
@@ -398,7 +397,7 @@
 
 		Se utiliza para importar módulos y bibliotecas en Python.
 
-		```python: 
+		```python 
 
 			import math
 
@@ -411,7 +410,7 @@
 
 		Se utiliza para devolver un valor desde una función.
 
-		```python: 
+		```python 
 
 			def suma(a, b):
 			    return a + b
@@ -501,7 +500,7 @@
 
     	input(): Lee una entrada del usuario desde la consola.
 
-    	```python: 
+    	```python 
 
     		nombre = input("Ingrese su nombre: ")
 
@@ -521,7 +520,7 @@
 
 	    tuple(): Convierte un valor a una tupla.
 
-	    ```python: 
+	    ```python 
 
 	    	numero_texto = "10"
 			numero_entero = int(numero_texto)
@@ -543,7 +542,7 @@
 
 	    min(): Devuelve el valor más pequeño de una secuencia.
 
-	    ```python: 
+	    ```python
 
 	    	numero = -5
 			absoluto = abs(numero)
@@ -561,7 +560,7 @@
 
     	range(): Genera una secuencia de números enteros.
 
-    	```python: 
+    	```python 
 
     		texto = "Hola, mundo"
 			longitud = len(texto)
@@ -578,7 +577,7 @@
 
     	sum(): Devuelve la suma de los elementos de una lista.
 
-    	```python: 
+    	```python 
 
     		numeros = [5, 2, 8, 3, 1]
 			numeros_ordenados = sorted(numeros)
@@ -603,7 +602,7 @@
 
 		Si la condición es verdadera, se ejecuta un bloque de código; de lo contrario, se ejecuta otro bloque de código.
 
-		```python:
+		```python
 
 			if condicion:
 			    # Bloque de código si la condición es verdadera
@@ -616,7 +615,7 @@
 
 		Se utiliza para iterar sobre una secuencia de elementos (como una lista, tupla, cadena -tipos de secuencia en python-.) y ejecutar un bloque de código para cada elemento.
 
-		```python: 
+		```python 
 
 			for elemento in secuencia:
     			# Bloque de código a ejecutar para cada elemento
@@ -627,7 +626,7 @@
 			
 		Permite repetir la ejecución de un bloque de código mientras una condición sea verdadera.
 
-		```python: 
+		```python 
 
 			while condicion:
     			# Bloque de código a repetir mientras la condición sea verdadera
@@ -638,7 +637,7 @@
 		
 		Se utiliza para salir de un bucle de manera prematura cuando se cumple una condición.
 
-		```python:
+		```python
 
 			for elemento in secuencia:
    			if condicion:
@@ -650,7 +649,7 @@
 		
 		Se utiliza para saltar la ejecución de una iteración en un bucle y pasar a la siguiente iteración.
 
-		```python: 
+		```python 
 
 			for elemento in secuencia:
 		    if condicion:
@@ -663,7 +662,7 @@
 
 		1. if-else: 	
 
-			```python: 
+			```python
 
 				# Ejemplo 1: Verificar si un número es par o impar
 				numero = 10
@@ -716,7 +715,7 @@
 
 		2. for: 
 
-			```python: 
+			```python 
 
 				# Ejemplo 1: Iterar sobre una lista
 				numeros = [1, 2, 3, 4, 5]
@@ -803,7 +802,7 @@
 
 		3. while:
 
-			```python:
+			```python
 
 				# Ejemplo 1: Contador descendente
 				contador = 5
@@ -879,7 +878,7 @@
 
 		4. break: 
 
-			```python: 
+			```python 
 
 				# Ejemplo 1: Búsqueda de un elemento en una lista
 				numeros = [1, 3, 5, 7, 9, 2, 4, 6, 8, 10]
@@ -917,7 +916,7 @@
 
 		5. continue: 
 
-			```python: 
+			```python
 
 				# Ejemplo 1: Imprimir solo los números pares
 				numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -1217,7 +1216,7 @@
 
 				Una lista es una colección ordenada y mutable de elementos. Puede contener elementos de diferentes tipos y se define utilizando corchetes ([]). Las listas permiten agregar, eliminar y modificar elementos.
 
-				```python:
+				```python
 
 					# Definir una lista
 					lista = ["manzana", "banana", "naranja"]
@@ -1273,9 +1272,7 @@
 
 		   		Una tupla es similar a una lista, pero es inmutable, lo que significa que no se pueden modificar después de su creación. Se definen utilizando paréntesis (()). Las tuplas se utilizan cuando se necesita una secuencia inmutable de elementos.
 
-		   		
-
-		   		```python:
+		   		```python
 
 		   			# Definir una tupla
 					tupla = ("manzana", "banana", "naranja")
@@ -1317,7 +1314,7 @@
 
 		    	Un conjunto es una colección desordenada de elementos únicos. No permite elementos duplicados y se define utilizando llaves ({}). Los conjuntos son útiles para operaciones de conjunto, como unión, intersección y diferencia.
 
-		    	```python: 
+		    	```python
 
 		    		# Definir un conjunto (set)
 					conjunto = {1, 2, 3, 4, 5}
@@ -1371,7 +1368,7 @@
 
 		    	Un diccionario es una estructura de datos que almacena pares clave-valor. Cada elemento del diccionario tiene una clave única asociada a un valor. Se definen utilizando llaves ({}). Los diccionarios permiten acceder, agregar y modificar elementos utilizando sus claves.
 
-		    	```python: 
+		    	```python 
 
 		    		# Definir un diccionario
 					diccionario = {
@@ -1428,7 +1425,7 @@
 
 		    	Una cadena es una secuencia de caracteres. En Python, las cadenas se representan entre comillas simples (') o comillas dobles ("). Las cadenas son inmutables y se utilizan para almacenar texto y manipularlo.
 
-		    	```python: 
+		    	```python 
 
 		    		# Definir una cadena de caracteres
 					cadena = "Hola, mundo!"
@@ -1482,7 +1479,7 @@
 
 		    	Una pila es una estructura de datos que sigue el principio LIFO (Last In, First Out). Los elementos se agregan y eliminan solo desde el extremo superior de la pila. Puede implementarse utilizando una lista o mediante la clase "deque" del módulo 'collections'.
 
-		    	```python: 
+		    	```python 
 
 		    		class Pila:
 					    def __init__(self):
@@ -1561,7 +1558,7 @@
 		    	Una cola es una estructura de datos que sigue el principio FIFO (First In, First Out). Los elementos se agregan al final de la cola y se eliminan desde el frente. Puede implementarse utilizando una lista o mediante la clase "deque" del módulo 'collections'.
 
 
-		    	```python: 
+		    	```python 
 
 		    		class Cola:
 					    def __init__(self):
@@ -1639,7 +1636,7 @@
 
 		    	Un árbol es una estructura de datos no lineal compuesta por nodos. Cada nodo puede tener cero o más nodos hijos. Los árboles se utilizan en muchas aplicaciones, como estructuras de búsqueda, representación de jerarquías y algoritmos de recorrido.
 
-		    	```python: 
+		    	```python 
 
 		    		class Nodo:
 					    def __init__(self, valor):
@@ -1787,7 +1784,7 @@
 
 		    	Un grafo es una estructura de datos compuesta por vértices y aristas que conectan los vértices. Los grafos se utilizan para representar relaciones y conexiones entre elementos.
 
-		    ```python: 
+		    ```python 
 		    	
 		    	class Grafo:
 				    def __init__(self):
@@ -1880,7 +1877,7 @@
 
 		    	El tipo de dato bytes en Python se utiliza para representar secuencias de bytes inmutables. Se utilizan en situaciones donde se requiere un manejo preciso de datos binarios, como en la lectura y escritura de archivos binarios, el cifrado de datos y la comunicación de datos a través de redes.
 
-		    	```python: 
+		    	```python 
 
 		    		# Definir una secuencia de bytes
 					secuencia_bytes = b'\x41\x42\x43\x44'
@@ -1922,7 +1919,7 @@
 
 		    	El tipo de dato bytearray en Python es similar a bytes, pero a diferencia de bytes, es mutable. Esto significa que se pueden modificar los elementos individuales del bytearray. Se utilizan en situaciones donde se requiere un manejo y manipulación de datos binarios mutable, como en la manipulación de imágenes, el procesamiento de archivos binarios y la comunicación de datos a través de redes.
 
-		    	```python: 
+		    	```python 
 
 		    		# Definir un bytearray
 					bytearray_objeto = bytearray(b'\x41\x42\x43\x44')
@@ -1962,7 +1959,7 @@
 
 		    	Los frozensets se utilizan cuando se necesita un conjunto inmutable, especialmente en casos donde se requiere que un conjunto sea una clave en un diccionario o un elemento en otro conjunto. A diferencia de los conjuntos normales, los frozensets se pueden utilizar como claves en diccionarios debido a su inmutabilidad.
 
-		    	```python: 
+		    	```python 
 
 		    		# Definir un frozenset
 					conjunto_fijo = frozenset([1, 2, 3, 4, 5])
@@ -2074,7 +2071,7 @@
 
 						Las funciones pueden llamarse a sí mismas, lo que permite la implementación de algoritmos recursivos para problemas que se resuelven de manera iterativa.
 
-				```python: 
+				```python 
 
 					def sumar(a, b):
 					    """
@@ -2093,7 +2090,7 @@
 
 				```
 
-				```python:
+				```python
 
 					# Definición de una función
 					def calcular_promedio(lista):
@@ -2209,7 +2206,7 @@
 			    	Los métodos pueden definirse una vez en una clase y luego ser invocados por múltiples instancias de ese objeto, lo que promueve la reutilización de código y mejora la legibilidad y mantenibilidad del programa.
 
 
-				```python: 
+				```python 
 
 					class Persona:
 					    def __init__(self, nombre, edad):
@@ -2284,7 +2281,7 @@
 
 					Las clases pueden heredar atributos y métodos de otras clases, lo que permite la creación de jerarquías y relaciones entre objetos. Además, el polimorfismo permite que diferentes objetos respondan de manera diferente a los mismos métodos.
 
-			```python: 
+			```python 
 
 				class Persona:
 				    def __init__(self, nombre, edad):
@@ -2374,7 +2371,7 @@
 
 				En otro archivo Python, puedes importar y utilizar este módulo de la siguiente manera:
 
-				```python:
+				```python
 
 					import modulo_ejemplo
 
@@ -2445,7 +2442,7 @@
 
     Ejemplo: 
 
-    	```python: 
+    	```python
 
     		class Perro:
 			    def __init__(self, nombre, edad):
@@ -2523,7 +2520,7 @@
 
 	    Ejemplo: 
 
-	    	```python: 
+	    	```python 
 
 	    		# Principio de Responsabilidad Única (SRP) y Principio de Abierto/Cerrado (OCP)
 
@@ -2669,7 +2666,7 @@
 	Ejemplo: 
 
 
-		```python: 
+		```python 
 
 			# Ejemplo de programación funcional
 
@@ -2778,7 +2775,7 @@
 
 	Ejemplo: 
 
-		```python: 
+		```python 
 
 			# Ejemplo de código limpio
 
