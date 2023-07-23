@@ -83,7 +83,7 @@ print("Edad:", edad_persona)
 print("Ciudad:", ciudad_persona)
 
 
-"""..........."""
+"""......................."""
 
 
 # Funciones recursivas
@@ -107,47 +107,572 @@ print("Factorial:", resultado_factorial)  # Salida: Factorial: 120
 
 
 
-"""..........."""
+"""......................"""
+
+#Operadores
+
+#relacionales
+
+x = 10
+            y = 5
+
+            print(x == y)  # Salida: False
+            print(x != y)  # Salida: True
+            print(x < y)   # Salida: False
+            print(x > y)   # Salida: True
+            print(x <= y)  # Salida: False
+            print(x >= y)  # Salida: True
+
+#---------------
+
+#Lógicos
+
+edad = 25
+es_adulto = edad >= 18
+tiene_carnet = True
+
+if es_adulto and tiene_carnet:
+    print("Puede conducir")
+else:
+    print("No puede conducir")
+
+
+#---------------
+
+#in
+
+# Ejemplo con lista
+numeros = [1, 2, 3, 4, 5]
+print(3 in numeros)  # Salida: True
+print(6 in numeros)  # Salida: False
+
+# Ejemplo con cadena
+mensaje = "Hola, mundo"
+print("mundo" in mensaje)  # Salida: True
+print("python" in mensaje)  # Salida: False
+
+
+#---------------
+
+#not in 
+
+# Ejemplo con lista
+numeros = [1, 2, 3, 4, 5]
+print(6 not in numeros)  # Salida: True
+print(3 not in numeros)  # Salida: False
+
+# Ejemplo con cadena
+mensaje = "Hola, mundo"
+print("python" not in mensaje)  # Salida: True
+print("mundo" not in mensaje)  # Salida: False
+
+
+"""......................"""
 
 #Instrucciones
 
+#Asignación
+
+x = 10
+            
+nombre = "Juan"
+
+#---------------
+
+#Control de flujo
+
+#if
+
+edad = 25
+if edad >= 18:
+print("Eres mayor de edad")
 
 
-#...............
+#else
+
+edad = 15
+
+if edad >= 18:
+    print("Eres mayor de edad")
+
+else:
+    print("Eres menor de edad")
+
+
+#elif
+
+puntaje = 85
+
+if puntaje >= 90:
+    print("A")
+
+elif puntaje >= 80:
+    print("B")
+
+else:
+    print("C")
+
+
+#while
+
+contador = 1
+
+    while contador <= 5:
+        print(contador)
+        contador += 1
+
+
+#for
+
+frutas = ["manzana", "banana", "cereza"]
+    
+for fruta in frutas:
+    print(fruta)
+
+
+#---------------
+
+#operadores de funciones
+
+def saludar(nombre):
+    print("Hola, " + nombre)
+
+saludar("Juan")
+
+
+
+#---------------
+
+#try-except
+
+try:
+resultado = 10 / 0
+
+except ZeroDivisionError:
+    print("Error: No se puede dividir entre cero")
+
+
+#---------------
+
+#import
+
+import math
+
+    raiz_cuadrada = math.sqrt(25)
+
+
+#---------------
+
+#return
+
+def suma(a, b):
+    return a + b
+
+resultado = suma(3, 5)  # resultado será igual a 8
 
 
 
 
+"""......................"""
 
-#...............
+#obj.Metodos
+
+"""
+Cada tipo de dato en Python puede tener 
+sus propios métodos que se utilizan 
+para realizar acciones específicas 
+relacionadas con ese tipo de dato
+
+listas:
+    append(): Agrega un elemento al final de la lista.
+    insert(): Inserta un elemento en una posición específica de la lista.
+    remove(): Elimina la primera aparición de un elemento de la lista.
+    pop(): Elimina y devuelve el último elemento de la lista (o un índice específico).
+    sort(): Ordena la lista en orden ascendente.
+    reverse(): Invierte el orden de los elementos en la lista.
+
+Métodos de cadenas (strings):
+    upper(): Devuelve una copia de la cadena en mayúsculas.
+    lower(): Devuelve una copia de la cadena en minúsculas.
+    capitalize(): Devuelve una copia de la cadena con el primer carácter en mayúscula.
+    count(): Cuenta cuántas veces aparece un subconjunto de caracteres en la cadena.
+    split(): Divide la cadena en una lista de subcadenas utilizando un separador específico.
+
+Métodos de diccionarios:
+    keys(): Devuelve una vista de las claves del diccionario.
+    values(): Devuelve una vista de los valores del diccionario.
+    items(): Devuelve una vista de los pares clave-valor del diccionario.
+    get(): Devuelve el valor asociado con una clave, o un valor predeterminado si la clave no está presente.
+
+Métodos de conjuntos (sets):
+    add(): Agrega un elemento al conjunto.
+    remove(): Elimina un elemento del conjunto. Si el elemento no existe, se produce un error.
+    discard(): Elimina un elemento del conjunto. Si el elemento no existe, no se produce un error.
+    union(): Devuelve la unión de dos conjuntos.
+    intersection(): Devuelve la intersección de dos conjuntos.
+
+Métodos matemáticos:
+    abs(): Devuelve el valor absoluto de un número.
+    round(): Redondea un número a un número entero o con un número específico de decimales.
+    max(): Devuelve el valor más grande de una secuencia.
+    min(): Devuelve el valor más pequeño de una secuencia.
+
+"""
 
 
+"""......................"""
+
+#Funciones nativas
+
+#entrada/salida:
+    
+    """
+    print(): Imprime un mensaje en la consola.
+
+    input(): Lee una entrada del usuario desde la consola.
+    """
+
+nombre = input("Ingrese su nombre: ")
+
+print("Hola, " + nombre)
 
 
+#---------------
+
+#conversión de tipos de datos:
+    
+    """
+    int(): Convierte un valor a un número entero.
+    float(): Convierte un valor a un número de punto flotante (decimal).
+    str(): Convierte un valor a una cadena de texto.
+    list(): Convierte un valor a una lista.
+    tuple(): Convierte un valor a una tupla.
+    """
+
+numero_texto = "10"
+numero_entero = int(numero_texto)
+print(numero_entero)  # Salida: 10
+            
+pi = 3.14159
+pi_texto = str(pi)
+print("El valor de pi es: " + pi_texto)  # Salida: El valor de pi es: 3.14159
 
 
-"""..........."""
+#---------------
+
+#matemáticas:
+    """
+    abs(): Devuelve el valor absoluto de un número.
+    round(): Redondea un número a un número entero o con un número específico de decimales.
+    max(): Devuelve el valor más grande de una secuencia.
+    min(): Devuelve el valor más pequeño de una secuencia.
+    """
+numero = -5
+absoluto = abs(numero)
+print(absoluto)  # Salida: 5
+
+decimal = 3.14159
+redondeado = round(decimal, 2)
+print(redondeado)  # Salida: 3.14
+
+
+#---------------
+
+#secuencias:
+    
+    """
+    len(): Devuelve la longitud de una secuencia (cadena, lista, tupla, etc.).
+    range(): Genera una secuencia de números enteros.
+    """
+
+texto = "Hola, mundo"
+longitud = len(texto)
+print(longitud)  # Salida: 12
+
+numeros = list(range(1, 6))
+print(numeros)  # Salida: [1, 2, 3, 4, 5]
+
+#---------------
+
+#manejo de listas:
+
+    """
+    sorted(): Ordena una lista.
+    sum(): Devuelve la suma de los elementos de una lista.
+    """
+
+numeros = [5, 2, 8, 3, 1]
+numeros_ordenados = sorted(numeros)
+print(numeros_ordenados)  # Salida: [1, 2, 3, 5, 8]
+
+suma = sum(numeros)
+print(suma)  # Salida: 19
+
+
+"""......................"""
 
 #Estructuras de control
 
 
+#if-else
+
+# Ejemplo 1: Verificar si un número es par o impar
+numero = 10
+
+if numero % 2 == 0:
+    print("El número es par")
+else:
+    print("El número es impar")
+
+# Salida: El número es par
+
+
+# Ejemplo 2: Calificar el rendimiento de un estudiante
+puntaje = 85
+
+if puntaje >= 90:
+    calificacion = "A"
+elif puntaje >= 80:
+    calificacion = "B"
+elif puntaje >= 70:
+    calificacion = "C"
+elif puntaje >= 60:
+    calificacion = "D"
+else:
+    calificacion = "F"
+
+print("La calificación es:", calificacion)
+
+# Salida: La calificación es: B
+
+# Ejemplo 3: Verificar si una cadena es una vocal o una consonante
+letra = "a"
+
+if letra.lower() in "aeiou":
+    print("Es una vocal")
+else:
+    print("Es una consonante")
+
+# Salida: Es una vocal
+
+
+#---------------
+
+#for
+
+# Ejemplo 1: Iterar sobre una lista
+numeros = [1, 2, 3, 4, 5]
+
+for numero in numeros:
+    print(numero)
+
+# Salida:
+# 1
+# 2
+# 3
+# 4
+# 5
+
+
+# Ejemplo 2: Iterar sobre una cadena de texto
+mensaje = "Hola, mundo!"
+
+for caracter in mensaje:
+    print(caracter)
+
+# Salida:
+# H
+# o
+# l
+# a
+# ,
+#  
+# m
+# u
+# n
+# d
+# o
+# !
+
+
+# Ejemplo 3: Iterar sobre un rango de números
+for i in range(1, 6):
+    print(i)
+
+# Salida:
+# 1
+# 2
+# 3
+# 4
+# 5
+
+
+# Ejemplo 4: Utilizar la función enumerate para obtener índices y valores
+frutas = ["manzana", "banana", "cereza"]
+
+for indice, fruta in enumerate(frutas):
+    print(f"Índice: {indice}, Fruta: {fruta}")
+
+# Salida:
+# Índice: 0, Fruta: manzana
+# Índice: 1, Fruta: banana
+# Índice: 2, Fruta: cereza
+
+
+# Ejemplo 5: Utilizar la estructura "for-else" para buscar un elemento
+numeros = [1, 2, 3, 4, 5]
+buscar = 6
+
+for numero in numeros:
+    if numero == buscar:
+        print("Número encontrado")
+        break
+else:
+    print("Número no encontrado")
+
+# Salida: Número no encontrado
+
+
+#---------------
+
+#while
+
+# Ejemplo 1: Contador descendente
+contador = 5
+
+while contador > 0:
+    print(contador)
+    contador -= 1
+
+# Salida:
+# 5
+# 4
+# 3
+# 2
+# 1
+
+
+# Ejemplo 2: Suma acumulativa
+suma = 0
+numero = 1
+
+while numero <= 10:
+    suma += numero
+    numero += 1
+
+print("La suma es:", suma)  # Salida: La suma es: 55
+
+
+# Ejemplo 3: Búsqueda de un elemento en una lista
+numeros = [4, 6, 2, 8, 5]
+buscar = 6
+encontrado = False
+indice = 0
+
+while indice < len(numeros):
+    if numeros[indice] == buscar:
+        encontrado = True
+        break
+    indice += 1
+
+if encontrado:
+    print("Número encontrado")
+else:
+    print("Número no encontrado")
+
+# Salida: Número encontrado}
+
+# Ejemplo 4: Validación de entrada de usuario
+contrasena_correcta = "abc123"
+contrasena = input("Ingrese la contraseña: ")
+
+while contrasena != contrasena_correcta:
+    print("Contraseña incorrecta. Inténtelo nuevamente.")
+    contrasena = input("Ingrese la contraseña: ")
+
+print("Contraseña correcta. Acceso concedido.")
+
+# Salida:
+# Ingrese la contraseña: 123
+# Contraseña incorrecta. Inténtelo nuevamente.
+# Ingrese la contraseña: abc123
+# Contraseña correcta. Acceso concedido.
+
+
+#---------------
+
+#break
+
+# Ejemplo 1: Búsqueda de un elemento en una lista
+numeros = [1, 3, 5, 7, 9, 2, 4, 6, 8, 10]
+buscar = 6
+
+for numero in numeros:
+    if numero == buscar:
+        print("Número encontrado")
+        break
+
+# Salida: Número encontrado
+
+
+# Ejemplo 2: Salida anticipada de un bucle infinito
+while True:
+    respuesta = input("¿Quieres salir? (s/n): ")
+
+    if respuesta.lower() == "s":
+        print("Saliendo del bucle...")
+        break
+
+# Salida:
+# ¿Quieres salir? (s/n): n
+# ¿Quieres salir? (s/n): n
+# ¿Quieres salir? (s/n): s
+# Saliendo del bucle...
+
+
+#---------------
+
+#continue
+
+# Ejemplo 1: Imprimir solo los números pares
+numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+for numero in numeros:
+    if numero % 2 != 0:
+        continue
+    print(numero)
+
+# Salida:
+# 2
+# 4
+# 6
+# 8
+# 10
+
+
+# Ejemplo 2: Saltear una iteración en un bucle while
+contador = 0
+
+while contador < 5:
+    contador += 1
+    if contador == 3:
+        continue
+    print(contador)
+
+# Salida:
+# 1
+# 2
+# 4
+# 5
+
+
+#---------------
+
+#
 
 
 
-#...............
-
-
-
-
-
-
-#...............
-
-
-
-
-
-"""..........."""
+"""......................"""
 
 # Estructuras de datos
 
@@ -194,7 +719,7 @@ palabras = cadena.split()
 print(palabras)  # Salida: ["Hola,", "mundo!"]
 
 
-#...............
+#---------------
 
 #listas
 
@@ -302,9 +827,7 @@ numeros_tupla = tuple(numeros)
 print(numeros_tupla)  # Salida: (10, 6, 5, 4, 2, 1)
 
 
-
-#...............
-
+#---------------
 
 #tuplas/registros/celdas
 
@@ -390,7 +913,7 @@ print(frutas_tupla)  # Salida: ('manzana', 'banana', 'cereza')
 
 
 
-#...............
+#---------------
 
 
 #diccionarios/maps/hash 
@@ -500,10 +1023,7 @@ longitud = len(persona)
 print(longitud)  # Salida: 3
 
 
-
-
-#...............
-
+#---------------
 
 #conjuntos/sets
 
@@ -551,7 +1071,7 @@ diferencia = conjunto1.difference(conjunto2)
 print(diferencia)  # Salida: {1, 2}
 
 
-#...............
+#---------------
 
 #colas/queues
 
@@ -626,7 +1146,7 @@ print(elemento)  # Salida: 10
 print(cola.tamano())  # Salida: 2
 
 
-#...............
+#---------------
 
 #pilas/stacks
 
@@ -699,8 +1219,7 @@ print(elemento)  # Salida: 30
 print(pila.tamano())  # Salida: 2
 
 
-#...............
-
+#---------------
 
 #árbol
 
@@ -892,7 +1411,7 @@ arbol.eliminar(30)
 arbol.imprimir_inorden()  # Salida: 20 40 50 60 70 80
 
 
-#................
+#---------------
 
 #grafo
 
@@ -1047,7 +1566,7 @@ grafo.imprimir_grafo()
 # E: ['D', 'A']
 
 
-#................
+#---------------
 
 #bytes
 
@@ -1081,7 +1600,7 @@ cadena_caracteres = secuencia_bytes.decode('utf-8')
 print(cadena_caracteres)  # Salida: "ABCD"
 
 
-#................
+#---------------
 
 #bytearray
 
@@ -1113,7 +1632,7 @@ cadena_caracteres = bytearray_objeto.decode('utf-8')
 print(cadena_caracteres)  # Salida: "BCDE"
 
 
-#................
+#---------------
 
 #frozenset
 
@@ -1146,7 +1665,7 @@ print(interseccion)  # Salida: frozenset({3})
 
 
 
-"""..........."""
+"""......................"""
 
 # POO 
 # Clases
@@ -1168,7 +1687,6 @@ maria = Persona("Maria", 25)
 # Llamar a los métodos de los objetos
 juan.saludar()  # Salida: "Hola, mi nombre es Juan y tengo 30 años."
 maria.saludar()  # Salida: "Hola, mi nombre es Maria y tengo 25 años."
-
 
 
 # Uso basico de una clase
@@ -1196,8 +1714,7 @@ perro1.ladrar()           # Imprime: ¡Woof woof!
 perro2.presentarse()      # Imprime: Hola, soy Max y tengo 5 años.
 
 
-#............
-
+#---------------
 
 # Carrito de compras
 
@@ -1258,7 +1775,7 @@ notificador = Notificador(enviador_correo)
 notificador.notificar("ejemplo@example.com", "Su compra ha sido realizada con éxito.")
 
 
-#...............
+#---------------
 
 # Biblioteca: agregar y buscar libros
 
@@ -1318,7 +1835,7 @@ else:
     print("Libro no encontrado.")
 
 
-"""..........."""
+"""......................"""
 
 #Metodos
 
@@ -1346,7 +1863,7 @@ juan.saludar()  # Salida: "Hola, mi nombre es Juan y tengo 35 años."
 
 
 
-"""..........."""
+"""......................"""
 
 # Programación funcional
 
@@ -1370,7 +1887,7 @@ resultados = aplicar_funcion(duplicar, numeros)
 print(resultados)  # Imprime: [2, 4, 6, 8, 10]
 
 
-#...............
+#---------------
 
 # Ejemplo de programación funcional
 
@@ -1392,9 +1909,9 @@ resultados = aplicar_funcion(duplicar, numeros)
 print(resultados)  # Imprime: [2, 4, 6, 8, 10]
 
 
-#...............
+#---------------
 
 
 
 
-"""..........."""
+"""......................"""
