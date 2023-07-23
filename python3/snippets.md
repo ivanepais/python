@@ -212,6 +212,20 @@
 
 	    not: Devuelve la negación de la condición.   
 
+	    ```python: 
+
+	    	edad = 25
+			es_adulto = edad >= 18
+			tiene_carnet = True
+
+			if es_adulto and tiene_carnet:
+			    print("Puede conducir")
+			else:
+			    print("No puede conducir")
+
+
+	    ```
+
 
 	"in": 
 
