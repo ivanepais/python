@@ -8,6 +8,35 @@
 
 #return vs no return
 
+"""
+función con return devuelve un valor específico como resultado de la función. 
+Este valor puede ser asignado a una variable o utilizado en cualquier otra operación dentro del programa.
+"""
+
+def calcular_cuadrado(num):
+    cuadrado = num * num
+    return cuadrado
+
+resultado = calcular_cuadrado(5)
+print(resultado)  # Imprime: 25
+
+
+"""
+función sin return no devuelve explícitamente ningún valor. 
+En cambio, su resultado se considera None, que es un objeto especial 
+en Python que representa la ausencia de valor.
+"""
+
+def saludar(nombre):
+    print("¡Hola, " + nombre + "!")
+
+resultado = saludar("Juan")
+print(resultado)  # Imprime: None
+
+"""
+Al asignar el resultado a la variable resultado y luego imprimirlo, obtendremos None en la consola.
+"""
+
 
 
 #...............
@@ -114,14 +143,14 @@ print("Factorial:", resultado_factorial)  # Salida: Factorial: 120
 #relacionales
 
 x = 10
-            y = 5
+y = 5
 
-            print(x == y)  # Salida: False
-            print(x != y)  # Salida: True
-            print(x < y)   # Salida: False
-            print(x > y)   # Salida: True
-            print(x <= y)  # Salida: False
-            print(x >= y)  # Salida: True
+print(x == y)  # Salida: False
+print(x != y)  # Salida: True
+print(x < y)   # Salida: False
+print(x > y)   # Salida: True
+print(x <= y)  # Salida: False
+print(x >= y)  # Salida: True
 
 #---------------
 

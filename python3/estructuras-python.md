@@ -2692,8 +2692,6 @@
 		En este ejemplo, la programación funcional se muestra mediante el uso de funciones puras y la aplicación de una función de orden superior (aplicar_funcion) para aplicar la función pura a una lista de datos. Se evitan los cambios de estado y los efectos secundarios, y se enfatiza la composición de funciones y la transformación de datos inmutables.
 
 
-
-
 	Diferencias y similitudes entre POO y Funcional:
 
 		Diferencias: 
