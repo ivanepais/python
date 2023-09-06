@@ -1820,14 +1820,810 @@
 
 
 || FUNCIÓN ANÓNIMA
+	
+	En Python se llaman "funciones lambda". 
+
+	Son funciones pequeñas y anónimas que se pueden definir en una sola línea de código. 
+
+	A diferencia de las funciones normales definidas con la palabra clave def, las funciones lambda no tienen un nombre asociado y se utilizan en situaciones donde necesitas una función simple para una tarea específica.
+
+	Son limitadas en cuanto a su complejidad y funcionalidad en comparación con las funciones definidas con def. 
+
+	Por lo tanto, se recomienda usarlas principalmente para tareas pequeñas y simples.
+
+	```python
+
+		lambda argumentos: expresion
+
+	```
+
+	lambda: 
+
+		Es la palabra clave que indica que estás definiendo una función lambda.
+
+    argumentos: 
+
+    	Son los parámetros de entrada de la función lambda, separados por comas.
+
+    expresion: 
+
+    	Es la expresión que se evalúa y se devuelve como resultado de la función.
+
+
+    ```python
+
+    	# Definición de una función lambda que suma dos números
+		sumar = lambda x, y: x + y
+
+		resultado = sumar(5, 3)  # resultado = 8
+
+		# Uso de una función lambda en una función incorporada como sorted()
+		numeros = [1, 4, 2, 8, 5]
+		numeros_ordenados = sorted(numeros, key=lambda x: x % 2)
+		# números_ordenados = [2, 4, 8, 1, 5]
+
+    ```
+
+    En la primera función, 'sumar' es una función lambda que toma dos argumentos x e y, y devuelve su suma.
+
+    La segunda función, se utiliza la función lambda como argumento en la función incorporada sorted() para ordenar una lista de números según su residuo de la división por 2, lo que resulta en una lista con números pares primero y luego los impares.
+
+
+    Casos de uso: 
+
+    	Ordenamiento Personalizado: 
+
+    		Cuando necesitas ordenar una lista de objetos utilizando un criterio específico, puedes usar una función lambda como argumento en funciones como sorted().
+
+
+	    Transformación de Datos: 
+
+	    	Cuando deseas aplicar una operación simple a cada elemento de una lista o iterador, como elevar al cuadrado o convertir a mayúsculas.
+
+
+	    Filtrado de Datos: 
+
+	    	Al filtrar elementos de una lista o iterador basado en una condición específica.
+
+
+	    Claves de Ordenamiento: 
+
+	    	En situaciones donde necesitas definir una clave de ordenamiento para funciones como sorted() o max().
+
+
+	    Funciones de Map y Filter: 
+
+	    	En la aplicación de funciones a cada elemento de una lista usando map() o en la filtración de elementos usando filter().
+
+
+	    Callbacks: 
+
+	    	Cuando se requiere una función para ser pasada como argumento a otra función, como en el caso de funciones de manejo de eventos.
+
+
+	    Operaciones Matemáticas Simples:
+
+	    	Para operaciones aritméticas o matemáticas simples que se deben aplicar a valores.
+
+
+	    Validación: 
+
+	    	En la validación de entradas o en la verificación de condiciones específicas.
+
+
+	    Cálculos de Fórmulas: 
+
+	    	Para cálculos matemáticos o fórmulas simples en situaciones donde no se necesita una función completa.
+
+
+	    Tratamiento de Strings: 
+
+	    	En operaciones de manipulación de cadenas, como concatenación o formato.
+
+
+	    Definición de Interfaces de Callback: 
+
+	    	En la definición de interfaces de devolución de llamada en bibliotecas o marcos de trabajo.
+
+
+	    Operaciones con Listas: 
+
+	    	En la realización de operaciones específicas en listas, como obtener el elemento máximo o mínimo.
 
 
 
+|| Función Autoinvocada
+
+	Puedes lograr el mismo efecto utilizando funciones anónimas (lambda) o simplemente llamando a una función inmediatamente después de definirla. 
+
+	Estas técnicas se usan para crear funciones que se ejecutan automáticamente sin necesidad de ser llamadas explícitamente.
+
+
+	Funciones lambda: 
+
+		Pueden ser invocadas en el mismo momento en que se definen. 
+
+		Son útiles para tareas pequeñas y puntuales.
+
+		```python
+
+			resultado = (lambda x: x * 2)(5)  # resultado = 10
+
+		```
+
+		En este ejemplo, la función lambda se define y se invoca inmediatamente con el valor 5 como argumento.
+
+
+	Definir y Llamar inmediatamente:
+
+		Puedes definir una función y luego llamarla inmediatamente después de su definición en la estructura del código.
+
+		```python
+
+			def suma(a, b):
+			    return a + b
+
+			resultado = suma(3, 4)  # resultado = 7
+
+		```
+
+
+
+|| FUNCION RECURSIVA
+	
+	Son funciones que se llaman a sí mismas para resolver un problema. 
+
+	En esencia, una función recursiva se divide en subproblemas más pequeños del mismo tipo hasta que se alcanza un caso base en el que el problema es lo suficientemente simple para resolverse directamente.
+	
+
+	```python
+
+		def funcion_recursiva(parametros):
+	    # Caso Base: Condición que detiene la recursión.
+	    if condicion_base:
+	        return valor_base
+
+	    # Caso Recursivo: Llamada a la función recursiva con argumentos modificados.
+	    resultado = funcion_recursiva(parametros_modificados)
+	    return resultado
+
+	```
+
+	Caso Base:
+
+		Esta es la condición que detiene la recursión. 
+
+		Cuando se cumple esta condición, la función no se llama a sí misma y devuelve un valor predefinido.
+
+		Sin un caso base adecuado, la función recursiva podría entrar en un bucle infinito.
+
+
+    Caso Recursivo: 
+
+    	En esta parte, la función se llama a sí misma con argumentos modificados para acercarse al caso base. 
+
+    	La llamada recursiva debe modificar al menos un parámetro de manera que el problema sea más pequeño o más simple en cada iteración.
+
+
+    Ejemplos: 
+
+    ```python
+
+    	def factorial(n):
+	    	# Caso Base: El factorial de 0 es 1.
+	    	if n == 0:
+	        return 1
+	    	# Caso Recursivo: Llamada a la función con n-1.
+	    	else:
+	        	return n * factorial(n - 1)
+
+		resultado = factorial(5)  # resultado = 120
+
+    ```
+
+    El caso base es cuando n es igual a 0, y la función devuelve 1.
+
+    El caso recursivo es cuando n es mayor que 0, y la función se llama a sí misma con n - 1. Esto se repite hasta que se alcanza el caso base.
+
+	Ten en cuenta que es fundamental que cada llamada recursiva se acerque al caso base para evitar bucles infinitos.
+
+
+	Casos de uso: 
+
+		Cálculos Matemáticos:
+
+        	Factorial: 
+
+        		Calcular el factorial de un número.
+
+       		Fibonacci: 
+
+       			Generar la secuencia de Fibonacci.
+
+        	Potencia: 
+
+        		Calcular una potencia de un número.
+
+        	Máximo Común Divisor (MCD):
+        	 	Encontrar el MCD de dos 	números.
+
+
+	    Recorrido de Estructuras de Datos:
+
+	        Recorrido de Árboles: 
+
+	        	Explorar árboles binarios o estructuras de árbol más complejas.
+
+	        Recorrido de Grafos: 
+
+	        	Explorar grafos para encontrar caminos o conexiones.
+
+	        Recorrido de Listas Ligadas: 
+
+	        	Navegar por listas ligadas o estructuras de datos similares.
+
+
+	    Resolución de Problemas Divide y Vencerás:
+
+	        Ordenamiento: 
+
+	        	Algunos algoritmos de ordenamiento, como Quicksort y Mergesort, utilizan recursión.
+
+	        Búsqueda Binaria: 
+
+	        	Buscar elementos en una lista ordenada de manera eficiente.
+
+	        División de Problemas Geométricos: 
+
+	        	Resolver problemas geométricos al dividirlos en subproblemas más pequeños.
+
+
+	    Tareas Combinatorias:
+
+	        Generación de Permutaciones y Combinaciones: 
+
+	        	Encontrar todas las permutaciones o combinaciones de un conjunto de elementos.
+
+
+	    Problemas de Juegos y Rompecabezas:
+
+	        Torres de Hanoi: 
+
+	        	Resolver el famoso problema de las Torres de Hanoi.
+
+	        Resolver Sudoku: 
+
+	        	Encontrar soluciones para juegos de Sudoku.
+
+
+	    Estructuras de Datos Recursivas:
+
+	        Listas Ligadas Recursivas: 
+
+	        	Crear y manipular listas ligadas recursivamente.
+
+	        Árboles Recursivos: 
+
+	        	Implementar estructuras de árboles recursivos.
+
+
+	    Análisis de Texto:
+
+	        Análisis de Sintaxis: 
+
+	        	Algunos analizadores de lenguaje natural utilizan recursión para analizar la estructura de una oración.
+
+
+	    Algoritmos de Búsqueda:
+
+	        Búsqueda de Caminos: 
+
+	        	Encontrar caminos en laberintos o mapas.
+
+
+	    Problemas de Combinatoria:
+
+	        Generación de Subconjuntos:
+
+	        	Encontrar todos los subconjuntos de un conjunto de elementos.
+
+
+
+|| FUNCIÓN CLOSURE
+	
+	Es una función que retiene el entorno léxico en el que se creó, incluso cuando esa función se ejecuta fuera de ese entorno léxico. 
+
+	En otras palabras, un closure permite que una función capture y mantenga las variables locales y parámetros de la función que la rodea, incluso después de que esa función haya terminado su ejecución. 
+
+	Esto permite que la función interna (closure) acceda a esas variables y las utilice más adelante.
+
+	Son útiles cuando deseas tener una función que mantenga ciertos valores o estado específico entre llamadas.
+
+	Esto puede ser especialmente útil en situaciones como la programación asíncrona, la implementación de decoradores y la creación de funciones fábrica.
+
+	```python
+
+		def exterior(x):
+		    def interior(y):
+		        return x + y
+		    return interior
+
+		agregar_5 = exterior(5)
+		resultado = agregar_5(3)  # resultado = 8
+
+	```
+
+	exterior() es una función que toma un parámetro x y define una función interna llamada interior(). 
+
+	La función interior() utiliza la variable x del ámbito de exterior() incluso después de que exterior() haya terminado su ejecución. 
+
+	Cuando llamamos a exterior(5), devuelve la función interior() con x establecido en 5. 
+
+	Luego, podemos llamar a agregar_5(3) para agregar 3 al valor capturado de x, lo que resulta en 8.
+
+
+	Casos de uso teóricos: 
+
+		Encapsulación de Datos Privados:
+
+        	Los closures pueden utilizarse para encapsular variables y métodos dentro de una función, ocultándolos al ámbito global y creando una especie de "clase" con datos privados.
+
+
+	    Gestión de Memoria y Recursos:
+	        
+	        En situaciones donde necesitas gestionar la asignación y liberación de recursos, como la apertura y cierre de archivos, los closures pueden garantizar que los recursos se liberen adecuadamente al finalizar una función.
+
+
+	    Implementación de Singleton:
+
+	        Puedes utilizar un closure para implementar el patrón de diseño Singleton, garantizando que solo haya una instancia de una clase en todo el programa.
+
+
+	    Factory Functions:
+
+	        Las fábricas de objetos son funciones que crean y devuelven instancias de objetos personalizados. 
+
+	        Los closures pueden ser útiles en la creación de fábricas de objetos con propiedades específicas.
+
+
+	    Manejo de Estado en UI:
+
+	        En el desarrollo de interfaces de usuario (UI), los closures pueden usarse para administrar el estado de componentes específicos, como ventanas emergentes o diálogos modales.
+
+
+	    Funciones de Orden Superior:
+
+	        En programación funcional, puedes usar closures para crear funciones de orden superior que toman otras funciones como argumentos y devuelven nuevas funciones con comportamientos personalizados.
+
+
+	    Seguridad y Aislamiento de Datos:
+	        
+	        Los closures pueden ayudar a garantizar la seguridad y el aislamiento de datos al limitar el acceso a ciertas variables y funciones dentro de un ámbito cerrado.
+
+
+	    Manejo de Eventos:
+
+	        En entornos de programación de eventos, los closures pueden utilizarse para definir funciones de manejo de eventos personalizadas que se ejecutan cuando ocurre un evento específico.
+
+
+	    Optimización de Recursos:
+
+	        Los closures pueden ayudar a optimizar el uso de recursos al garantizar que los recursos se inicialicen solo cuando sea necesario y se liberen cuando ya no se necesiten.
+
+
+	    Implementación de Lógica de Negocio Específica:
+
+	        En aplicaciones empresariales, los closures pueden ser útiles para implementar lógica de negocio específica que varía según el contexto.
+
+
+	Casos de uso prácticos: 
+
+		Funciones fábrica: 
+
+			Usar closures para crear funciones personalizadas con parámetros predefinidos. 
+
+			Esto es útil cuando deseas generar funciones con configuraciones específicas.
+
+			```python
+
+				def crear_sumador(x):
+				    def sumar(y):
+				        return x + y
+				    return sumar
+
+				sumar_5 = crear_sumador(5)
+				resultado = sumar_5(3)  # resultado = 8
+
+			```
+
+		Decoradores:
+
+			Un decorador es una función que envuelve otra función para agregar funcionalidad. 
+
+			Los closures capturan la función original y la modifican de acuerdo con el decorador.
+
+			```python
+
+				def decorador(funcion):
+				    def wrapper(*args, **kwargs):
+				        print("Antes de llamar a la función")
+				        resultado = funcion(*args, **kwargs)
+				        print("Después de llamar a la función")
+				        return resultado
+				    return wrapper
+
+				@decorador
+				def saludar(nombre):
+				    return f"Hola, {nombre}!"
+
+				mensaje = saludar("Alice")  # mensaje = "Hola, Alice!"
+
+			```
+
+
+		Manejo de Estados:
+
+			Pueden usarse para mantener estados o información entre llamadas a una función, sin necesidad de variables globales.
+
+			```python
+
+				def contador_incremetal():
+				    contador = 0
+				    def incrementar():
+				        nonlocal contador
+				        contador += 1
+				        return contador
+				    return incrementar
+
+				contar = contador_incremetal()
+				print(contar())  # 1
+				print(contar())  # 2
+
+			```
+
+
+		Funciones de orden superior:
+
+			Permiten crear funciones de orden superior que generan y devuelven otras funciones.
+
+			```python
+
+				def generar_operador(op):
+				    def operador(a, b):
+				        if op == "+":
+				            return a + b
+				        elif op == "-":
+				            return a - b
+				        # Otras operaciones
+				    return operador
+
+				suma = generar_operador("+")
+				resultado = suma(5, 3)  # resultado = 8
+
+			```
+
+		Manejo de Eventos: 
+
+			En programación de GUI (interfaz gráfica de usuario), los closures se utilizan para manejar eventos específicos, como hacer clic en un botón.
+
+			```python
+
+				from tkinter import Tk, Button
+
+				def crear_handler(mensaje):
+				    def handler():
+				        print(mensaje)
+				    return handler
+
+				root = Tk()
+				boton1 = Button(root, text="Clic Me", command=crear_handler("Botón 1 clickeado"))
+				boton2 = Button(root, text="Clic Me Too", command=crear_handler("Botón 2 clickeado"))
+				boton1.pack()
+				boton2.pack()
+				root.mainloop()
+
+			```
+
+
+|| FUNCIÓN CALLBACK
+
+	Es una función que se pasa como argumento a otra función. 
+
+	El concepto es bastante simple pero muy poderoso, ya que te permite definir una parte del comportamiento de un programa y luego pasarlo como entrada a otra parte del código.
+
+	Un ejemplo básico para ilustrar cómo funciona un callback:
+
+		Imagina que tienes una función llamada realizar_operacion que toma dos números y una operación matemática como argumentos y devuelve el resultado de esa operación. 
+
+		En lugar de tener una función separada para cada operación (suma, resta, multiplicación, etc.), puedes usar un callback para pasar la operación como función.
+
+		```python
+
+			def realizar_operacion(a, b, operacion):
+			    resultado = operacion(a, b)
+			    return resultado
+
+			def suma(x, y):
+			    return x + y
+
+			def resta(x, y):
+			    return x - y
+
+			resultado1 = realizar_operacion(5, 3, suma)   # resultado1 = 8
+			resultado2 = realizar_operacion(5, 3, resta)  # resultado2 = 2
+
+		```
+
+		realizar_operacion es la función principal que realiza una operación en dos números.
+
+		En lugar de tener una función separada para cada operación matemática, puedes pasar la operación como un callback.
+
+
+	Casos de uso: 
+
+	    Manejo de Eventos de Interfaz de Usuario (UI):
+
+        	En aplicaciones con interfaz de usuario, puedes usar callbacks para manejar eventos como clics de botón, movimientos del mouse o pulsaciones de teclas. Por ejemplo, puedes definir 
+
+        	Una función de callback que se ejecute cuando un usuario hace clic en un botón "Guardar".
+
+
+		Lectura de Archivos Asíncronos:
+
+		    Al leer archivos de manera asincrónica, puedes utilizar callbacks para especificar qué hacer una vez que se haya completado la lectura del archivo. 
+
+		    Esto es común en entornos web y en la lectura de archivos grandes.
+
+
+		Peticiones de Red:
+
+		    Al realizar peticiones de red a través de API, puedes usar callbacks para manejar la respuesta una vez que los datos se han recibido. 
+
+		    Esto permite que la aplicación continúe funcionando mientras espera la respuesta del servidor.
+
+
+		Temporizadores y Retrasos:
+
+		    Puedes usar callbacks para ejecutar cierto código después de un retraso específico o después de un período de tiempo determinado. 
+
+		    Esto es útil para tareas programadas y animaciones.
+
+
+		Manejo de Errores Personalizados:
+
+		    Cuando ocurre un error en una función, puedes utilizar un callback para especificar cómo manejar ese error de manera personalizada. 
+
+		    Por ejemplo, puedes proporcionar una función de callback que se ejecute cuando se produzca un error de red.
+
+
+		Validación de Datos Personalizada:
+
+		    En la validación de datos, puedes usar callbacks para especificar cómo validar un dato en particular. 
+
+		    Esto permite que el código de validación sea altamente personalizable y se adapte a diferentes requisitos.
+
+
+		Orden Superior (Higher-Order Functions):
+
+		    En programación funcional, puedes usar callbacks como argumentos para funciones de orden superior, como map, filter y reduce. 
+
+		    Esto permite aplicar funciones personalizadas a elementos de una lista o realizar filtrado basado en criterios específicos.
+
+
+		Manejo de Excepciones Personalizado:
+
+		    Puedes utilizar callbacks para definir cómo manejar excepciones personalizadas en tu código. 
+
+		    Por ejemplo, puedes proporcionar una función de callback que se llame cuando se genere una excepción específica.
+
+
+		Personalización de Comportamiento de Bibliotecas y Frameworks:
+
+		    Muchas bibliotecas y frameworks permiten utilizar callbacks para personalizar su comportamiento. 
+
+		    Por ejemplo, en un framework de juegos, puedes proporcionar una función de callback para definir cómo se manejan los eventos de colisión.
+
+
+		Programación Asíncrona y Paralela:
+
+		    En programación asíncrona y paralela, los callbacks se utilizan para especificar qué hacer cuando una tarea asíncrona se completa, lo que permite un control preciso del flujo de la aplicación.
 
 
 
 || BUILT-IN FUNCTION
 
+	Son funciones integradas en Python son predefinidas que forman parte del lenguaje y están disponibles para su uso en cualquier momento, sin necesidad de importar módulos adicionales. 
+
+	Estas funciones proporcionan funcionalidades básicas y esenciales que cubren una amplia gama de tareas comunes en la programación.
+
+
+	print(): Muestra información en la consola.
+
+	```python
+
+		print("Hola, mundo!")
+	
+	```
+
+	len(): Devuelve la longitud (cantidad de elementos) de una secuencia (cadena, lista, tupla, etc.).
+
+	```python
+
+		nombre = "Alice"
+		longitud_nombre = len(nombre)  # longitud_nombre = 5
+
+	```
+
+	input(): Lee una entrada del usuario desde la consola.
+
+	```python
+
+		entrada = input("Ingresa tu nombre: ")
+
+	```
+
+	int(), float(), str(), list(), tuple(), dict(), set(): Convierten entre tipos de datos.
+
+	```python
+
+		numero_texto = "42"
+		numero = int(numero_texto)
+
+	```
+
+	range(): Genera una secuencia de números en un rango especificado.
+
+	```python
+
+		numeros = range(1, 6)  # Genera una secuencia: 1, 2, 3, 4, 5
+
+	```
+
+	sum(), max(), min(): Calculan la suma, el valor máximo y el valor mínimo de una secuencia de números.
+
+	```python
+
+		numeros = [5, 2, 8, 1, 6]
+		suma_total = sum(numeros)  # suma_total = 22
+		valor_maximo = max(numeros)  # valor_maximo = 8
+		valor_minimo = min(numeros)  # valor_minimo = 1
+
+	```
+
+	sorted(): Ordena una secuencia de elementos.
+
+	```python
+
+		numeros = [5, 2, 8, 1, 6]
+		numeros_ordenados = sorted(numeros)  # numeros_ordenados = [1, 2, 5, 6, 8]
+
+	```
+
+	abs(): Devuelve el valor absoluto de un número.
+
+	```python
+
+		valor_negativo = -5
+		valor_absoluto = abs(valor_negativo)  # valor_absoluto = 5
+
+	```
+
+	Lista de funciones incorporadas: 
+
+		Funciones de Conversión de Datos:
+
+		    int(): Convierte a entero.
+
+		    float(): Convierte a punto flotante.
+
+		    str(): Convierte a cadena.
+
+		    bool(): Convierte a booleano.
+
+		    list(): Convierte a lista.
+
+		    tuple(): Convierte a tupla.
+
+		    set(): Convierte a conjunto.
+
+		    dict(): Convierte a diccionario.
+
+
+		Funciones de Iterables:
+
+		    len(): Devuelve la longitud de un iterable.
+
+		    max(): Devuelve el valor máximo en un iterable.
+
+		    min(): Devuelve el valor mínimo en un iterable.
+
+		    sum(): Calcula la suma de los elementos en un iterable.
+
+
+		Funciones de Secuencia:
+
+		    range(): Genera una secuencia de números.
+
+		    enumerate(): Devuelve índices y elementos de un iterable.
+
+		    zip(): Combina varios iterables en tuplas.
+
+
+		Funciones de Entrada/Salida:
+
+		    print(): Muestra texto en la consola.
+
+		    input(): Lee la entrada del usuario desde la consola.
+
+		    open(): Abre archivos para lectura o escritura.
+
+
+		Funciones Matemáticas y Numéricas:
+
+		    abs(): Valor absoluto.
+
+		    round(): Redondea un número.
+
+		    pow(): Potencia.
+
+		    divmod(): Divide y devuelve el cociente y el resto.
+
+		    hex(): Convierte a representación hexadecimal.
+
+		    oct(): Convierte a representación octal.
+
+
+		Funciones de Listas, Tuplas y Conjuntos:
+
+		    sorted(): Ordena elementos en un iterable.
+
+		    reversed(): Invierte un iterable.
+
+		    any(): Devuelve True si algún elemento es verdadero.
+
+		    all(): Devuelve True si todos los elementos son verdaderos.
+
+
+		Funciones de Cadenas:
+
+		    len(): Devuelve la longitud de una cadena.
+
+		    str(): Convierte a cadena.
+
+		    join(): Une elementos de una lista en una cadena.
+
+		    split(): Divide una cadena en una lista de subcadenas.
+
+
+		Funciones de Diccionarios:
+
+		    len(): Devuelve la cantidad de pares clave-valor en un diccionario.
+
+		    keys(): Devuelve las claves como una vista.
+
+		    values(): Devuelve los valores como una vista.
+
+		    items(): Devuelve los pares clave-valor como una vista.
+
+		    get(): Obtiene el valor asociado a una clave.
+
+		    pop(): Elimina y devuelve el valor asociado a una clave.
+
+
+		Funciones de Control de Flujo:
+
+		    if: Estructura condicional.
+
+		    for: Bucle de iteración.
+
+		    while: Bucle de control.
+
+
+		Funciones de Manejo de Excepciones:
+
+		    try, except: Captura y maneja excepciones.
+
+		    raise: Genera una excepción
 
 
 
