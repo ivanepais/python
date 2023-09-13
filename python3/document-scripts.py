@@ -1590,3 +1590,945 @@ numeros_ordenados = sorted(numeros, key=ordenar_por_cifra_unidad)
 
 
 
+"""......................"""
+
+# BUILT-IN FUNCTION
+
+
+
+
+
+
+"""......................"""
+
+# Tipos de datos
+cadena = "Hola, Python" #inmutable index/accesible/ordenado
+entero = 42
+decimal = 3.14
+lista = [1, 2, 3] # mutable index/accesible/ordenado
+tupla = (4, 5, 6) # inmutable index/accesible/ordenado
+conjunto = {7, 8, 9} # no duplicados/únicos no index/no accesible/no ordenado
+diccionario = {"clave": "valor"} #mutable accesible/indexado/ordenado
+
+"""
+Características
+Puede ser: 
+mutable/agregado/elim -> Array/list dict clave:valor
+inmutable/no agregado/elim -> String, tupla/coordenada/fijo/array2
+accesible/indexado/ordenado -> Array, tupla/array2, dict clave:valor
+no accesible/indexado/ordenado ->  Set/conjunto: si agregado
+
+"""
+
+# ARRAY 
+
+# Usar biblioteca numpy
+import numpy as np
+
+# Crear un array
+mi_array = np.array([1, 2, 3, 4, 5])
+
+
+
+
+
+
+"""......................"""
+
+#LINKED LIST
+
+
+# Singly linked list: Cada nodo tiene un enlace al siguiente nodo en la secuencia
+class Nodo:
+    def __init__(self, valor):
+        self.valor = valor
+        self.siguiente = None
+
+class LinkedList:
+    def __init__(self):
+        self.cabeza = None
+
+    def agregar_elemento(self, valor):
+        nuevo_nodo = Nodo(valor)
+        if not self.cabeza:
+            self.cabeza = nuevo_nodo
+        else:
+            actual = self.cabeza
+            while actual.siguiente:
+                actual = actual.siguiente
+            actual.siguiente = nuevo_nodo
+
+    def imprimir_lista(self):
+        actual = self.cabeza
+        while actual:
+            print(actual.valor, end=" -> ")
+            actual = actual.siguiente
+        print("None")
+
+# Crear una linked list
+mi_lista = LinkedList()
+
+# Agregar elementos
+mi_lista.agregar_elemento(1)
+mi_lista.agregar_elemento(2)
+mi_lista.agregar_elemento(3)
+
+# Imprimir la lista
+mi_lista.imprimir_lista()
+
+#Salida:
+#1 -> 2 -> 3 -> None
+
+
+
+
+
+
+"""......................"""
+
+# HEAPS
+
+# Usar biblioteca
+import heapq
+
+# Crear un heap vacio
+mi_heap = []
+
+# Agregar elementos
+heapq.heappush(mi_heap, 5)
+heapq.heappush(mi_heap, 3)
+heapq.heappush(mi_heap, 7)
+
+# Obtener el elemento más pequeño
+elemento_mas_pequeno = heapq.heappop(mi_heap)
+
+
+# Max Heap
+mi_max_heap = []
+elementos = [5, 3, 7]
+
+for elemento in elementos:
+    heapq.heappush(mi_max_heap, -elemento)
+
+elemento_mas_grande = -heapq.heappop(mi_max_heap)
+
+
+
+
+
+
+"""......................"""
+
+# STACKS
+
+# Crear una pila vacía Usando una lista[]
+pila = []
+
+# Agregar elementos a la pila
+pila.append(1)
+pila.append(2)
+pila.append(3)
+
+# Eliminar elementos de la pila (LIFO)
+elemento_eliminado = pila.pop()
+print(elemento_eliminado)  # Resultado: 3
+
+
+
+#Usando la coleccion 'deque' de 'collections'
+from collections import deque
+
+# Crear una pila vacía utilizando deque
+pila = deque()
+
+# Agregar elementos al principio de la pila
+pila.appendleft(1)
+pila.appendleft(2)
+pila.appendleft(3)
+
+# Eliminar elementos de la pila (LIFO)
+elemento_eliminado = pila.popleft()
+print(elemento_eliminado)  # Resultado: 3
+
+
+
+# Usando una clase
+class Pila:
+    def __init__(self):
+        self.items = []
+
+    def esta_vacia(self):
+        return len(self.items) == 0
+
+    def apilar(self, elemento):
+        self.items.append(elemento)
+
+    def desapilar(self):
+        if not self.esta_vacia():
+            return self.items.pop()
+        else:
+            return "La pila está vacía"
+
+# Usar la clase de pila personalizada
+mi_pila = Pila()
+mi_pila.apilar(1)
+mi_pila.apilar(2)
+mi_pila.apilar(3)
+
+elemento_eliminado = mi_pila.desapilar()
+print(elemento_eliminado)  # Resultado: 3
+
+
+
+
+
+"""......................"""
+
+# QUEUES 
+
+# Usando una lista
+
+# Crear una cola vacía
+cola = []
+
+# Agregar elementos a la cola
+cola.append(1)
+cola.append(2)
+cola.append(3)
+
+# Eliminar elementos de la cola (FIFO)
+elemento_eliminado = cola.pop(0)
+print(elemento_eliminado)  # Resultado: 1
+
+
+
+# Usando una Colección 'deque' del módulo 'collections'
+from collections import deque
+
+# Crear una cola vacía utilizando deque
+cola = deque()
+
+# Agregar elementos al final de la cola
+cola.append(1)
+cola.append(2)
+cola.append(3)
+
+# Eliminar elementos de la cola (FIFO)
+elemento_eliminado = cola.popleft()
+print(elemento_eliminado)  # Resultado: 1
+
+
+
+# Usando una clase
+class Cola:
+    def __init__(self):
+        self.items = []
+
+    def esta_vacia(self):
+        return len(self.items) == 0
+
+    def encolar(self, elemento):
+        self.items.append(elemento)
+
+    def desencolar(self):
+        if not self.esta_vacia():
+            return self.items.pop(0)
+        else:
+            return "La cola está vacía"
+
+# Usar la clase de cola personalizada
+mi_cola = Cola()
+mi_cola.encolar(1)
+mi_cola.encolar(2)
+mi_cola.encolar(3)
+
+elemento_eliminado = mi_cola.desencolar()
+print(elemento_eliminado)  # Resultado: 1
+
+
+
+
+"""......................"""
+
+# HASH TABLES
+
+# Usando un dict {}
+
+# Crear un diccionario vacío
+mi_diccionario = {}
+
+# Agregar elementos al diccionario
+mi_diccionario['nombre'] = 'Juan'
+mi_diccionario['edad'] = 30
+mi_diccionario['ciudad'] = 'Nueva York'
+
+# Acceder a elementos por clave
+print(mi_diccionario['nombre'])  # Resultado: 'Juan'
+
+# Modificar un elemento
+mi_diccionario['edad'] = 31
+
+# Eliminar un elemento
+del mi_diccionario['ciudad']
+
+# Verificar si una clave existe en el diccionario
+if 'ciudad' in mi_diccionario:
+    print('La clave "ciudad" existe en el diccionario')
+else:
+    print('La clave "ciudad" no existe en el diccionario')
+
+# Imprimir el diccionario completo
+print(mi_diccionario)
+
+#Salida:
+#Juan
+#La clave "ciudad" no existe en el diccionario
+#{'nombre': 'Juan', 'edad': 31}
+
+
+
+
+
+
+
+"""......................"""
+
+# BINARY SEARCH TREES 
+
+class Nodo:
+    def __init__(self, valor):
+        self.valor = valor
+        self.izquierdo = None
+        self.derecho = None
+
+class BST:
+    def __init__(self):
+        self.raiz = None
+
+    def insertar(self, valor):
+        self.raiz = self._insertar_recursivamente(self.raiz, valor)
+
+    def _insertar_recursivamente(self, nodo_actual, valor):
+        if nodo_actual is None:
+            return Nodo(valor)
+        if valor < nodo_actual.valor:
+            nodo_actual.izquierdo = self._insertar_recursivamente(nodo_actual.izquierdo, valor)
+        elif valor > nodo_actual.valor:
+            nodo_actual.derecho = self._insertar_recursivamente(nodo_actual.derecho, valor)
+        return nodo_actual
+
+    def buscar(self, valor):
+        return self._buscar_recursivamente(self.raiz, valor)
+
+    def _buscar_recursivamente(self, nodo_actual, valor):
+        if nodo_actual is None or nodo_actual.valor == valor:
+            return nodo_actual
+        if valor < nodo_actual.valor:
+            return self._buscar_recursivamente(nodo_actual.izquierdo, valor)
+        return self._buscar_recursivamente(nodo_actual.derecho, valor)
+
+# Crear un BST
+mi_bst = BST()
+
+# Insertar elementos
+mi_bst.insertar(50)
+mi_bst.insertar(30)
+mi_bst.insertar(70)
+mi_bst.insertar(20)
+mi_bst.insertar(40)
+
+# Buscar elementos
+print(mi_bst.buscar(30))  # Resultado: <__main__.Nodo object at 0x...>
+
+
+
+
+"""......................"""
+
+# SORTING ALGORITHMS
+
+"""
+Bubble Sort (Ordenamiento de Burbuja):
+
+Insertion Sort (Ordenamiento por Inserción):
+
+Selection Sort (Ordenamiento por Selección):
+
+Merge Sort (Ordenamiento por Mezcla):
+
+Quick Sort (Ordenamiento Rápido):
+
+Heap Sort (Ordenamiento por Montículo):
+
+Timsort:
+
+En Python, puedes utilizar la función sorted() para ordenar una lista de elementos utilizando el algoritmo Timsort
+y list.sort() (que también utiliza Timsort).
+
+"""
+
+
+
+"""......................"""
+
+# ITERATORS
+
+# Iterador que genera numeros cuadrados
+class Cuadrados:
+    def __init__(self, n):
+        self.n = n
+        self.current = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.current < self.n:
+            result = self.current ** 2
+            self.current += 1
+            return result
+        else:
+            raise StopIteration
+
+# Uso del iterador en un bucle for
+cuadrados_iter = Cuadrados(5)
+for cuadrado in cuadrados_iter:
+    print(cuadrado)
+
+
+
+
+
+
+"""......................"""
+
+# RegEx
+
+"""
+Utilizar el módulo 're' para trabajar con expresiones regulares.
+
+Patrones de busqueda: 
+Se utiliza para definir patrones de busqueda en texto
+Los patrones pueden incluir caract literales (letras, num)
+y metacaracteres. 
+
+
+Metacaracteres: 
+. (punto): Coincide con cualquier carácter, excepto una nueva línea.
+*: Coincide con cero o más repeticiones del carácter o patrón anterior.
++: Coincide con una o más repeticiones del carácter o patrón anterior.
+?: Coincide con cero o una repetición del carácter o patrón anterior.
+| (barra vertical): Se utiliza para alternar entre varias opciones.
+[]: Define un conjunto de caracteres permitidos.
+(): Agrupa caracteres para aplicar operadores a grupos de caracteres.
+
+
+Funciones del modulo 're': 
+re.search(pattern, string): Busca el patrón en toda la cadena y devuelve el primer resultado encontrado.
+re.match(pattern, string): Comprueba si el patrón coincide con el inicio de la cadena.
+re.findall(pattern, string): Encuentra todas las ocurrencias del patrón en la cadena y devuelve una lista.
+re.finditer(pattern, string): Encuentra todas las ocurrencias del patrón en la cadena y devuelve un iterador.
+re.sub(pattern, replacement, string): Reemplaza todas las ocurrencias del patrón con la cadena de reemplazo.
+re.split(pattern, string): Divide la cadena en una lista utilizando el patrón como delimitador.
+
+"""
+
+import re
+
+texto = "Hola, mi número de teléfono es 123-456-7890."
+
+# Buscar un número de teléfono en el texto
+patron = r'\d{3}-\d{3}-\d{4}'  # Expresión regular para números de teléfono
+resultado = re.search(patron, texto)
+
+if resultado:
+    print("Número de teléfono encontrado:", resultado.group())
+else:
+    print("Número de teléfono no encontrado.")
+
+"""
+utilizamos una expresión regular para buscar un número de teléfono 
+en el texto. El patrón \d{3}-\d{3}-\d{4} coincide con números de teléfono en el formato XXX-XXX-XXXX.
+"""
+
+
+"""......................"""
+
+# DECORATORS 
+
+# Sintaxis
+@decorador
+def funcion_a_decorar():
+    # Código de la función
+
+
+# Ejemplo
+import time
+
+def calcular_tiempo(funcion):
+    def wrapper(*args, **kwargs):
+        inicio = time.time()
+        resultado = funcion(*args, **kwargs)
+        fin = time.time()
+        print(f"Tiempo de ejecución de {funcion.__name__}: {fin - inicio} segundos")
+        return resultado
+    return wrapper
+
+# Uso del decorador para medir el tiempo de ejecución
+@calcular_tiempo
+def operacion_lenta():
+    time.sleep(2)
+
+operacion_lenta()
+
+"""
+En este ejemplo, calcular_tiempo es un decorador que envuelve la función operacion_lenta. 
+Cuando llamamos a operacion_lenta(), en realidad estamos llamando a la función decorada wrapper, 
+que registra el tiempo antes y después de llamar a operacion_lenta().
+"""
+
+
+
+"""......................"""
+
+# Modulos
+
+# mi_modulo.py
+
+# Creacion modulo
+def saludar(nombre):
+    return f"Hola, {nombre}!"
+
+PI = 3.14159265359
+
+
+
+# Importacion y uso 
+import mi_modulo
+
+print(mi_modulo.saludar("Juan"))
+print(mi_modulo.PI)
+
+
+# Alias
+import mi_modulo as mm
+
+print(mm.saludar("Maria"))
+print(mm.PI)
+
+
+# Importacion selectiva
+from mi_modulo import saludar
+
+print(saludar("Ana"))
+
+
+
+# Estructura de modulo
+mi_proyecto/
+    __init__.py
+    modulo1.py
+    modulo2.py
+    subpaquete/
+        __init__.py
+        modulo3.py
+
+# Uso
+from mi_proyecto import modulo1
+from mi_proyecto.subpaquete import modulo3
+
+
+
+# Modulos o bibliotecas externas/terceros
+#PyPI: pip, conda
+
+
+
+
+
+"""......................"""
+
+# OPP
+
+# Definición de una Clase
+class Persona:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre
+        self.edad = edad
+
+    def saludar(self):
+        print(f"Hola, mi nombre es {self.nombre} y tengo {self.edad} años.")
+
+
+# Creación de Objetos:
+juan = Persona("Juan", 30)
+maria = Persona("Maria", 25)
+
+juan.saludar()
+maria.saludar()
+
+
+"""
+Herencia: 
+se logra al crear una nueva clase que hereda los atributos y métodos de una clase existente
+"""
+class Estudiante(Persona):
+    def __init__(self, nombre, edad, curso):
+        super().__init__(nombre, edad)
+        self.curso = curso
+
+    def estudiar(self):
+        print(f"{self.nombre} está estudiando en el curso {self.curso}.")
+
+"""
+la clase Estudiante hereda de la clase Persona 
+y agrega un nuevo atributo curso y un nuevo método estudiar.
+"""
+
+
+
+"""
+Polimorfismo: 
+se puede lograr mediante la implementación 
+de métodos con el mismo nombre en diferentes clases. 
+
+La clase Persona como la clase Estudiante pueden tener un método saludar, 
+pero cada uno puede hacerlo de manera diferente.
+"""
+
+
+
+#Usando herencia y polimorfismo: 
+class Vehiculo:
+    def __init__(self, marca, modelo):
+        self.marca = marca
+        self.modelo = modelo
+
+    def conducir(self):
+        print(f"{self.marca} {self.modelo} está en movimiento.")
+
+class Coche(Vehiculo):
+    def __init__(self, marca, modelo, color):
+        super().__init__(marca, modelo)  # Llama al constructor de la clase base
+        self.color = color
+
+    def arrancar(self):
+        print(f"{self.marca} {self.modelo} ({self.color}) está arrancando.")
+
+mi_coche = Coche("Toyota", "Camry", "Rojo")
+mi_coche.conducir()  # Método heredado de Vehiculo
+mi_coche.arrancar()  # Método de la clase Coche
+
+#Salida: 
+# Toyota Camry está en movimiento.
+# Toyota Camry (Rojo) está arrancando.
+
+"""
+la herencia en Python permite crear jerarquías 
+de clases donde las subclases heredan atributos y métodos 
+de las superclases, lo que facilita la reutilización y extensión de código. 
+Además, brinda una forma eficiente de organizar y estructurar programas orientados a objetos.
+"""
+
+
+# Metodos
+
+"""
+de instancia: 
+funciones que están asociadas a objetos individuales de una clase. 
+Pueden acceder a los atributos del objeto y realizar operaciones específicas para ese objeto en particular. Se definen dentro de la clase y toman al menos un parámetro, generalmente llamado self, que se refiere al objeto en sí mismo.
+"""
+class MiClase:
+    def mi_metodo(self, parametro):
+        # Hacer algo con el objeto y el parámetro
+        pass
+
+objeto = MiClase()
+objeto.mi_metodo(parametro)
+
+
+
+"""
+Estaticos: 
+funciones que están asociadas a la clase en lugar de los objetos individuales. 
+No requieren el parámetro self y se definen usando el decorador @staticmethod.
+Estos métodos se utilizan cuando el comportamiento no depende de los atributos del objeto y es independiente de las instancias.
+
+"""
+class MiClase:
+    @staticmethod
+    def mi_metodo_estatico(parametro):
+        # Hacer algo sin necesidad de acceder a atributos de instancia
+        pass
+
+MiClase.mi_metodo_estatico(parametro)
+
+
+"""
+de clase: 
+similares a los métodos estáticos, pero pueden acceder y modificar los atributos de la clase. 
+Se definen utilizando el decorador @classmethod y toman un parámetro especial llamado cls, que hace referencia a la clase en sí misma.
+"""
+class MiClase:
+    atributo_clase = 0
+
+    @classmethod
+    def mi_metodo_de_clase(cls):
+        cls.atributo_clase += 1
+
+MiClase.mi_metodo_de_clase()
+
+
+
+"""
+Dunder / Magicos: 
+tienen nombres que comienzan y terminan con doble guión bajo (por ejemplo, __init__, __str__, __add__). 
+Estos métodos permiten definir el comportamiento especial de los objetos en ciertas situaciones, 
+como la inicialización de objetos, la representación de objetos como cadenas y la sobrecarga de operadores.
+
+Se llaman automáticamente en respuesta a ciertos eventos, como la creación de un objeto o la conversión a cadena.
+Se usan para operar objetos
+"""
+class MiClase:
+    def __init__(self, valor):
+        self.valor = valor
+
+    def __str__(self):
+        return f"Objeto de MiClase con valor {self.valor}"
+
+
+"""
+Inicialización de Objetos (Constructor): 
+El método __init__ se utiliza para inicializar objetos cuando se crean instancias de una clase. 
+En este método, puedes asignar valores iniciales a los atributos del objeto.
+"""
+class Persona:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre
+        self.edad = edad
+
+persona1 = Persona("Alice", 30)
+persona2 = Persona("Bob", 25)
+
+
+
+"""
+Representación de Objetos (Método __str__): 
+El método __str__ permite definir una representación legible como cadena de un objeto. 
+Se llama cuando se utiliza la función str() o cuando se imprime el objeto.
+
+"""
+class Libro:
+    def __init__(self, titulo, autor):
+        self.titulo = titulo
+        self.autor = autor
+
+    def __str__(self):
+        return f"{self.titulo} por {self.autor}"
+
+libro = Libro("La Sombra del Viento", "Carlos Ruiz Zafón")
+print(str(libro))  # Salida: La Sombra del Viento por Carlos Ruiz Zafón
+
+
+
+"""
+Sobrecarga de Operadores: 
+Puedes definir métodos especiales como __add__, __sub__, __eq__, etc., 
+para sobrecargar operadores y definir cómo los objetos de tu clase se comportan en operaciones como suma, resta, comparaciones, etc.
+
+"""
+class Punto:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __add__(self, otro_punto):
+        return Punto(self.x + otro_punto.x, self.y + otro_punto.y)
+
+punto1 = Punto(1, 2)
+punto2 = Punto(3, 4)
+resultado = punto1 + punto2  # Usando la sobrecarga de operador +
+
+
+
+"""
+Métodos de Acceso y Modificación: 
+Los métodos se utilizan para acceder a los atributos de un objeto (métodos "get") o para modificar sus atributos (métodos "set"). 
+Estos métodos permiten un control más preciso sobre el acceso a los datos de un objeto.
+"""
+class CuentaBancaria:
+    def __init__(self, saldo):
+        self.saldo = saldo
+
+    def obtener_saldo(self):
+        return self.saldo
+
+    def depositar(self, cantidad):
+        self.saldo += cantidad
+
+    def retirar(self, cantidad):
+        if cantidad <= self.saldo:
+            self.saldo -= cantidad
+        else:
+            print("Saldo insuficiente")
+
+cuenta = CuentaBancaria(1000)
+saldo_actual = cuenta.obtener_saldo()
+cuenta.depositar(500)
+cuenta.retirar(300)
+
+
+
+"""
+Validación de Datos: 
+Los métodos se utilizan para validar los datos ingresados en un objeto y garantizar 
+que cumplan con ciertos criterios antes de realizar operaciones.
+
+"""
+class Persona:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre
+        self.edad = edad
+
+    def validar_edad(self):
+        if self.edad < 0:
+            print("La edad no puede ser negativa")
+        elif self.edad > 150:
+            print("¿Eres inmortal?")
+
+persona = Persona("Alice", 200)
+persona.validar_edad()  # Salida: ¿Eres inmortal?
+
+
+
+"""
+Lista de metodos magicos/dunder
+
+__init__(self, ...): Inicializa un objeto cuando se crea una nueva instancia de la clase.
+
+__del__(self): Se llama cuando un objeto se destruye o se elimina. No se recomienda su uso frecuente.
+
+__str__(self): Se llama cuando se convierte un objeto en una cadena usando la función str() o cuando se imprime el objeto.
+
+__repr__(self): Se llama cuando se utiliza la función repr() para obtener una representación textual del objeto. Debe ser una representación válida de Python que permita recrear el objeto.
+
+__len__(self): Se llama cuando se utiliza la función len() para obtener la longitud de un objeto. Debe devolver un valor entero no negativo.
+
+__getitem__(self, key): Se llama cuando se accede a un elemento de un objeto mediante indexación, por ejemplo, objeto[clave].
+
+__setitem__(self, key, valor): Se llama cuando se asigna un valor a un elemento de un objeto mediante indexación, por ejemplo, objeto[clave] = valor.
+
+__delitem__(self, key): Se llama cuando se elimina un elemento de un objeto mediante la instrucción del objeto[clave].
+
+__iter__(self): Se llama cuando se inicia una iteración sobre un objeto. Debe devolver un iterador, generalmente a sí mismo.
+
+__next__(self): Se llama para obtener el siguiente elemento en una iteración. Debe elevar la excepción StopIteration cuando no haya más elementos.
+
+__contains__(self, elemento): Se llama cuando se utiliza el operador in para verificar si un elemento está presente en el objeto.
+
+__eq__(self, otro): Se llama para comparar si dos objetos son iguales usando el operador ==.
+
+__ne__(self, otro): Se llama para comparar si dos objetos no son iguales usando el operador !=.
+
+__lt__(self, otro): Se llama para comparar si un objeto es menor que otro usando el operador <.
+
+__le__(self, otro): Se llama para comparar si un objeto es menor o igual que otro usando el operador <=.
+
+__gt__(self, otro): Se llama para comparar si un objeto es mayor que otro usando el operador >.
+
+__ge__(self, otro): Se llama para comparar si un objeto es mayor o igual que otro usando el operador >=.
+
+__add__(self, otro): Se llama cuando se utiliza el operador + para sumar dos objetos.
+
+__sub__(self, otro): Se llama cuando se utiliza el operador - para restar dos objetos.
+
+__mul__(self, otro): Se llama cuando se utiliza el operador * para multiplicar dos objetos.
+
+__truediv__(self, otro): Se llama cuando se utiliza el operador / para dividir dos objetos.
+
+__floordiv__(self, otro): Se llama cuando se utiliza el operador // para realizar una división entera entre dos objetos.
+
+__mod__(self, otro): Se llama cuando se utiliza el operador % para obtener el residuo de la división entre dos objetos.
+
+__pow__(self, otro, modulo=None): Se llama cuando se utiliza el operador ** para elevar un objeto a una potencia.
+"""
+
+
+
+
+"""......................"""
+
+
+# PACKAGE MANAGERS
+
+"""
+pip: 
+Pip es el gestor de paquetes predeterminado de Python.
+ Se utiliza para instalar, actualizar y eliminar paquetes de Python desde el Python Package Index (PyPI) y otros repositorios. 
+ Algunos comandos básicos de pip incluyen:
+
+pip install paquete: Instala un paquete.
+pip install paquete==versión: Instala una versión específica de un paquete.
+pip install -r requirements.txt: Instala paquetes enumerados en un archivo requirements.txt.
+pip uninstall paquete: Desinstala un paquete.
+pip list: Muestra la lista de paquetes instalados.
+
+"""
+pip install requests
+
+
+
+
+"""
+conda: Conda es un gestor de paquetes y un sistema de administración de entornos desarrollado principalmente para la ciencia de datos y la informática científica. 
+Es especialmente útil para crear entornos virtuales de Python y gestionar las dependencias. 
+
+conda create --name mi_entorno python=3.8: Crea un nuevo entorno virtual.
+conda activate mi_entorno: Activa un entorno virtual.
+conda install paquete: Instala un paquete en el entorno activo.
+conda update paquete: Actualiza un paquete en el entorno activo.
+conda list: Muestra la lista de paquetes instalados en el entorno activo.
+conda env export > environment.yml: Exporta el entorno a un archivo YAML.
+
+"""
+conda create --name myenv python=3.8
+
+
+
+"""
+Otros como poetry y pipenv que ofrecen características adicionales para la gestión de proyectos y dependencias en Python. 
+La elección del gestor de paquetes y las herramientas adicionales dependerá de tus necesidades y preferencias.
+"""
+
+
+"""
+Utilizar herramientas de gestión de entornos virtuales:
+Si estás trabajando en un proyecto que requiere entornos virtuales (como conda o virtualenv), puedes utilizar las herramientas de gestión de entornos para instalar paquetes desde PyPI en un entorno aislado. 
+Esto es útil para evitar conflictos de dependencias entre proyectos.
+
+"""
+
+
+
+
+"""......................"""
+
+# LIST COMPREHENSIONS
+
+
+
+
+"""......................"""
+
+# GENERATOR EXPRESSIONS
+
+
+ 
+"""......................"""
+
+# PARADIGMS 
+
+
+"""......................"""
+
+# Async
