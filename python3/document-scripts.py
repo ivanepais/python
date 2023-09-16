@@ -652,6 +652,92 @@ booleano = bool(1)  # Convierte a True, ya que 1 es considerado verdadero
 
 
 
+"""......................"""
+
+# Contadores
+
+"""
+Se refiere a una variable que se utiliza para realizar un seguimiento y contar la ocurrencia de eventos o elementos en un programa. 
+Los contadores son una técnica común en la programación y se utilizan en una variedad de situaciones para realizar un seguimiento de información importante. 
+
+"""
+
+
+"""
+Contador de Iteración:
+Realizar una tarea un número específico de veces
+Se utiliza comúnmente en bucles para realizar un seguimiento del número de veces que se ha ejecutado un bucle
+"""
+contador = 0
+while contador < 5:
+    print(f"Iteración {contador}")
+    contador += 1
+
+"""
+el contador se incrementa en cada iteración del bucle while, lo que permite ejecutar el bucle exactamente 5 veces.
+"""
+
+
+
+"""
+Contador de Elementos: 
+Los contadores también se utilizan para contar elementos en una colección, como una lista o una cadena. 
+Python proporciona funciones integradas como count() para contar la cantidad de veces que aparece un elemento en una secuencia.
+"""
+numeros = [1, 2, 3, 4, 1, 2, 3, 1]
+cantidad_de_unos = numeros.count(1)
+print(f"El número 1 aparece {cantidad_de_unos} veces.")
+
+"""
+cantidad_de_unos se utiliza como un contador para contar cuántas veces aparece el número 1 en la lista numeros.
+"""
+
+# 2do Metodo 
+lista = [1, 2, 3, 1, 2, 1, 4, 5, 1]
+contador = 0
+
+for elemento in lista:
+    if elemento == 1:
+        contador += 1
+
+print(f"El elemento 1 aparece {contador} veces en la lista.")
+
+
+
+"""
+Contador de Eventos: 
+Los contadores también se utilizan para realizar un seguimiento de eventos en un programa. 
+Por ejemplo, puedes utilizar un contador para contar cuántas veces se ha hecho clic en un botón en una interfaz gráfica de usuario.
+"""
+contador_de_clics = 0
+
+def manejar_clic():
+    global contador_de_clics
+    contador_de_clics += 1
+    print(f"Se ha hecho clic {contador_de_clics} veces.")
+
+# Cada vez que se hace clic en un botón, se llama a la función manejar_clic().
+
+
+
+"""
+Estadísticas y Análisis: 
+Los contadores se utilizan en estadísticas y análisis de datos para contar eventos o elementos específicos. 
+Por ejemplo, puedes utilizar un contador para contar cuántas veces se cumple una condición en un conjunto de datos.
+"""
+datos = [10, 15, 8, 20, 12, 15, 17, 8, 10]
+contador_mayores_de_10 = 0
+
+for valor in datos:
+    if valor > 10:
+        contador_mayores_de_10 += 1
+
+print(f"Hay {contador_mayores_de_10} valores mayores de 10 en los datos.")
+
+
+
+
+
 
 """......................"""
 
@@ -2148,7 +2234,94 @@ from mi_proyecto.subpaquete import modulo3
 
 """......................"""
 
-# OPP
+# OOP
+
+# init
+
+"""
+Constructor de clase: 
+Se refiere a un método especial llamado "constructor"
+En Python, el constructor se nombra __init__
+
+Es una función especial que se llama automáticamente cuando se crea una nueva instancia de una clase.
+Significa que puedes realizar tareas de inicialización específicas para cada objeto individual.
+
+
+Argumentos: 
+Puede aceptar argumentos que se utilizan para configurar las propiedades iniciales del objeto. 
+Por convención, el primer argumento se llama self, que hace referencia a la instancia recién creada. 
+Los argumentos restantes se utilizan para establecer propiedades o realizar otras tareas de inicialización.
+
+
+Inicialización de Propiedades: 
+El método __init__ se utiliza comúnmente para inicializar las propiedades (atributos) de un objeto. 
+Puedes asignar valores iniciales a las propiedades de un objeto utilizando los argumentos proporcionados al constructor.
+"""
+class Persona:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre
+        self.edad = edad
+
+# Crear una instancia de la clase Persona
+persona1 = Persona("Alice", 30)
+
+# Acceder a las propiedades inicializadas
+print(persona1.nombre)  # Imprime "Alice"
+print(persona1.edad)    # Imprime 30
+
+
+"""
+Personalización: 
+Puedes personalizar el comportamiento del constructor de acuerdo con las necesidades de tu clase. 
+Esto te permite realizar tareas de inicialización específicas, validar datos de entrada o realizar otras acciones necesarias al crear objetos.
+"""
+
+
+
+# self 
+
+"""
+Representa una referencia al objeto actual de una clase
+
+Cuando defines una clase y sus métodos, debes incluir self como el primer parámetro en la definición de cada método, 
+aunque no lo pases explícitamente cuando llamas al método. 
+Esto se hace automáticamente por Python. self se refiere al objeto actual creado a partir de la clase.
+
+Acceso a Atributos y Métodos: 
+A través de self, puedes acceder a los atributos y métodos de la instancia de la clase dentro de sus propios métodos. 
+Esto permite la encapsulación de datos y comportamientos en un objeto y evita conflictos de nombres con variables locales o globales.
+
+"""
+
+class Persona:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre
+        self.edad = edad
+
+    def saludar(self):
+        print(f"Hola, mi nombre es {self.nombre} y tengo {self.edad} años.")
+
+# Crear una instancia de la clase Persona
+persona1 = Persona("Alice", 30)
+
+# Llamar al método saludar() usando self
+persona1.saludar()  # Esto imprimirá "Hola, mi nombre es Alice y tengo 30 años."
+
+"""
+self se usa para acceder a los atributos nombre y edad dentro del método saludar. 
+Cuando llamamos persona1.saludar(), Python automáticamente pasa persona1 como el valor de self, lo que permite acceder a sus atributos.
+"""
+
+
+"""
+el nombre self es una convención ampliamente aceptada en Python, no es una palabra clave reservada. 
+En teoría, podrías usar cualquier nombre, pero es altamente recomendable seguir la convención y usar self para evitar confusiones y mejorar la legibilidad del código. 
+Otros lenguajes de programación orientada a objetos pueden utilizar nombres diferentes, como this en Java o C++.
+
+"""
+
+
+
 
 # Definición de una Clase
 class Persona:
@@ -2229,6 +2402,176 @@ de clases donde las subclases heredan atributos y métodos
 de las superclases, lo que facilita la reutilización y extensión de código. 
 Además, brinda una forma eficiente de organizar y estructurar programas orientados a objetos.
 """
+
+
+# Tipos de Polimorfismo: 
+
+"""
+Sobrecarga (Overloading): 
+Este tipo de polimorfismo se refiere a la capacidad de una clase para proporcionar múltiples métodos con el mismo nombre pero con diferentes parámetros. 
+Los métodos se diferencian según la cantidad o tipo de argumentos que aceptan.
+"""
+class Calculadora:
+    def suma(self, a, b):
+        return a + b
+    
+    def suma(self, a, b, c):
+        return a + b + c
+
+"""
+la clase Calculadora tiene dos métodos llamados suma, uno que toma dos argumentos y otro que toma tres. 
+Esto se conoce como sobrecarga de métodos.
+"""
+
+
+
+"""
+Anulación (Overriding): 
+Este tipo de polimorfismo se refiere a la capacidad de una subclase para proporcionar una implementación específica de un método que ya está definido en su clase base (superclase). 
+La subclase anula el método de la superclase para proporcionar su propia implementación.
+
+"""
+class Animal:
+    def hablar(self):
+        pass
+
+class Perro(Animal):
+    def hablar(self):
+        return "Woof!"
+
+class Gato(Animal):
+    def hablar(self):
+        return "Meow!"
+
+"""
+las clases Perro y Gato son subclases de la clase Animal. 
+Ambas subclases anulan el método hablar de la clase Animal para proporcionar su propia implementación.
+"""
+
+
+
+
+# Encapsulamiento: 
+
+"""
+Se refiere a la idea de ocultar los detalles internos de un objeto y exponer solo la interfaz necesaria para interactuar con él. 
+El encapsulamiento se logra definiendo atributos y métodos como públicos, privados o protegidos, lo que controla quién puede acceder y modificar los datos y comportamientos de un objeto.
+
+"""
+
+"""
+Atributos Privados: 
+En muchos lenguajes de programación orientada a objetos, como Python, los atributos de una clase se pueden marcar como privados utilizando convenciones de nomenclatura o palabras clave especiales, como _atributo o __atributo. 
+Esto significa que solo los métodos dentro de la propia clase pueden acceder y modificar esos atributos.
+"""
+class Persona:
+    def __init__(self, nombre, edad):
+        self.__nombre = nombre  # Atributo privado
+        self.__edad = edad      # Atributo privado
+
+
+
+
+"""
+Métodos Públicos: 
+Los métodos que proporciona una clase para interactuar con sus atributos se consideran públicos y se pueden acceder desde fuera de la clase. 
+Estos métodos definen la interfaz pública del objeto.
+"""
+class Persona:
+    def __init__(self, nombre, edad):
+        self.__nombre = nombre
+        self.__edad = edad
+   
+    def obtener_nombre(self):  # Método público
+        return self.__nombre
+
+
+
+
+"""
+Control de Acceso: 
+El encapsulamiento permite un control preciso sobre quién y cómo se puede acceder y modificar los datos del objeto. 
+Los métodos públicos pueden incluir lógica para validar y manipular los datos antes de acceder o modificar los atributos privados.
+"""
+class Persona:
+    def __init__(self, nombre, edad):
+        self.__nombre = nombre
+        self.__edad = edad
+   
+    def obtener_nombre(self):  # Método público
+        return self.__nombre
+   
+    def establecer_edad(self, nueva_edad):  # Método público
+        if nueva_edad > 0:
+            self.__edad = nueva_edad
+
+
+"""
+El encapsulamiento brinda varios beneficios, como la protección de datos contra modificaciones no deseadas, la facilitación de la evolución del código al permitir cambios internos sin afectar a los usuarios de la clase y la promoción de una interfaz más clara y coherente para interactuar con los objetos.
+"""
+
+
+
+# Ejemplos
+
+"""
+Datos Sensibles: 
+Cuando deseas proteger datos sensibles o críticos en una clase, puedes encapsular esos datos haciendo que los atributos sean privados. 
+Por ejemplo, en una clase de manejo de cuentas bancarias, los detalles de la cuenta, como el saldo y el número de cuenta, deben mantenerse privados y solo accesibles a través de métodos específicos.
+
+"""
+class CuentaBancaria:
+    def __init__(self, numero_cuenta, saldo):
+        self.__numero_cuenta = numero_cuenta  # Atributo privado
+        self.__saldo = saldo  # Atributo privado
+
+    def obtener_saldo(self):  # Método público para obtener el saldo
+        return self.__saldo
+
+
+
+
+"""
+Validación de Entrada de Datos: 
+Al utilizar el encapsulamiento, puedes incluir lógica de validación en los métodos públicos para garantizar que los datos ingresados sean válidos antes de modificar los atributos privados. 
+Esto ayuda a mantener la integridad de los datos.
+
+"""
+class Empleado:
+    def __init__(self, nombre, salario):
+        self.__nombre = nombre
+        self.__salario = salario
+
+    def aumentar_salario(self, aumento):
+        if aumento > 0:
+            self.__salario += aumento
+
+
+"""
+Cambios Internos sin Impacto Externo: 
+El encapsulamiento permite realizar cambios internos en una clase sin afectar a los usuarios de esa clase. 
+Puedes refactorizar o mejorar la implementación interna sin cambiar la interfaz pública.
+
+
+Reutilización de Código: 
+Al exponer una interfaz coherente y bien definida a través de métodos públicos, 
+puedes reutilizar la clase en diferentes partes de tu programa o en otros programas sin preocuparte por los detalles internos.
+
+
+Mantenimiento Simplificado: 
+Cuando varios programadores trabajan en un proyecto, el encapsulamiento ayuda a establecer reglas claras sobre cómo interactuar con las clases. 
+Esto facilita el mantenimiento y la colaboración, ya que se reduce la posibilidad de errores causados por modificaciones no autorizadas de atributos.
+
+
+Seguridad y Control: 
+El encapsulamiento es fundamental para garantizar que los datos se manipulen de manera segura y controlada. 
+Esto es especialmente importante en aplicaciones que manejan información confidencial o crítica.
+
+"""
+
+
+
+
 
 
 # Metodos
@@ -2401,6 +2744,45 @@ persona.validar_edad()  # Salida: ¿Eres inmortal?
 
 
 
+# Ocultar implementación interna 
+
+class Calculadora:
+    def __init__(self):
+        # Atributo privado para almacenar el valor actual
+        self.__valor = 0
+
+    def sumar(self, numero):
+        # Método público para sumar al valor actual
+        self.__valor += numero
+
+    def restar(self, numero):
+        # Método público para restar al valor actual
+        self.__valor -= numero
+
+    def obtener_valor(self):
+        # Método público para obtener el valor actual
+        return self.__valor
+
+
+# Uso de la clase Calculadora
+mi_calculadora = Calculadora()
+
+# Intentar acceder al atributo privado directamente provocará un error
+# print(mi_calculadora.__valor)  # Esto generará un error
+
+# Usamos los métodos públicos para realizar operaciones
+mi_calculadora.sumar(10)
+mi_calculadora.restar(5)
+
+# Obtenemos el valor actual a través de un método público
+resultado = mi_calculadora.obtener_valor()
+print("El resultado es:", resultado)
+
+
+
+
+
+
 """
 Lista de metodos magicos/dunder
 
@@ -2515,12 +2897,61 @@ Esto es útil para evitar conflictos de dependencias entre proyectos.
 
 # LIST COMPREHENSIONS
 
+# Sintaxis
+nueva_lista = [expresion for elemento in secuencia]
+
+nueva_lista = [expresion for elemento in secuencia if condicion]
+
+
+# Crear una lista de los cuadrados de los números del 0 al 9
+cuadrados = [x**2 for x in range(10)]
+# Resultado: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+
+
+# Filtrar números pares de una lista
+numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+pares = [x for x in numeros if x % 2 == 0]
+# Resultado: [2, 4, 6, 8]
+
+
+
+# Crear una lista de las letras iniciales de una lista de palabras
+palabras = ['manzana', 'banana', 'cereza']
+iniciales = [palabra[0] for palabra in palabras]
+# Resultado: ['m', 'b', 'c']
+
+
+
+
 
 
 
 """......................"""
 
 # GENERATOR EXPRESSIONS
+
+# Sintaxis
+generador = (expresion for elemento in secuencia)
+
+
+# Ejemplo
+numeros = [1, 2, 3, 4, 5]
+
+# Crear una expresión generadora para generar los cuadrados de los números
+generador_cuadrados = (x**2 for x in numeros)
+
+# Puedes obtener los valores uno a uno utilizando un bucle for o la función next()
+for cuadrado in generador_cuadrados:
+    print(cuadrado)
+
+# Resultado:
+# 1
+# 4
+# 9
+# 16
+# 25
+
 
 
  
@@ -2529,6 +2960,433 @@ Esto es útil para evitar conflictos de dependencias entre proyectos.
 # PARADIGMS 
 
 
+# Programación Imperativa
+
+"""
+Se estructura en torno a secuencias de instrucciones que modifican el estado de las variables y los datos. 
+Se enfoca en "cómo" se deben realizar las acciones.
+
+Características:
+Variables, asignaciones, bucles, estructuras condicionales.
+
+"""
+total = 0
+for numero in range(1, 6):
+    total += numero
+print(total)
+
+
+
+#POO:
+
+"""
+La POO se basa en la idea de organizar el código en objetos, que son instancias de clases. 
+Cada objeto tiene atributos y métodos que encapsulan su estado y comportamiento.
+
+Características: 
+Clases, objetos, encapsulación, herencia, polimorfismo.
+
+"""
+class Animal:
+    def __init__(self, nombre):
+        self.nombre = nombre
+
+    def hablar(self):
+        pass
+
+class Perro(Animal):
+    def hablar(self):
+        return "Woof!"
+
+class Gato(Animal):
+    def hablar(self):
+        return "Meow!"
+
+fido = Perro("Fido")
+whiskers = Gato("Whiskers")
+
+print(fido.hablar())  # Salida: "Woof!"
+print(whiskers.hablar())  # Salida: "Meow!"
+
+
+#Programación Funcional
+
+"""
+Uso de funciones puras, donde una función siempre produce el mismo resultado para los mismos argumentos y no tiene efectos secundarios. 
+Se enfoca en "qué" debe hacerse.
+
+Características: 
+Funciones de orden superior, inmutabilidad, expresiones lambda, map, filter, reduce.
+"""
+numeros = [1, 2, 3, 4, 5]
+
+# Usando la función map para aplicar una función a cada elemento
+cuadrados = list(map(lambda x: x**2, numeros))
+# Resultado: [1, 4, 9, 16, 25]
+
+
+
+# Programación Declarativa
+
+"""
+Se centra en describir "qué" se debe lograr en lugar de "cómo" hacerlo. 
+Se utilizan declaraciones y expresiones para definir el resultado deseado, y el lenguaje de programación se encarga de la implementación.
+        
+Características: 
+SQL (para consultas de bases de datos), HTML (para diseño web).
+
+"""
+import sqlite3
+
+# Crear una conexión a una base de datos SQLite en memoria
+conn = sqlite3.connect(':memory:')
+cursor = conn.cursor()
+
+# Crear una tabla y agregar datos
+cursor.execute('''
+    CREATE TABLE usuarios (id INTEGER PRIMARY KEY, nombre TEXT, edad INTEGER)
+''')
+
+cursor.execute('''
+    INSERT INTO usuarios (nombre, edad) VALUES (?, ?)
+''', ('Alice', 25))
+
+# Realizar una consulta declarativa
+cursor.execute('SELECT nombre FROM usuarios WHERE edad > ?', (18,))
+resultados = cursor.fetchall()
+
+print(resultados)  # Salida: [('Alice',)]
+
+
+
+# Programación Modular
+
+"""
+Este paradigma se centra en dividir un programa grande en módulos más pequeños y manejables. 
+Cada módulo contiene funciones, clases y variables que realizan tareas específicas y pueden reutilizarse en otros programas.
+
+Características: 
+Módulos, importación y reutilización de código.
+
+"""
+# Módulo principal
+import mi_modulo
+
+resultado = mi_modulo.suma(5, 3)
+print(resultado)
+
+
+
+
 """......................"""
 
 # Async
+
+# async def 
+import asyncio
+
+async def hacer_algo():
+    await asyncio.sleep(1)
+    print("Hecho")
+
+asyncio.run(hacer_algo())
+
+"""
+hacer_algo() es una función asincrónica que pausa su ejecución durante 1 segundo utilizando await asyncio.sleep(1) y luego imprime "Hecho". 
+Durante esa pausa, el control se devuelve al bucle de eventos de asyncio para realizar otras tareas.
+"""
+
+
+#await 
+async def obtener_datos():
+    # Simulando una operación larga
+    await asyncio.sleep(2)
+    return "Datos obtenidos"
+
+async def principal():
+    resultado = await obtener_datos()
+    print(resultado)
+
+asyncio.run(principal())
+
+"""
+await asyncio.sleep(2) pausa la ejecución durante 2 segundos, y luego se recoge el resultado "Datos obtenidos". 
+La función principal() utiliza await obtener_datos() para esperar a que obtener_datos() se complete antes de continuar.
+"""
+
+
+"""
+Corrutinas (Coroutines):
+Las corrutinas son funciones especiales definidas con la palabra clave async def. 
+Pueden suspender su ejecución en puntos específicos utilizando await, lo que permite que otras tareas se ejecuten mientras esperan una operación asíncrona.
+
+"""
+async def mi_corrutina():
+    print("Inicio de la corrutina")
+    await asyncio.sleep(1)
+    print("Fin de la corrutina")
+
+
+
+
+"""
+Loop de Eventos (Event Loop):
+El bucle de eventos (a menudo denominado "event loop") es una estructura que administra y coordina la ejecución de tareas asíncronas en Python. 
+En Python, el módulo asyncio proporciona un bucle de eventos para gestionar tareas asíncronas.
+
+"""
+import asyncio
+
+async def main():
+    await asyncio.gather(mi_corrutina(), otra_corrutina())
+
+asyncio.run(main())
+
+
+
+import asyncio
+
+async def tarea_asincrona():
+    await asyncio.sleep(2)
+    print("Tarea asíncrona completada")
+
+async def main():
+    print("Inicio de la tarea principal")
+    await asyncio.gather(
+        tarea_asincrona(),
+        tarea_asincrona()
+    )
+    print("Todas las tareas asíncronas completadas")
+
+if __name__ == "__main__":
+    asyncio.run(main())
+
+"""
+crea dos tareas asíncronas que duermen durante 2 segundos y luego imprimen un mensaje. 
+El Event Loop de asyncio se encarga de ejecutar estas tareas de manera asíncrona sin bloquear la ejecución del programa principal.
+"""
+
+
+
+
+"""
+Awaitable Objects:
+Un "awaitable" es un objeto que se puede esperar (await) en una corrutina. 
+Esto incluye corrutinas, objetos de tipo asyncio.Future, generadores asíncronos y otros objetos definidos para ser esperados.
+
+"""
+import asyncio
+
+async def obtener_resultado():
+    await asyncio.sleep(1)
+    return "Resultado"
+
+async def main():
+    resultado = await obtener_resultado()
+    print(resultado)
+
+asyncio.run(main())
+
+
+
+"""
+Multiprocesamiento vs. Multihilos:
+La programación asíncrona se diferencia de la programación multiproceso y multihilo en que no implica la creación de múltiples subprocesos o procesos completos. 
+En cambio, utiliza un solo hilo de ejecución (thread) para gestionar tareas en un bucle de eventos. 
+Esto puede ser más eficiente en términos de recursos, especialmente para E/S intensivas.
+
+"""
+
+
+"""		
+Manejo de Excepciones:
+La programación asíncrona en Python también incluye la capacidad de manejar excepciones de manera adecuada en tareas asíncronas. 
+Se pueden utilizar bloques try y except en las corrutinas para capturar excepciones y manejar errores.
+
+"""
+
+
+"""
+Eventos y Callbacks:
+En algunos casos, se utilizan eventos y callbacks para manejar tareas asíncronas. 
+Los eventos se desencadenan cuando ocurre algo, y los callbacks son funciones que se ejecutan en respuesta a un evento específico.
+
+"""
+
+
+"""
+Tareas Concurrentes:
+La programación asíncrona permite ejecutar múltiples tareas de manera concurrente sin bloquear el hilo principal. 
+Esto mejora la capacidad de respuesta de las aplicaciones y permite una mejor utilización de los recursos del sistema.
+
+"""
+
+
+"""
+Funciones: 
+
+asyncio.run(coroutine): 
+Ejecuta una corutina de nivel superior. 
+Se utiliza para iniciar la ejecución de un programa asincrónico.
+
+asyncio.create_task(coroutine): 
+Crea una tarea asincrónica para ejecutar una corutina de manera concurrente.
+
+
+asyncio.sleep(seconds): 
+Pausa la ejecución de una corutina durante un período especificado en segundos.
+
+
+asyncio.wait(tasks): 
+Espera a que todas las tareas especificadas se completen.
+
+
+asyncio.gather(*coroutines):
+Ejecuta varias corutinas de manera concurrente y espera a que todas se completen.
+
+
+
+Event Loop:
+
+asyncio.get_event_loop(): 
+Obtiene el bucle de eventos actual.
+
+
+loop.create_task(coroutine):
+Crea una tarea asincrónica en un bucle de eventos.
+
+
+Semáforos y Locks:
+asyncio.Semaphore(value=1):
+Un semáforo que permite un número máximo de operaciones concurrentes.
+
+
+asyncio.Lock(): 
+Un candado que se utiliza para evitar que varias tareas accedan a una sección crítica de código al mismo tiempo.
+
+
+
+Comunicación entre Tareas:
+
+asyncio.Queue(): 
+Una cola asincrónica que permite la comunicación entre tareas.
+
+
+asyncio.Event(): 
+Un evento asincrónico que se puede esperar y establecer.
+
+
+
+Manejo de Excepciones:
+
+asyncio.TimeoutError: 
+Una excepción lanzada cuando se supera un tiempo de espera.
+
+
+
+Funciones de I/O Asíncrono:
+
+asyncio.open_connection(): 
+Crea una conexión TCP asincrónica.
+
+
+asyncio.start_server(): 
+Inicia un servidor TCP asincrónico.
+
+
+
+Funciones de Subprocesos Asíncronos:
+
+asyncio.create_subprocess_exec(): 
+Crea un nuevo proceso y devuelve un objeto de proceso asincrónico.
+
+
+asyncio.Process(): 
+Un objeto que representa un proceso en ejecución.
+
+
+
+Otros Métodos Útiles:
+
+asyncio.shield(): 
+Protege una tarea asincrónica de ser cancelada por una excepción.
+
+
+asyncio.run_coroutine_threadsafe(): 
+Ejecuta una corutina de manera segura desde un subproceso diferente
+
+"""
+
+
+# Web api con FastApi: solicitudes
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+async def leer_elementos():
+    # Simulando una operación asíncrona, como leer datos de una base de datos
+    await asyncio.sleep(1)
+    return {"mensaje": "Solicitudes manejadas de manera asíncrona"}
+
+
+
+#Acceso a Bases de Datos: biblioteca ORM con tortoise
+from tortoise import Tortoise, fields
+from tortoise.models import Model
+
+class Producto(Model):
+    id = fields.IntField(pk=True)
+    nombre = fields.CharField(max_length=255)
+    
+async def obtener_productos():
+    await Tortoise.init(
+        db_url="sqlite://db.sqlite3",
+        modules={"models": ["nombre_de_tu_módulo"]},
+    )
+    await Tortoise.generate_schemas()
+    
+    # Consulta a la base de datos de manera asíncrona
+    productos = await Producto.all()
+    
+    await Tortoise.close_connections()
+    return productos
+
+
+
+#Streaming de Datos en Tiempo Real: websockets para enviar y recibir mensajes
+import asyncio
+import websockets
+
+async def servidor_de_chat(websocket, ruta):
+    async for mensaje in websocket:
+        # Procesar mensajes en tiempo real
+        await enviar_a_todos(mensaje)
+
+async def enviar_a_todos(mensaje):
+    for cliente in clientes_conectados:
+        await cliente.send(mensaje)
+
+
+
+
+# Notificaciones y Actualizaciones en Tiempo Real: biblioteca como aiohttp y WebSockets.
+from aiohttp import web, WSMsgType
+
+async def manejar_solicitud(request):
+    ws = web.WebSocketResponse()
+    await ws.prepare(request)
+    
+    async for msg in ws:
+        if msg.type == WSMsgType.TEXT:
+            if msg.data == 'cerrar':
+                await ws.close()
+            else:
+                await enviar_notificacion(msg.data)
+    
+    return ws
+
+async def enviar_notificacion(mensaje):
+    # Lógica para enviar notificaciones a otros usuarios conectados
+    pass
+
