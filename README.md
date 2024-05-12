@@ -700,6 +700,12 @@
 				circulo(bob, 70)
 
 
+			*Este proceso para producir código tiene algunos incovenientes, pero hay alternativas. 
+
+			Pero sirve para dividir un programa en funciones mientras avanzas. 
+
+
+
 	Docstring:
 
 		Es una cadena al comienzo de una función que explica la interfaz
@@ -735,3 +741,571 @@
 				Ej, incluyen el efecto previsto de la función (como al dibujar segmentos de línea) y cualquier efecto secundario (como mover la tortuga o hacer otros cambios).
 
 		Si las precondiciones se satisfacen y las postcondiciones no, el error está en la función. Si tus pre y post condiciones están claras, pueden ayudar con la depuración.
+
+
+
+	Condicionales y recursividad: 
+
+		La sentencia if ejecuta código diferente dependiendo del estado del programa.
+
+
+		División entera y módulo:
+
+			Operador división entera (//): 
+
+				Divide dos números y redondea a un entero hacia abajo.
+
+				Ej. La duración de una película es 105 minutos. 
+
+				Quizás quieres saber cuánto dura en horas
+
+				>>> minutos = 105
+				>>> minutos / 60
+				1.75
+
+
+
+|| Recursividad
+
+	Es valido para una función llamar a otra función; es valido también para una función llamarse a sí misma.
+
+	```python
+
+	def cuenta_reg(n):
+		if n <= 0:
+			print('Despegue!')
+		else:
+			print(n)
+			cuenta_reg(n-1)
+
+	```
+
+	Si 'n' es 0 o negativo, muestra la palabra, “¡Despegue!” De lo contrario, muestra a 'n' y luego llama a la función con nombre 'cuenta_reg' (a sí misma) pasando a 'n-1' como argumento.
+
+
+	Si llamamos a 'cuenta_reg(3)':
+		
+		La ejecución de cuenta_reg comienza con n=3 , y dado que n es mayor que 0, muestra el valor 3 y se llama a sí misma...
+
+		La ejecución de cuenta_reg comienza con n=2 , y dado que n es mayor que 0. muestra el valor 2 y se llama a sí misma...
+
+		Y luego estás de regreso en __main__ . 
+
+		Por lo tanto, la salida completa se ve así en el diagrama de pila:
+
+			__main__
+			
+			cuenta_reg -> 3
+			
+			cuenta_reg -> 2
+			
+			cuenta_reg -> 1
+
+			cuenta_reg -> 0
+
+		3
+		2
+		1 
+		¡Despegue!
+
+
+	Como siempre, la parte de arriba de la pila es el marco para __main__ . 
+
+	Está vacío porque no creamos variables en __main__ ni le pasamos argumentos.
+
+	Los cuatro marcos de cuenta_reg tienen valores diferentes para el parámetro n. 
+
+	La parte de abajo de la pila, donde n=0 , se llama caso base. 
+
+	No hace una llamada recursiva, así que no hay más marcos.
+
+
+
+|| Recursividad infinita
+	
+	Si una recursividad nunca llega a un caso base, sigue haciendo llamadas recursivas por siempre y el programa nunca termina. 
+
+	Esto se conoce como recursividad infinita y en general no es una buena idea.	
+
+	Python entrega un mensaje de error cuando la recursividad alcanza la profundidad máxima:
+
+	```python
+
+	def recursivo():
+		recursivo()
+
+	```
+
+		File "<stdin>", line 2, in recursivo...
+
+			...
+			
+		RuntimeError: Maximum recursion depth exceeded
+
+
+
+|| Entrada de teclado
+	
+	Función incorporada llamada input que detiene el programa y espera a que el usuario escriba algo.
+
+	Cuando el usuario presiona Return o Enter , el programa continúa e input devuelve como cadena lo que escribió el usuario.
+
+	```python
+
+	texto = input()
+
+	```
+
+	```python
+
+	nombre = input('Cuál...es tu nombre?\n')
+
+	```
+
+	La secuencia '\n' al final del mensaje representa una nueva línea, la cual es un carácter especial que provoca un salto de línea.
+
+
+
+|| Depuración
+
+	Cuando ocurre un error de sintaxis o de tiempo de ejecución, el mensaje de error contiene mucha información, pero esto puede ser abrumador.
+
+		Qué tipo de error fue. 
+
+		Dónde ocurrió.
+
+
+	Los errores de sintaxis son generalmente fáciles de encontrar, pero hay algunas trampas.
+
+	Los errores de espacio en blanco pueden ser complicados porque los espacios y las sangrías son invisibles y estamos acostumbrados a ignorarlos.
+
+	Un mensaje de error puede indicar la línea 5, pero no hay nada malo con esa línea. 
+
+	Para encontrar el error real, podría ser útil imprimir el valor de relacion, que resulta ser 0.
+
+	El problema está en la línea 4, que utiliza división entera en lugar de división de coma flotante.
+
+	Deberías tomarte el tiempo de leer cuidadosamente los mensajes de error, pero no supongas que todo lo que dice es correcto.
+
+
+
+|| Funciones productivas
+	
+	Muchas de las funciones de Python que hemos utilizado, tales como las funciones matemáticas, producen valores de retorno. 
+
+	Sin embargo, las funciones que hemos escrito son todas nulas: 	
+
+		Tienen un efecto, como imprimir un valor o mover una tortuga, pero no tienen un valor de retorno.
+
+	
+	Valores de retorno: 
+
+		Al llamar a una función se genera un valor de retorno, que usualmente asignamos a una variable o utilizamos como parte de una expresión.
+
+			e = math.exp(1.0)
+
+			altura = radio * math.sin(radianes)
+
+		Las funciones que hemos escrito hasta ahora son todas nulas. 
+
+		No tienen valor de retorno; de manera más precisa, su valor de retorno es 'None'.
+
+
+	funciones productivas: 
+
+		El primer ejemplo es area, que devuelve el área de un círculo con un radio dado:
+			
+		```python	
+
+		def area(radio):
+		
+			a = math.pi * radio**2
+			return a
+
+		```
+
+		En una función productiva la sentencia 'return' incluye una expresión. 
+
+		Esta sentencia significa: “Sal inmediatamente de esta función y utiliza la siguiente expresión como valor de retorno.” 
+
+		La expresión puede ser arbitrariamente complicada, por lo que podríamos haber escrito esta función de manera más concisa:
+	
+		```python
+
+		def area(radio):
+			return math.pi * radio**2
+
+		```
+
+			Por otra parte, las variables temporales como a pueden hacer más fácil la depuración.
+
+
+	Multiples return:
+
+		A veces es útil tener múltiples sentencias return, una en cada rama de un condicional.
+
+		```python
+
+		def valor_absoluto(x):
+			if x < 0:
+			return -x
+		else:
+			return x
+
+		```
+
+		Están en un condicional alternativo, solo se ejecuta una.
+
+		Tan pronto como se ejecute una sentencia return, la función termina sin ejecutar ninguna de las sentencias posteriores. 
+
+		El código que aparece después de una sentencia return , o cualquier otro lugar que el flujo de ejecución nunca puede alcanzar, se llama 'código muerto'.
+
+		En una función productiva, es una buena idea asegurarse de que cada camino posible a
+		través del programa llegue a una sentencia return. 
+
+		```python
+
+		def valor_absoluto(x):
+			if x < 0:
+				return -x
+			if x > 0:
+				return x
+		
+		```
+
+		Esta función es incorrecta porque si x es 0, ninguna condición es verdadera, y la función termina sin llegar a una sentencia return. 
+
+		Si el flujo de ejecución llega al final de una
+		función, el valor de retorno es None, lo cual no es el valor absoluto de 0.
+
+		>>> print(valor_absoluto(0))
+		None
+
+
+
+|| Desarrollo Incremental
+
+	A medida que vayas escribiendo funciones más grandes, podrías encontrarte pasando más tiempo depurando.
+
+	Para lidiar con programas cada vez más complejos, tal vez quieras intentar un proceso llamado desarrollo incremental.
+
+	El objetivo del desarrollo incremental es evitar largas sesiones de depuración agregando y probando solo un pedazo de código a la vez.
+
+
+	1. El primer paso es considerar cómo debería ser una función.
+		
+		cuáles son las entradas (parámetros).
+
+		cuál es la salida (valor de retorno).
+
+		Confirmado que la función es sintácticamente correcta y podemos comenzar agregando código al cuerpo.
+
+
+	2. Un siguiente paso razonable es encontrar las diferencias.
+
+		Puede almacenar esos valores en variables temporales y las imprime.
+
+		Sabremos que la función obtiene los argumentos correctos y realiza el primer cálculo de manera correcta. 
+
+		Si no, solo hay que revisar unas pocas líneas.
+
+		Tendrías que ejecutar el programa en este punto y verificar la salida.
+
+		Si eso funciona de manera correcta, estás listo. De lo contrario, tal vez quieras imprimir el valor de resultado antes de la sentencia return.
+
+		La versión final de la función no muestra nada cuando se ejecuta: solo devuelve un valor.
+
+		Las sentencias print que escribimos son útiles para depurar, pero una vez que la función esté bien, deberías borrarlas. 
+
+		Un código como ese se llama andamiaje (en inglés, scaffolding) porque es útil para construir el programa pero no es parte del producto final.
+
+
+	3. Claves: 
+
+		1. Comienza con un programa que funcione y haz pequeños cambios incrementales. 
+
+		En cualquier punto, si hay un error, deberías tener una buena idea de dónde está.
+
+		
+		2. Utiliza variables que guarden valores intermedios de tal manera que puedas mostrarlos y verificarlos.
+
+		
+		3. Una vez que el programa funciona, tal vez quieras borrar algo del andamiaje o consolidar varias sentencias en una expresión compuesta, pero solo si no hace al programa difícil de leer.
+
+
+
+	Composición: 
+
+		Puedes llamar a una función desde dentro de otra.
+
+		Por ejemplo, una función que tome dos puntos, el centro de un círculo y un punto de su perímetro, y calcule el área del círculo.
+
+
+		Supongamos que el punto central se almacena en las variables 'xc' e 'yc' , y el punto del perímetro está en 
+		'xp' e 'yp' . 
+
+
+		1. El primer paso es encontrar el radio del círculo, que es la distiancia entre los dos puntos. 
+
+		Acabamos de escribir una función, distancia , que hace eso:
+
+		```python
+
+		radio = distancia(xc, yc, xp, yp)
+
+		```
+
+		2. El siguiente paso es encontrar el área de un círculo con ese radio; también escribimos eso:
+
+		```python
+
+		resultado = area(radio)
+
+		```
+
+
+		3. Encapsulando estos pasos en una función, obtenemos:
+
+		```python
+
+		def area_circulo(xc, yc, xp, yp):
+			radio = distancia(xc, yc, xp, yp)
+			
+			resultado = area(radio)
+			
+			return resultado
+
+		```
+
+		Las variables temporales radio y resultado son útiles para el desarrollo y la depuración, pero una vez que el programa funciona, podemos hacerlo más conciso componiendo las llamadas a funciones:
+
+		```python
+
+		def area_circulo(xc, yc, xp, yp):
+			return area(distancia(xc, yc, xp, yp))
+
+		```
+
+
+|| Factorial
+
+
+	3! = 3 * 2 * 1 
+
+		= 6
+
+
+	```python
+
+	def factorial(n):
+		if n == 0:
+			return 1
+		else:
+			recur = factorial(n-1)
+			resultado = n * recur
+			return resultado
+
+	```
+
+	Dado que 3 no es 0, tomamos la segunda rama y calculamos el factorial de n-1 ...
+	
+	Dado que 2 no es 0, tomamos la segunda rama y calculamos el factorial de n-1 ...
+
+
+	Diagrama de pila: 
+
+		__main__
+
+		factorial n-> 3  recur -> 2 resultado -> 6 -> main
+
+		factorial n-> 2  recur -> 1 resultado -> 2 
+
+		factorial n-> 1  recur -> 1 resultado -> 1 
+
+		factorial n-> 0 
+
+
+		Cuando es 6, vuelve a main. 
+
+
+
+|| Leer flujo de ejecución 
+	
+	Seguir el flujo de ejecución es una manera de leer programas, pero puede volverse abrumador rápidamente. 
+
+	Una alternativa es lo que yo llamo “salto de fe”. 
+
+	Cuando llegas a una llamada a función, en lugar de seguir el flujo de ejecución, supones que la función es correcta y que devuelve el resultado correcto.
+
+	Una vez que nos hemos convencido de que esta función es correcta —examinando el código y probándolo— podemos utilizar la función sin mirar el cuerpo otra vez.
+
+	```python
+
+	def fibonacci(n):
+		if n == 0:
+			return 0
+		elif n == 1:
+			return 1
+		else:
+			return fibonacci(n-1) + fibonacci(n-2)
+
+	```
+
+	Si intentas seguir el flujo de ejecución aquí, incluso para valores de n bastante pequeños, tu cabeza estalla. 
+
+	Sin embargo, de acuerdo al salto de fe, si supones que las dos llamadas recursivas funcionan correctamente, entonces está claro que obtienes el resultado correcto al sumarlas.
+
+
+
+|| Verificar Tipos
+
+
+	factorial(1.5)
+	
+	RuntimeError: Maximum recursion depth exceeded
+
+
+	Se ve como una recursividad infinita.
+
+	La función tiene un caso base:
+		
+		cuando n == 0  
+
+	Pero si 'n' no es un entero, podemos perder el caso base y seguir con la recursividad sin parar.
+
+
+	En la primera llamada recursiva, el valor de n es 0.5. En la siguiente, es -0.5. Desde allí, se hace menor (más negativo), pero nunca será 0.
+
+	Tenemos dos opciones. 
+
+	Podemos intentar generalizar la función factorial para que funcione con números de coma flotante o podemos hacer que factorial verifique el tipo de
+	sus argumentos. 
+
+	La primera opción se llama la 'función gamma' y está un poco más allá del alcance de este libro. 
+
+	Entonces iremos por la segunda.
+	
+	Podemos utilizar la función incorporada 'isinstance' para verificar el tipo del argumento.
+
+	Mientras estemos en ello, podemos también asegurarnos de que el argumento sea positivo:
+
+	```python
+
+	def factorial(n):
+		
+		if not isinstance(n, int):
+			
+			print('El factorial solo está definido para enteros.')
+			
+			return None
+		
+		elif n < 0:
+			
+			print('El factorial no está definido para enteros negativos.')
+
+			return None
+
+		elif n == 0:	
+			
+			return 1
+		
+		else:
+			
+			return n * factorial(n-1)
+
+	```
+
+	El primer caso base se encarga de los no enteros; el segundo se encarga de los enteros negativos. 
+
+	En ambos casos, el programa imprime un mensaje de error y devuelve 'None' para indicar que algo anduvo mal:
+
+
+
+|| Depuración
+
+	Separar un programa grande en funciones pequeñas crea puntos de control naturales para la depuración. 
+
+	Si una función no está funcionando, hay tres posibilidades a considerar:
+		
+		Hay algo mal en los argumentos que obtiene la función: 
+
+			se viola una precondición.
+
+		
+		Hay algo mal en la función:
+
+			se viola una postcondición.
+
+		
+		Hay algo mal en el valor de retorno o la manera en que se utiliza.
+
+
+	Para descartar la primera posibilidad, puedes agregar una sentencia print al comienzo de la función y mostrar los valores de los parámetros (y quizás sus tipos). 
+
+	O bien puedes escribir código que verifique las precondiciones de manera explícita.
+
+	Si los parámetros se ven bien, agrega una sentencia 'print' antes de cada sentencia 'return' y muestra el valor de retorno. 
+
+	Si es posible, verifica el resultado a mano. 
+
+	Considera llamar a la función con valores que faciliten la verificación del resultado.
+
+	Considera llamar a la función con valores que faciliten la verificación del resultado.
+
+	Si la función parece funcionar, mira la llamada a función para asegurarte de que el valor de retorno se esté utilizando correctamente (¡o si al menos se está utilizando!).
+
+	Agregar sentencias print al comienzo y al final de una función puede ayudar a hacer más visible el flujo de ejecución. 
+
+
+	Por ejemplo, aquí hay una versión de factorial con sentencias print:
+
+	```
+	def factorial(n):
+		
+		espacio = ' ' * (4 * n)
+		
+		print(espacio, 'factorial', n)
+		
+		if n == 0:			
+			print(espacio, 'devolviendo 1')			
+			return 1
+		
+		else:
+			recursivo = factorial(n-1)
+			
+			resultado = n * recursivo
+			
+			print(espacio, 'devolviendo', resultado)
+			
+			return resultado
+
+	```
+
+	espacio es una cadena de caracteres de espacio que controla la sangría de la salida. 
+
+	Este es el resultado de factorial(4) :
+					factorial 4
+				factorial 3
+			factorial 2
+		factorial 1
+	factorial 0
+	devolviendo 1
+		devolviendo 1
+			devolviendo 2
+				devolviendo 6
+					devolviendo 24
+
+
+	Si estás confundido acerca del flujo de ejecución, este tipo de salidas puede ser útil. 
+
+	Desarrollar andamiaje eficaz toma algo de tiempo, pero un poco de andamiaje puede ahorrar mucha depuración.
+
+
+
+
+|| Iteración
+
+
+
+
+||
