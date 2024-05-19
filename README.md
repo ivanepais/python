@@ -4739,8 +4739,1734 @@
 
 	Persistencia: 
 
+		Otros programas son persistentes: se ejecutan por un tiempo largo (o todo el tiempo), mantienen al menos algunos de sus datos en almacenamiento permanente (un disco duro, por ejemplo) y, si se apagan y reinician, continúan donde estaban.
+
+		Ejemplos de programas persistentes son los sistemas operativos, que se se ejecutan casi siempre que un computador está encendido, y los servidores web, que se ejecutan todo el tiempo, esperando solicitudes para entrar en la red.
+
+		Una de las maneras más simples que tienen los programas para mantener sus datos es leyendo y escribiendo archivos de texto. 
+
+		Ya hemos visto programas que leen archivos de texto; en este capítulo veremos programas que los escriban.
+
+		Una alternativa es almacenar el estado del programa en una base de datos. 
+
+		En este capítulo presentaré una base de datos simple y un módulo, 'pickle', que facilita el almacenamiento de datos del programa.
+
+
+	Leer y escribir:
+
+		Un archivo de texto es una secuencia de caracteres almacenados en un medio permanente como un disco duro, memoria flash o CD-ROM. 
+
+		Vimos cómo abrir y leer un archivo con 'open()'. 
+
+		Para escribir un archivo, tienes que abrirlo con el modo 'w' como segundo parámetro:
+
+		```
+		fout = open('output.txt', 'w')
+
+		```
+
+		Si el archivo existe, abrirlo en modo escritura elimina los datos antiguos y comienza de nuevo, ¡así que ten cuidado! Si el archivo no existe, se crea uno nuevo.
+
+		'open' devuelve un objeto de archivo que proporciona métodos para trabajar con el archivo.
+
+		El método 'write' pone datos en el archivo.
+
+		```
+		linea1 = "He aquí el junco,\n"
+		fout.write(linea1)
+
+		```
+		18
+
+		El valor de retorno es la cantidad de caracteres que se escribieron. 
+
+		El objeto de archivo hace un seguimiento del lugar en donde está, por lo cual si llamas a 'write' de nuevo, agrega los nuevos datos al final del archivo.
+
+		```
+		linea2 = "emblema de nuestra tierra.\n"
+		fout.write(linea2)
+
+		```
+		27
+
+		Cuando hayas terminado de escribir, deberías cerrar el archivo.
+
+		```
+		fout.close()
+
+		```
+		Si no cierras el archivo, se cierra cuando el programa termina.
+
+
+	Operador de formato:
+
+		El argumento de 'write' tiene que ser una cadena, por lo cual si queremos poner valores en un archivo, tenemos que convertirlos a cadenas. 
+
+		La manera más fácil de hacer eso es con 'str':
+
+		```
+		x = 52
+		fout.write(str(x))
+
+		```
+
+		Una alternativa es utilizar el operador de formato: %.
+
+		Cuando se aplica a enteros, % es el operador de módulo.
+
+		Pero cuando el 'primer operando es una cadena', % es el 'operador de formato'.
+
+		El primer operando es la cadena de formato, que contiene una o más secuencias de formato, las cuales especifican la manera en que se da formato al segundo operando. 
+
+		El resultado es una cadena.
+
+		Por ejemplo, la secuencia de formato '%d' significa que el segundo operando debería formatearse como un entero decimal:
+
+		```
+		camellos = 42
+		'%d' % camellos
+
+		```
+		'42'
+
+		El resultado es la cadena '42', que no debe confundirse con el valor entero 42.
+
+		Una secuencia de formato puede aparecer en cualquier lugar de la cadena, así que puedes incrustar un valor en una oración:
+
+		```
+		'He visto %d camellos.' % camellos
+
+		```
+		'He visto 42 camellos.'
+
+
+		Si hay más de una secuencia de formato en la cadena, el segundo argumento tiene que ser una tupla. 
+
+		Cada secuencia de formato es emparejada con un elemento de la tupla, en orden.
+
+		El siguiente ejemplo utiliza '%d' para dar formato a un entero, '%g' para dar formato a un número de coma flotante y '%s' para dar formato a una cadena:
+
+		```
+		'En %d años he visto %g %s.' % (3, 0.1, 'camellos')
+
+		```
+		'En 3 años he visto 0.1 camellos.'
+
+		El número de elementos en la tupla tiene que coincidir con el número de secuencias de formato en la cadena.
+
+		Además, los tipos de los elementos tienen que coincidir con las secuencias de formato:
+
+		```
+		'%d %d %d' % (1, 2)
+
+		```
+		TypeError: not enough arguments for format string
+
+		```
+		'%d' % 'dolares'
+
+		```
+		TypeError: %d format: a number is required, not str 
+
+		En el primer ejemplo, no hay suficientes elementos; en el segundo, el elemento tiene tipo incorrecto.
+
+
+	Nombres de archivo y rutas:
+
+		Los archivos se organizan en directorios (también llamados “carpetas”). 
+
+		Cada programa que se ejecuta tiene un “directorio actual”, que es el directorio por defecto para la mayor parte de las operaciones. 
+
+		Por ejemplo, cuando abres un archivo para lectura, Python lo busca en el directorio actual.
+
+		El módulo 'os' proporciona funciones para trabajar con archivos y directorios (“os” significa “operating system”). 
+
+		'os.getcwd' devuelve el nombre del directorio actual:
+
+		```
+		import os
+		cwd = os.getcwd()
+		cwd
+
+		```
+		'/home/dinsdale'
+
+		cwd significa “current working directory”. 
+
+		El resultado en este ejemplo es '/home/dinsdale', que es el directorio principal de un usuario con nombre dinsdale.
+
+		Una cadena como '/home/dinsdale' que identifica un archivo o un directorio se llama 'ruta' (en inglés, path).
+
+		Un nombre de archivo simple, como memo.txt, también se considera una ruta, pero es una ruta relativa porque se relaciona con el directorio actual. 
+
+		Si el directorio actual es /home/dinsdale, el nombre de archivo memo.txt haría referencia a /home/dinsdale/memo.txt.
+
+		Una ruta que comienza con / no depende del directorio actual: se llama 'ruta absoluta'. 
+
+		Para encontrar la ruta absoluta de un archivo, puedes utilizar 'os.path.abspath':
+
+		```
+		os.path.abspath('memo.txt')
+
+		```
+		'/home/dinsdale/memo.txt'
+
+		'os.path' proporciona otras funciones para trabajar con nombres de archivo y rutas.
+
+		Por ejemplo, 'os.path.exists' verifica si un archivo o directorio existe:
+
+		```
+		os.path.exists('memo.txt')
+
+		```
+		True
+
+		Si existe, 'os.path.isdir' verifica si es un directorio:
+
+		```
+		os.path.isdir('memo.txt')
+
+		```
+		False
+
+
+		```
+		os.path.isdir('/home/dinsdale')
+
+		```
+		True
+
+		Del mismo modo, 'os.path.isfile' verifica si es un archivo.
+
+		'os.listdir' devuelve una lista de los archivos (y otros directorios) en el directorio dado:
+
+		```
+		os.listdir(cwd)
+
+		```
+		['music', 'photos', 'memo.txt']
+
+
+		Para demostrar estas funciones, el siguiente ejemplo “recorre” un directorio, imprime los nombres de todos los archivos y se llama a sí mismo de manera recursiva en todos los directorios.
+
+		```
+		def walk(nombre_dir):
+			for nombre in os.listdir(nombre_dir):
+				ruta = os.path.join(nombre_dir, nombre)
+				if os.path.isfile(ruta):
+					print(ruta)
+				else:
+					walk(ruta)
+
+		```
+
+		os.path.join toma un directorio y un archivo y los une en una ruta completa.
+
+
+		El módulo os proporciona una función llamada walk que es similar a esta pero más versátil.
+
+
+	Capturar excepciones:
+
+		Muchas cosas pueden salir mal cuando intentas leer y escribir archivos. 
+
+		Si intentas abrir un archivo que no existe, obtienes un 'FileNotFoundError':
+
+		```
+		fin = open('archivo_malo')
+
+		```
+		FileNotFoundError: [Errno 2] No such file or directory: 'archivo_malo'
+
+
+		Si no tienes permisos de acceso a un archivo:
+
+		```
+		fout = open('/etc/passwd', 'w')
+
+		```
+		PermissionError: [Errno 13] Permission denied: '/etc/passwd'
+
+		Y si intentas abrir un directorio para lectura, obtienes
+
+		```
+		fin = open('/home')
+
+		```
+		IsADirectoryError: [Errno 21] Is a directory: '/home'
+
+
+		Para evitar estos errores, podrías utilizar funciones como 'os.path.exists' y 'os.path.isfile', pero tomaría mucho tiempo y código verificar todas las posibilidades (si “ Errno 21 ” indica algo, hay al menos 21 cosas que pueden salir mal).
+
+		Es mejor continuar y avanzar —y lidiar con los problemas, si ocurren— que es exactamente lo que hace la sentencia 'try'. 
+
+		La sintaxis es similar a una sentencia if...else :
+		
+		```
+		try:
+			fin = open('archivo_malo')
+		except:
+			print('Algo salió mal.')
+
+		```
+
+		Python comienza ejecutando la cláusula try. 
+
+		Si todo sale bien, se salta la cláusula except y continúa. 
+
+		Si ocurre una excepción, salta hacia afuera de la cláusula try y ejecuta la cláusula 'except'.
+
+
+		Manejar una excepción con una sentencia try se llama 'capturar una excepción'. 
+
+		En este ejemplo, la cláusula except imprime un mensaje de error que no es de mucha ayuda. 
+
+		En general, capturar una excepción te da una oportunidad de arreglar el problema, o intentar de nuevo, o al menos terminar el programa de manera elegante.
+
+
+	Base de datos: 
+
+		Una base de datos es un archivo que está organizado para almacenar datos. 
+
+		Muchas bases de datos están organizadas como un diccionario en el sentido de que mapean de claves a valores.
+
+		La diferencia más grande entre una base de datos y un diccionario es que la base de datos está en un disco (u otro almacenamiento permanente), por lo cual persiste después de que el programa termina.
+
+		El módulo 'dbm' proporciona una interfaz para crear y actualizar archivos de base de datos.
+
+		Como ejemplo, crearé una base de datos que contiene títulos para archivos de imagen.
+
+		Abrir una base de datos es similar a abrir otros archivos:
+
+		```
+		import dbm
+		db = dbm.open('títulos', 'c')
+
+		```
+
+		El modo 'c' significa que la base de datos debería ser creada si no existe ya. 
+
+		El resultado es un objeto de base de datos que puede ser utilizado (para la mayoría de las operaciones) como un diccionario.
+
+		Cuando creas un nuevo 'ítem', dbm actualiza el archivo de base de datos.
+
+		```
+		db['cleese.png'] = 'Foto de John Cleese.'
+
+		```
+		
+		Cuando accedes a uno de los ítems, dbm lee el archivo:
+
+		```
+		db['cleese.png']
+
+		```
+		b'Foto de John Cleese.'
 
 		
+		El resultado es un 'objeto de bytes', que es la razón por la cual comienza con 'b'. 
+
+		Un objeto de bytes es similar a una cadena en muchos sentidos. 
+
+		A medida que llegas más lejos en Python, la diferencia se vuelve importante, pero por ahora podemos ignorarla.
+
+		Si haces otra asignación a una clave existente, dbm reemplaza el valor antiguo:
+
+		```
+		>>> db['cleese.png'] = 'Foto de John Cleese haciendo un tonto paseo.'
+		>>> db['cleese.png']
+
+		```
+		b'Foto de John Cleese haciendo un tonto paseo.'
+
+
+		Algunos métodos de diccionario, como keys e items, no funcionan con objetos de base de datos. 
+
+		Pero la iteración con un bucle for funciona:
+
+		```
+		for clave in db.keys():
+			print(clave, db[clave])
+
+		```
+
+		Al igual que los otros archivos, deberías cerrar la base de datos cuando termines:
+
+		```
+		db.close()
+
+		```
+
+	pickle: 
+
+		Una limitación de 'dbm' es que las claves y valores tienen que ser cadenas o bytes. 
+
+		Si intentas utilizar cualquier otro tipo, obtienes un error.
+
+		El módulo 'pickle' puede ayudar.
+
+		Este módulo traduce casi cualquier tipo de objeto en una cadena adecuada para almacenar en una base de datos y también traduce cadenas para que vuelvan a ser objetos.
+
+		'pickle.dumps' toma un objeto como parámetro y devuelve una representación de cadena (dumps es una abreviatura de “dump string”):
+
+		```
+		import pickle
+		t = [1, 2, 3]
+		pickle.dumps(t)
+
+		```
+		b'\x80\x03]q\x00(K\x01K\x02K\x03e.'
+
+		El formato no es obvio para lectores humanos: está hecho para que pickle lo encuentre fácil de interpretar. 
+
+		'pickle.loads' (“load string”) reconstituye el objeto:
+
+		```
+		t1 = [1, 2, 3]
+		s = pickle.dumps(t1)
+		t2 = pickle.loads(s)
+		t2
+
+		```
+		[1, 2, 3]
+
+	
+		Aunque el nuevo objeto tiene el mismo valor que el antiguo, no es (en general) el mismo objeto:
+
+		```
+		t1 == t2
+
+		```
+		True
+
+
+		```
+		t1 is t2
+
+		```
+		False
+
+		En otras palabras, “picklear” y luego “despicklear” tiene el mismo efecto que copiar el objeto.
+
+		Puedes utilizar pickle para almacenar objetos que no sean cadena en una base de datos.
+
+		De hecho, esta combinación es tan común que ha sido encapsulada en un módulo llamado 'shelve'.
+
+
+	Tuberías: 
+
+		La mayoría de los sistemas operativos proporcionan una interfaz de línea de comandos, también conocida como shell. 
+
+		Las shells generalmente proporcionan comandos para navegar en el sistema de archivos e iniciar aplicaciones. 
+
+		Por ejemplo, en Unix puedes cambiar directorios con 'cd', mostrar los contenidos de un directorio con 'ls' e iniciar un navegador web escribiendo (por ejemplo) firefox.
+
+		Cualquier programa que puedes iniciar desde la shell puede también iniciarse desde Python utilizando un objeto de 'tubería' (en inglés, pipe object), que representa un programa en ejecución.
+
+		Por ejemplo, el comando Unix ls -l normalmente muestra los contenidos del directorio actual en formato largo. 
+
+		Puedes ejecutar ls con os.popen 1:
+
+		```
+		cmd = 'ls -l'
+		fp = os.popen(cmd)
+
+		```
+
+		El argumento es una cadena que contiene un comando de shell. 
+
+		El valor de retorno es un objeto que se comporta como un archivo abierto. 
+
+		Puedes leer la salida del proceso ls una línea a la vez con 'readline' u obtener todo de una vez con 'read':
+
+		```
+		res = fp.read()
+
+		```
+
+		Cuando termines, cierras la tubería como un archivo:
+
+		```
+		stat = fp.close()
+		print(stat)
+
+		```
+		None
+
+		
+		El valor de retorno es el estado final del proceso ls; None significa que termina de manera normal (sin errores).
+
+		Por ejemplo, la mayoría de los sistemas Unix proporcionan un comando llamado 'md5sum' que lee los contenidos de un archivo y calcula una “suma de verificación”. 
+
+		Este comando proporciona una manera eficiente de verificar que dos archivos tengan los mismos contenidos. 
+
+		La probabilidad de que diferentes contenidos entreguen la misma suma de verificación es muy pequeña (es decir, improbable que ocurra antes de que el universo colapse).
+
+		Puedes utilizar una tubería para ejecutar 'md5sum' desde Python y obtener el resultado:
+
+		```
+		nombre_archivo = 'book.tex'
+		cmd = 'md5sum ' + nombre_archivo
+		fp = os.popen(cmd)
+		res = fp.read()
+		stat = fp.close()
+		print(res)
+			
+		```
+		1e0033f0ed0656636de0d75144ba32e0 book.tex
+		
+
+		```
+		print(stat)
+
+		```
+		None
+
+	
+		'popen' ahora está obsoleto, lo cual significa que se supone que debemos dejar de utilizarla y comenzar a utilizar el módulo 'subprocess'.
+
+		Pero para casos simples, encuentro a subprocess más complicado que necesario.
+		
+		Entonces voy a seguir utilizando popen hasta que lo quiten.
+
+
+	Escribir módulos:
+
+		Cualquier archivo que contiene código Python puede importarse como módulo. 
+
+		Por ejemplo, supongamos que tienes un archivo con nombre 'wc.py' con el siguiente código:
+
+		```
+		def contar_lineas(nombre_archivo):
+			contar = 0
+			for linea in open(nombre_archivo):
+				contar += 1
+			return contar
+		print(contar_lineas('wc.py'))
+
+		```
+		
+		Si ejecutas este programa, se lee a sí mismo e imprime el número de líneas en el archivo, el cual es 7.
+
+		Puedes también importarlo así:
+
+		```
+		import wc
+	
+		```
+		7
+
+		
+		Ahora tienes un objeto de módulo wc:
+
+		```
+		wc
+
+		```
+		<module 'wc' from 'wc.py'>
+
+		El objeto de módulo proporciona contar_lineas:
+
+		```
+		wc.contar_lineas('wc.py')
+
+		```
+		7
+
+		Entonces así es como escribes módulos en Python.
+
+		El único problema con este ejemplo es que, cuando importas el módulo, ejecuta el código de prueba de la parte final. 
+
+		Normalmente, cuando importas un módulo, este define nuevas funciones pero no las ejecuta.
+
+		Los programas que serán importados como módulos a menudo utilizan la siguiente forma:
+			
+		```
+		if __name__ == '__main__':
+			print(contar_lineas('wc.py'))
+
+		```
+		__name__ es una variable incorporada que se establece cuando se inicia el programa. 
+
+		Si el programa se está ejecutando como un script, __name__ tiene el valor '__main__' ; en ese caso, el código de prueba se ejecuta. 
+
+		De lo contrario, si el módulo se está importando, se salta el código de prueba.
+
+		Como ejercicio, escribe este ejemplo en un archivo con nombre wc.py y ejecútalo como un script.
+
+		Luego ejecuta el intérprete de Python y haz import wc . ¿Cuál es el valor de __name__ cuando el módulo se está importando?
+
+
+		Advertencia: si importas un módulo que ya ha sido importado, Python no hace nada.
+
+		No vuelve a leer el archivo, incluso si ha cambiado.
+
+		Si quieres volver a cargar un módulo, puedes utilizar la función incorporada 'reload', pero puede ser complicada, por lo cual lo más seguro es reiniciar el intérprete y luego importar el módulo de nuevo.
+
+
+|| Depuración
+	
+	Cuando lees y escribes archivos, podrías tener problemas con el espacio en blanco. 
+
+	Estos errores pueden ser difíciles de depurar porque los espacios, sangrías y nuevas líneas son normalmente invisibles:
+
+	```
+	s = '1 2\t 3\n 4'
+	print(s)
+
+	```
+	1 2 3
+	 4
+
+	La función incorporada 'repr' puede ayudar. 
+
+	Toma cualquier objeto como argumento y devuelve una representación de cadena del objeto. 
+
+	Para las cadenas, representa los caracteres de espacio en blanco con secuencias de barras invertidas:
+
+	```
+	print(repr(s))
+	
+	```
+	'1 2\t 3\n 4'
+
+	Esto puede ser útil para depurar.
+	
+	Otro problema que podrías encontrar es que sistemas diferentes utilizan caracteres diferentes para indicar el fin de una línea. 
+
+	Algunos sistemas utilizan una nueva línea, representada por \n. 
+
+	Otros utilizan un carácter “return”, representado por \r.
+
+	Algunos utilizan ambos. 
+
+	Si mueves archivos entre sistemas diferentes, estas inconsistencias pueden causar problemas.
+
+	Para la mayoría de los sistemas, hay aplicaciones para convertir de un formato a otro.
+	
+	Puedes encontrarlas (y leer más sobre este tema)
+
+
+|| Clases y objetos
+
+	Después de utilizar funciones para organizar código y tipos incorporados para organizar datos. 
+
+	El siguiente paso es aprender “programación orientada a objetos”, que utiliza tipos definidos por el programador para organizar tanto código como datos.
+
+
+	Tipos definidos por el programador:
+
+		Definir un tipo nuevo. 
+
+		Como ejemplo, crearemos un tipo llamado 'Punto' que representa un punto en el espacio bidimensional.
+
+		En notación matemática, los puntos son a menudo escritos en paréntesis con una coma que separa las coordenadas.
+
+		Por ejemplo, (0,0) representa el origen, y (x,y) representa el punto que está x unidades hacia la derecha e y unidades hacia arriba, a partir del origen.
+
+		Hay muchas maneras en las cuales podríamos representar puntos en Python:
+
+			Podríamos almacenar las coordenadas de manera separada en dos variables, x e y.
+
+
+			Podríamos almacenar las coordenadas como elementos en una lista o tupla.
+
+			Podríamos crear un tipo nuevo para representar puntos como objetos.
+
+		
+		Crear un tipo nuevo es más complicado que las otras opciones, pero tiene ventajas que pronto serán aparentes.
+
+		Un tipo definido por el programador también se llama clase. 
+
+		Una definición de clase se ve así:
+
+		```
+		class Punto:
+			"""Representa un punto en un espacio 2-D."""
+		
+		```
+
+		El encabezado indica que la clase nueva se llama 'Punto'.
+
+		El cuerpo es un docstring que
+		explica para qué es la clase. 
+
+		Puedes definir variables y métodos dentro de una definición de clase, pero volveremos a eso más adelante.
+
+		
+		Definir una clase con nombre Punto crea un objeto de clase.
+
+		```
+		Punto
+
+		```
+		<class '__main__.Punto'>
+
+		Dado que Punto se define en el nivel más alto, su “nombre completo” es __main__.Punto .
+
+		El objeto de clase es como una fábrica para crear objetos.
+
+		Para crear un Punto, llamas a Punto como si fuera una función.
+
+		```
+		vacio = Punto()
+		vacio
+
+		```
+		<__main__.Punto object at 0xb7e9d3ac>
+
+		El valor de retorno es una referencia a un objeto Punto, que asignamos a vacio.
+		
+		El acto de crear un objeto nuevo se llama 'instanciación', y el objeto es una instancia de la clase.
+
+		Cuando imprimes una instancia, Python te dice a qué clase pertenece y dónde se almacena en la memoria (el prefijo 0x significa que el siguiente número es un hexadecimal).
+
+		
+		Cada objeto es una instancia de alguna clase, por tanto “objeto” e “instancia” son intercambiables. 
+
+		Sin embargo, en este capítulo utilizo “instancia” para indicar que estoy hablando de un tipo definido por el programador.
+
+
+	Atributos:
+
+		Puedes asignar valores a una instancia utilizando notación de punto:
+
+		```
+		vacio.x = 3.0
+		vacio.y = 4.0
+	
+		```	
+		
+		Esta sintaxis es similar a la sintaxis para seleccionar una variable de un módulo, tal como 'math.pi' o 'string.whitespace'. 
+
+		En este caso, sin embargo, estamos asignando valores a elementos que tienen nombre y pertenecen a un objeto.
+
+		Estos elementos se llaman 'atributos'.
+
+
+		Diagrama: 
+
+			vacio -> Punto
+					 x->3.0
+					 y->4.0
+
+
+			Es un diagrama de estado que muestra el resultado de estas asignaciones. 
+
+			Un diagrama de estado que muestra un objeto con sus atributos se llama 'diagrama de objeto'.
+
+			La variable vacio se refiere a un objeto Punto, que contiene dos atributos. 
+
+			Cada atributo se refiere a un número de coma flotante.
+
+		
+		Puedes leer el valor de un atributo utilizando la misma sintaxis:
+
+		```
+		>>> vacio.y
+
+		```
+		4.0
+
+
+		```
+		x = vaciso.x
+		x
+
+		```
+		3.0
+
+		La expresión 'vacio.x' significa “Ve al objeto al cual vacio se refiere y obten el valor de x .”
+
+		En este ejemplo, asignamos ese valor a una variable con nombre x. 
+
+		No hay conflicto entre la variable x y el atributo x.
+
+		Puedes utilizar la notación de punto como parte de una expresión. Por ejemplo:
+
+		```
+		'(%g, %g)' % (vacio.x, vacio.y)
+
+		```
+		'(3.0, 4.0)'
+
+
+		```
+		distancia = math.sqrt(vacio.x**2 + vacio.y**2)
+
+		distancia
+
+		```
+		5.0
+
+
+		Puedes pasar una instancia como argumento en la manera usual. 
+
+		Por ejemplo: 
+
+		```
+		def imprimir_punto(p):
+			print('(%g, %g)' % (p.x, p.y))
+
+		```
+
+		'imprimir_punto' toma un punto como argumento y lo muestra en notación matemática.
+
+		
+		Para invocarla, puedes pasar a vacio como argumento:
+		
+		```
+		>>> imprimir_punto(vacio)
+		(3.0, 4.0)
+
+		```
+		Dentro de la función, 'p es un alias para vacio', por tanto si la función modifica a p, vacio cambia.
+
+
+	Rectángulos:
+
+		A veces es obvio cuáles deberían ser los atributos de un objeto, pero otras veces tienes que tomar decisiones. 
+
+		Por ejemplo, imagina que estás diseñando una clase para representar rectángulos. 
+
+		¿Qué atributos utilizarías para especificar la ubicación y tamaño de un rectángulo? Puedes ignorar el ángulo; para mantener las cosas simples, supongamos que el rectángulo es vertical u horizontal.
+
+		Hay al menos dos posibilidades: Podrías especificar una esquina del rectángulo (o el centro), la anchura y la altura.
+
+		Podrías especificar dos esquinas opuestas.
+
+		En este punto es difícil decir si una alternativa es mejor que la otra, así que implementaremos la primera, solo como ejemplo.
+
+		Esta es la definición de la clase:
+
+		```
+		class Rectangulo:
+			"""Representa un rectángulo.
+			
+			atributos: anchura, altura, esquina.
+			"""
+
+		```
+
+		El docstring contiene una lista de los atributos: anchura y altura son números; esquina es un objeto 'Punto' que especifica la esquina inferior izquierda.
+
+
+		Para representar un rectángulo, tienes que instanciar un objeto Rectángulo y asignar valores a los atributos:
+		
+		caja = Rectangulo()
+		caja.anchura = 100.0
+		caja.altura = 200.0
+		caja.esquina = Punto()
+		caja.esquina.x = 0.0
+		caja.esquina.y = 0.0
+		
+		La expresión caja.esquina.x significa “Ve al objeto al cual caja se refiere y seleccionea el atributo con nombre esquina; luego ve a ese objeto y selecciona el atributo con nombre x.”
+
+
+		Diagrama: 
+
+			caja -> Rectángulo
+					anchura -> 100.0
+					altura -> 200.0
+
+					esquina -> Punto
+						 		x->0.0
+						 		y->0.0
+
+			Un objeto que es un atributo de otro objeto está 'incrustado'.
+
+
+	Instancias como valores de retorno:
+
+		Las funciones pueden devolver instancias. 
+
+		Por ejemplo, 'encontrar_centro' toma un Rectangulo como argumento y devuelve un 'Punto' que contiene las coordenadas del centro del Rectangulo:
+
+		```
+		def encontrar_centro(rect):
+			p = Punto()
+			p.x = rect.esquina.x + rect.anchura/2
+			p.y = rect.esquina.y + rect.altura/2
+			return p
+
+		```
+
+		Aquí hay un ejemplo que pasa a caja como argumento y asigna el Punto resultante a centro:
+
+		```
+		centro = entontrar_centro(caja)
+		imprimir_punto(centro)
+		
+		```
+		(50, 100)
+
+
+	Los objetos son mutables:
+
+		Puedes cambiar el estado de un objeto haciendo una asignación a uno de sus atributos.
+
+		Por ejemplo, para cambiar el tamaño de un rectángulo sin cambiar su posición, puedes modificar los valores de anchura y altura:
+
+		caja.anchura = caja.anchura + 50
+		
+		caja.altura = caja.altura + 100
+
+		Puedes también escribir funciones que modifiquen objetos. 
+
+		Por ejemplo, 'crecer_rectangulo' toma un objeto 'Rectángulo' y dos números, 'd_anchura' y 'd_altura' , y suma los números a la anchura y altura del rectángulo:
+
+		```
+		def crecer_rectangulo(rect, d_anchura, d_altura):
+			rect.anchura += d_anchura
+			rect.altura += d_altura
+
+		```
+
+		Aquí hay un ejemplo que demuestra el efecto:
+
+		```
+		caja.anchura, caja.altura
+
+		```
+		(150.0, 300.0)
+
+
+		```
+		crecer_rectangulo(caja, 50, 100)
+
+		caja.anchura, caja.altura
+
+		```
+		(200.0, 400.0)
+
+		
+		Dentro de la función, rect es un alias para caja, por tanto cuando la función modifica a 'rect', caja cambia.
+
+		
+	Copiar:	
+
+		Los alias pueden hacer que un programa sea difícil de leer porque los cambios en un lugar podrían tener efectos inesperados en otro lugar. 
+
+		Es difícil hacer un seguimiento de todas las variables que podrían referirse a un objeto dado.
+
+		Copiar un objeto es a menudo una alternativa a los alias.
+
+		El módulo copy contiene una función llamada copy que puede duplicar cualquier objeto:
+
+		```
+		p1 = Punto()
+		p1.x = 3.0
+		p1.y = 4.0
+		import copy
+		p2 = copy.copy(p1)
+			
+		```
+		p1 y p2 contienen los mismos datos, pero no son el mismo Punto.
+
+		```
+		imprimir_punto(p1)
+
+		```
+		(3, 4)
+
+		```
+		imprimir_punto(p2)
+
+		```
+		(3, 4)
+
+
+		```
+		p1 is p2
+
+		```
+		False
+
+
+		```
+		p1 == p2
+		
+		```
+		False
+
+
+		El operador 'is' indica que p1 y p2 no son el mismo objeto, que es lo que esperábamos.
+
+		Sin embargo, tal vez hayas esperado que == entregue True porque estos puntos contienen los mismos datos.
+
+		En ese caso, te decepcionará aprender que, para instancias, el comportamiento por defecto del operador == es el mismo que el operador 'is': verifica identidad de objeto, no equivalencia de objeto. 
+
+		Eso ocurre debido a que para tipos definidos por el programador, Python no sabe qué debería considerarse equivalente.
+
+		Al menos, no todavía. Si usas 'copy.copy' para duplicar un Rectángulo, encontrarás que copia el objeto Rectángulo pero no el Punto incrustado.
+
+		```	
+		caja2 = copy.copy(caja)
+		caja2 is caja
+
+		```
+		False
+
+
+		```
+		caja2.esquina is caja.esquina
+
+		```
+		True
+
+
+		Diagrama de objeto: 
+
+
+
+
+		Esta operación se llama 'copia superficial' porque copia al objeto y cualquier referencia que contenga, pero no los objetos incrustados.
+
+		Para la mayoría de las aplicaciones, esto no es lo que quieres. 
+
+		En este ejemplo, 'invocar a crecer_rectangulo' en uno de los Rectángulos no afectaría al otro, ¡pero invocar a mover_rectangulo en cualquiera afectaría a ambos! 
+
+		Este comportamiento es confuso y propenso a errores.
+
+		
+		Afortunadamente, el módulo copy proporciona un método con nombre 'deepcopy' que copia no solo el objeto sino también los objetos a los cuales este se refiere, y los objetos a los cuales estos se refieren, y así sucesivamente.
+
+		No te sorprenderá saber que esta operación se llama copia profunda.
+
+		```
+		caja3 = copy.deepcopy(caja)
+		caja3 is caja
+
+		```
+		False
+
+
+		```
+		caja3.esquina is caja.esquina
+		
+		```
+		False
+
+		caja3 y caja son objetos completamente separados.
+	
+
+
+|| Depuración
+
+	Cuando comienzas a trabajar con objetos, es probable que encuentres algunas excepciones nuevas. 
+
+	Si intentas acceder a un atributo que no existe, obtienes un 'AttributeError':
+
+	```
+	p = Punto()
+	p.x = 3
+	p.y = 4
+	p.z
+
+	```
+	AttributeError: Point instance has no attribute 'z'
+
+
+	Si no sabes bien de qué tipo es un objeto, puedes consultar:
+
+	```
+	type(p)
+
+	```
+	<class '__main__.Punto'>
+
+	Puedes también utilizar 'isinstance' para verificar si un objeto es una instancia de una
+	clase:
+	
+	```
+	>>> isinstance(p, Punto)
+
+	```
+	True
+
+	Si no sabes bien si un objeto tiene un atributo en particular, puedes utilizar la función
+	incorporada 'hasattr' :
+
+	```
+	hasattr(p, 'x')
+
+	```
+	True
+
+	```
+	hasattr(p, 'z')
+
+	```
+	False
+
+	El primer argumento puede ser cualquier objeto; el segundo argumento es una cadena que
+	contiene el nombre del atributo.
+
+	Puedes también utilizar una sentencia try para ver si el objeto tiene los atributos que necesitas:
+
+	```
+	try:
+		x = p.x
+	except AttributeError:
+		x = 0
+
+	```
+	Este enfoque puede hacer más fácil escribir funciones que trabajen con tipos diferentes.
+
+
+
+|| Clases y funciones
+
+	Después de crear tipos nuevos, el siguiente paso es escribir funciones que tomen objetos definidos por el programador como parámetros y los devuelvan como resultados. 
+
+	En este capítulo presento también el “estilo de programación funcional” y dos nuevos planes de desarrollo de programas.
+
+
+	Tiempo:
+
+		Como otro ejemplo de tipo definido por el programador, definiremos una clase llamada 'Tiempo' que registre la hora del día. 
+
+		La definición de la clase se ve así:
+
+		Podemos crear un nuevo objeto Tiempo y asignar atributos para horas, minutos y segundos:
+
+		```
+		class Tiempo:
+			"""Representa la hora del día.
+			
+			atributos: hora, minuto, segundo
+			"""
+			tiempo = Tiempo()
+			tiempo.hora = 11
+			tiempo.minuto = 59
+			tiempo.segundo = 30
+
+		```
+
+		Diagrama de estado:
+
+			tiempo -> Tiempo
+
+					  hora -> 11
+					  minuto -> 59
+					  segundo -> 30
+
+	
+	__init__:
+
+		El método init (abreviatura de “initialization”) es un método especial que se invoca cuando se 'instancia un objeto'. 
+
+		Su nombre completo es __init__ (dos caracteres de guión bajo, seguido de init , y luego dos guiones bajos más).
+
+		Un método init para la clase 'Tiempo' se vería así:
+
+		```
+		# dentro de class Tiempo:
+			
+			def __init__(self, hora=0, minuto=0, segundo=0):
+				self.hora = hora
+				self.minuto = minuto
+				self.segundo = segundo
+
+		Es común que los parámetros de __init__ tengan los mismos nombres que los atributos.
+
+		La sentencia 'self.hora = hora' almacena el valor del parámetro hora como un atributo de 'self'.
+
+		Los parámetros son opcionales, por lo cual si llamas a 'Tiempo' sin argumentos, obtienes los valores por defecto.
+
+		```
+		tiempo = Tiempo()
+		tiempo.imprimir_tiempo()
+
+		```
+		00:00:00
+
+
+		Si entregas un argumento, anula a hora:
+
+		```
+		tiempo = Tiempo(9)
+		tiempo.imprimir_tiempo()
+
+		```
+		09:00:00
+
+		Si entregas dos argumentos, anulan a hora y minuto.
+
+		```
+		>>> tiempo = Tiempo(9, 45)
+		>>> tiempo.imprimir_tiempo()
+
+		```
+		09:45:00
+
+		Y si entregas tres argumentos, anulan a los tres valores por defecto.
+
+
+	__str__:
+
+		__str__ es un método especial, al igual que __init__, que se supone que devuelve una representación de un objeto en forma de cadena.
+
+		Por ejemplo, aquí hay un método str para los objetos Tiempo:
+
+		```
+		# dentro de class Tiempo:
+			def __str__(self):
+				return '%.2d:%.2d:%.2d' % (self.hora, self.minuto, self.segundo)
+
+		```
+
+		Cuando utilizas print en un objeto, Python invoca al método str:
+
+
+		```
+		tiempo = Tiempo(9, 45)
+		print(tiempo)
+
+		```
+		09:45:00
+
+		
+		Cuando escribo una clase nueva, casi siempre comienzo escribiendo a __init__, que hace más fácil instanciar objetos, y __str__, que es útil para depurar.
+
+
+	__add__:
+
+		Definiendo otros métodos especiales, puedes especificar el comportamiento de operadores en tipos definidos por el programador. 
+
+		Por ejemplo, si defines un método con nombre __add__ para la clase Tiempo, puedes utilizar el operador + en objetos Tiempo.
+
+		Así es como podría verse la definición:
+
+		```
+		# dentro de class Tiempo:
+			def __add__(self, other):
+				segundos = self.tiempo_a_int() + other.tiempo_a_int()
+				return int_a_tiempo(segundos)
+
+			```
+
+		Y así es como podrías utilizarlo:
+
+		```
+		comienzo = Tiempo(9, 45)
+		duracion = Tiempo(1, 35)
+		print(comienzo + duracion)
+
+		```
+		11:20:00
+
+		Cuando aplicas el operador + a objetos Tiempo, Python invoca a __add__ . 
+
+		Cuando imprimes el resultado, Python invoca a '__str__'. 
+
+
+
+|| Depuración
+	
+	Cuando estés depurando, deberías distinguir entre los diferentes tipos de errores con el fin de rastrearlos de manera más rápida:
+
+	Los errores de sintaxis son descubiertos por el intérprete cuando está traduciendo el código fuente a código byte. 
+
+	Indican que hay algo mal en la estructura del programa.
+
+	Ejemplo: omitir el signo de dos puntos al final de una sentencia def genera el mensaje algo redundante 'SyntaxError: invalid syntax'.
+
+
+	Los errores de tiempo de ejecución son producidos por el intérprete si algo va mal mientras el programa se está ejecutando. 
+
+	La mayoría de los mensajes de error de tiempo de ejecución incluyen información acerca de dónde ocurrió el error y qué funciones se estaban ejecutando.
+
+	Ejemplo: una recursividad infinita eventualmente causa el error de tiempo de ejecución “maximum recursion depth exceeded”.
+
+
+	Los errores semánticos son problemas que tiene un programa que se ejecuta sin producir mensajes de error pero sin hacer lo correcto.
+
+	Ejemplo: una expresión puede que no sea evaluada en el orden que esperas, entregando un resultado incorrecto.
+
+	El primer paso en la depuración es averiguar con qué tipo de error estás lidiando. 
+
+	Aunque las siguientes secciones están organizadas por tipo de error, algunas técnicas son aplicables en más de una situación.
+
+
+	Errores de sintaxis:
+		
+		Son generalmente fáciles de arreglar una vez que averiguas cuáles son.
+
+		Desafortunadamente, los mensajes de error a menudo no son útiles. 
+
+		Los mensajes más comunes son 'SyntaxError: invalid syntax' y 'SyntaxError: invalid token', de los cuales ninguno es muy informativo.
+
+		Por otra parte, el mensaje sí te dice el lugar del programa donde ocurrió el problema. 
+
+		En realidad, te dice dónde Python notó un problema, que no necesariamente es donde está el error. 
+
+		A veces el error está antes de la ubicación del mensaje de error, a menudo en la línea precedente.
+
+
+		1. Asegúrate de que no estás utilizando una palabra clave de Python para un nombre de variable.
+		
+
+		2. Verifica que tienes un signo de dos puntos al final del encabezado de cada sentencia compuesta, incluyendo las sentencias for, while, if y def.
+
+
+		3. Asegúrate de que todas las cadenas en el código tengan comillas coincidentes. 
+
+		Asegúrate de que todas las comillas son “comillas rectas”, no “comillas tipográficas”.
+
+
+		4. Si tienes cadenas multilínea con comillas triples (simples o dobles), asegúrate de que has terminado la cadena de manera apropiada. 
+
+		Una cadena sin terminar puede causar un error 'invalid token' al final de tu programa, o puede tratar la siguiente parte del programa como una cadena hasta que llega a la siguiente cadena. 
+
+		En el segundo caso, ¡podría no producir ningún mensaje de error!.
+
+
+		5. Un operador de apertura no cerrado — ( , { o [ — hace que Python continúe con la línea siguiente como parte de la sentencia actual. 
+
+		Generalmente, ocurre un error casi inmediatamente en la línea siguiente.
+
+
+		6. Revisa el clásico = en lugar de == dentro de un condicional.
+
+
+		7. Revisa la sangría para asegurarte de que esté alineada como se supone que debe estar. 
+
+		Python puede manejar el espacio y la tabulación, pero si los mezclas puede
+		causar problemas. 
+
+		La mejor manera de evitar este problema es utilizar un editor de texto que sepa sobre Python y genere sangría consistente.
+
+
+		8. Si tienes caracteres no ASCII en el código (incluyendo cadenas y comentarios), podría causar un problema, aunque Python 3 generalmente maneja caracteres no ASCII. 
+
+		Ten cuidado si pegas texto de una página web u otra fuente.
+
+		Si nada funciona, pasa a la siguiente sección...
+
+
+		Sigo haciendo cambios y no hay diferencia:
+			
+			Si el intérprete dice que hay un error y tú no lo ves, podría ser porque tú y el intérprete no están mirando el mismo código.
+
+			Revisa tu entorno de programación para asegurarte de que el programa que estás editando es el que Python está intentando ejecutar.
+
+			Si no sabes bien, intenta poniendo un error de sintaxis obvio y deliberado al principio del programa.
+
+			Ahora ejecútalo de nuevo. 
+
+			Si el intérprete no encuentra el nuevo error, no estás ejecutando el código nuevo.
+
+			Hay algunos posibles culpables:
+
+				Editaste el archivo y olvidaste guardar los cambios antes de ejecutarlo de nuevo.
+
+				Algunos entornos de programación hacen esto por ti, pero otros no.
+
+				Cambiaste el nombre del archivo, pero todavía estás ejecutando el nombre antiguo.
+
+				Algo en tu entorno de desarrollo está configurado de manera incorrecta.
+
+				Si estás escribiendo un módulo y utilizando import, asegúrate de que no le das a tu módulo el mismo nombre que uno de los módulos estándar de Python.
+
+				Si estás utilizando import para leer un módulo, recuerda que tienes que reiniciar el intérprete o utilizar 'reload' para leer un archivo modificado. 
+
+				Si importas el módulo de nuevo, no hace nada.
+
+			Si te atascas y no puedes averiguar qué está pasando, una manera de abordarlo es comenzar de nuevo con un nuevo programa como “Hola, mundo” y asegurarte de que puedes obtener un programa conocido para ejecutar. 
+
+			Luego agrega gradualmente los pedazos del programa original al nuevo programa.
+
+
+	Errores de tiempo de ejecución:
+		
+		Una vez que tu programa está sintácticamente correcto, Python puede leerlo y al menos comenzar a ejecutarlo.
+
+		¿Qué podría salir mal?
+
+
+		Mi programa no hace absolutamente nada:
+			
+			Este problema es más común cuando tu archivo se compone de funciones y clases pero en realidad no invoca una función para comenzar la ejecución. 
+
+			Esto puede ser intencional si solo planeas importar este módulo para proporcionar clases y funciones.
+
+			Si no es intencional, asegúrate de que hay una llamada a función en el programa, y asegúrate de que el flujo de ejecución lo alcanza (ver “Flujo de ejecución” más adelante).
+
+
+		Mi programa se congela:
+
+			Si un programa se detiene y parece que no hace nada, está “congelado”. 
+
+			A menudo eso significa que está atrapado en un bucle infinito o una recursividad infinita.
+
+			Si hay un bucle en particular del cual sospechas que es el problema, agrega una sentencia 'print' inmediatamente antes del bucle que diga “entrando al bucle” y otro inmediatamente después que diga “saliendo del bucle”.
+
+			Ejecuta el programa. 
+
+			Si obtienes el primer mensaje y no el segundo, tienes un bucle infinito. 
+
+			Ve a la sección “Bucle infinito” de más adelante.
+
+			La mayor parte del tiempo, una recursividad infinita causará que el programa se ejecute por un momento y luego produzca un error “RuntimeError: Maximum recursion depth exceeded”. 
+
+			Si eso ocurre, ve a la sección “Recursividad infinita” de más
+			adelante.
+
+			Si no obtienes este error pero sospechas que hay un problema con una función recursiva o método recursivo, todavía puedes utilizar las técnicas de la sección “Recursividad infinita”.
+
+			Si ninguno de esos pasos funciona, comienza a probar otros bucles y otras funciones y métodos recursivos.
+
+			Si eso no funciona, entonces es posible que no entiendas el flujo de ejecución de tu programa. 
+
+			Ve a la sección “Flujo de ejecución” de más adelante.
+
+
+		Bucle infinito:
+			
+			Si crees que tienes un bucle infinito y crees que sabes qué bucle está causando el problema, agrega una sentencia 'print' al final del bucle que imprima los valores de las variables en la condición y el valor de la condición. Por ejemplo:
+
+			````
+			while x > 0 and y < 0 :
+				# hacer algo a x
+				# hacer algo a y
+				print('x: ', x)
+				print('y: ', y)
+				print("condición: ", (x > 0 and y < 0))
+
+			```
+
+			Ahora cuando ejecutes el programa, verás tres líneas de salida cada vez que se pase por el bucle. 
+
+			En el último paso por el bucle, la condición debería ser False. 
+
+			Si el bucle continúa, podrás ver los valores de x e y, y podrías averiguar por qué no se están actualizando correctamente.
+
+
+		Recursividad infinita:
+
+			La mayoría de las veces, la recursividad infinita causa que el programa se ejecute por un momento y luego produzca un error 'Maximum recursion depth exceeded'.
+
+			Si sospechas que una función está causando una recursividad infinita, asegúrate de que haya un 'caso base'.
+
+			Debería haber alguna condición que cause que la función devuelva algo sin hacer una invocación recursiva. 
+
+			Si no, necesitas volver a pensar el algoritmo e identificar un caso base.
+
+			Si hay un caso base pero el programa no parece estar alcanzándolo, agrega una sentencia 'print' al principio de la función que imprima los parámetros. 
+
+			Ahora cuando ejecutes el programa, verás algunas líneas de salida cada vez que se invoca a la función, y verás los valores de los parámetros. 
+
+			Si los parámetros no se están moviendo hacia el caso base, obtendrás algunas ideas sobre por qué no ocurre.
+
+
+		Flujo de ejecución:
+			
+			Si no sabes bien cómo se está moviendo el flujo de ejecución a través de tu programa, agrega sentencias print al principio de cada función con un mensaje como “entrando a la función foo ”, donde foo es el nombre de la función.
+
+			Ahora cuando ejecutes el programa, imprimirá una señal de cada función que se invoque.
+
+
+		Cuando ejecuto el programa obtengo una excepción:
+
+			Si algo va mal durante el tiempo de ejecución, Python imprime un mensaje que incluye el nombre de la excepción, la línea del programa donde ocurrió el problema y un rastreo.
+
+			El rastreo identifica la función que se está ejecutando actualmente y luego la función que la llamó, y luego la función que llamo a aquella, y así sucesivamente. 
+
+			En otras palabras, rastrea la secuencia de llamadas a función que te llevaron a donde estás, incluyendo el número de línea en tu archivo donde ocurrió cada llamada.
+
+			El primer paso es examinar el lugar del programa donde ocurrió el error y ver si puedes averiguar lo que sucedió. 
+
+			Estos son algunos de los errores de tiempo de ejecución más comunes:
+
+
+			NameError: 
+
+				Estás intentando utilizar una variable que no existe en el entorno actual. 
+
+				Revisa si el nombre está bien escrito, o al menos de manera consistente. 
+
+				Y recuerda que las variables locales son locales: no puedes referirte a estas desde afuera de la función donde se definieron.
+
+
+			TypeError: 
+
+				Hay varias causas posibles:
+
+				Estás intentando utilizar un valor de manera inapropiada.
+
+				Ejemplo: indexar una cadena, lista o tupla con algo que no es un entero. 
+
+				Hay una discordancia entre los ítems en una cadena de formato y los ítems pasados para una conversión. 
+
+				Eso puede ocurrir si el número de ítems no coincide o si se pidió una conversión no válida.
+
+				Estás pasando el número equivocado de argumentos a una función. 
+
+				Para los métodos, mira la definición del método y verifica que el primer parámetro es 'self'. 
+
+				Luego, mira la invocación al método; asegúrate de que estás invocando al método en un objeto con el tipo correcto y proporcionando los otros argumentos de manera correcta.
+
+
+			KeyError: 
+
+				Estás intentando acceder a un elemento de un diccionario utilizando una clave que el diccionario no contiene. 
+
+				Si las claves son cadenas, recuerda que las mayúsculas importan.
+
+
+			AttributeError: 
+
+				Estás intentando acceder a un atributo o método que no existe.
+
+				¡Revisa la ortografía! Puedes utilizar la función incorporada vars para hacer una lista de los atributos que sí existen.
+
+				Si un 'AttributeError' indica que un objeto tiene 'NoneType', eso significa que es 'None'.
+
+				Entonces el problema no es el nombre de atributo, sino el objeto.
+
+				La razón por la cual el objeto es 'None' podría ser que olvidaste devolver un valor desde una función; si llegas al final de una función poniendo una sentencia 'return', devuelve 'None'. 
+
+				Otra causa común es utilizar el resultado de un método de lista, como sort, que devuelve None.
+
+
+			IndexError: 
+
+				El índice que estás utilizando para acceder a una lista, cadena o tupla es mayor que su longitud menos uno.
+
+				Inmediatamente antes del lugar del error, agrega una sentencia print para mostrar en pantalla el valor del índice y la longitud de la secuencia. 
+
+				¿Tiene la secuencia el tamaño correcto?
+
+				¿Tiene el índice el valor correcto? 
+
+
+			El depurador de Python ( pdb, Python debugger) es útil para rastrear excepciones porque te permite examinar el estado del programa inmediatamente antes del error.
+
+
+		Agregué tantas sentencias print que me inundé con la salida:
+
+			Uno de los problemas al utilizar sentencias print para depurar es que puedes terminar
+			enterrándote en la salida. 
+
+			Hay dos maneras de proceder: simplificar la salida o simplificar
+			el programa.
+
+			Para simplificar la salida, puedes eliminar o poner como comentarios las sentencias print
+			que no están ayudando, o combinarlas, o dar formato a la salida para que sea más fácil de
+			entender.
+
+			Para simplificar el programa, hay varias cosas que puedes hacer.
+
+			Primero, reduce la escala
+			del problema en el cual está trabajando el programa. 
+
+			Por ejemplo, si estás buscando una lista, busca una lista pequeña.
+
+			Si el programa toma entrada del usuario, dale la entrada más
+			simple que cause el problema.
+
+			Segundo, limpia el programa. 
+
+			Elimina el código muerto y reorganiza el programa para hacerlo tan fácil de leer como sea posible. 
+
+			Por ejemplo, si sospechas que el problema está en una parte profundamente anidada del programa, intenta reescribir esa parte con una estructura más simple. 
+
+			Si sospechas de una función grande, intenta separarla en funciones
+			más pequeñas y probarlas de manera separada.
+
+			A menudo el proceso de encontrar el caso de prueba mínimo te guía al error. 
+
+			Si encuentras que un programa funciona en una situación pero no en otra, eso te da una pista sobre qué
+			está pasando.
+
+			Del mismo modo, reescribir un pedazo de código puede ayudarte a encontrar errores sutiles. 
+
+			Si haces un cambio que crees que no debería afectar al programa, y sí afecta, eso te
+			puede dar una pista.
+
+
+	Errores semánticos:
+
+		De alguna manera, los errores semánticos son los más difíciles de depurar, porque el intérprete no proporciona información sobre qué está mal. 
+
+		Solo tú sabes lo que se supone que debe hacer el programa. 
+
+		El primer paso es hacer una conexión entre el texto del programa y el comportamiento que ves. 
+
+		Necesitas una hipótesis sobre qué está haciendo realmente el programa.
+
+		Una de las cosas que hace que eso sea difícil es que los computadores funcionan muy rápido.
+
+		A menudo desearás poder ralentizar el programa a velocidad humana, y con algunos depuradores puedes hacerlo. 
+
+		Pero el tiempo que toma insertar unas pocas sentencias print bien ubicadas es a menudo corto comparado con el de configurar el depurador, insertar y eliminar puntos de interrupción, y avanzar “paso a paso” en el programa hasta donde ocurre el error.
+
+
+		Mi programa no funciona:
+			
+			Deberías hacerte estas preguntas:
+
+			¿Hay algo que se supone que el programa debe hacer pero que no parece estar ocurriendo?
+
+			Encuentra la sección del código que realiza esa función y asegúrate de que se está ejecutando cuando crees que debería.
+
+			¿Ocurre algo que no debería? Encuentra código en tu programa que realiza esa función y ve si se está ejecutando cuando no debería.
+
+			¿Hay una sección de código produciendo un efecto que no es lo que esperabas? Asegúrate de que entiendes el código en cuestión, especialmente si involucra funciones o métodos de otros módulos de Python. 
+
+			Lee la documentación para las funciones que llamas. 
+
+			Pruébalas escribiendo casos de prueba simples y verificando los resultados.
+
+
+			Para programar, necesitas un modelo mental de cómo funcionan los programas. 
+
+			Si escribes un programa que no hace lo que esperas, muchas veces el problema no está en el programa: está en tu modelo mental.
+
+			La mejor manera de corregir tu modelo mental es separar el programa en sus componentes (generalmente las funciones y métodos) y probar cada componente de manera independiente.
+
+			Una vez que encuentres la discrepancia entre tu modelo y la realidad, puedes resolver el problema.
+
+			Por supuesto, deberías estar construyendo y probando componentes a medida que desarrollas el programa. 
+
+			Si encuentras un problema, debería haber solo una pequeña cantidad de código nuevo que no se sabe si es correcto.
+
+		
+		Tengo una expresión grande y fea, y no hace lo que yo espero:
+
+			Escribir expresiones complejas está bien mientras sean legibles, pero pueden ser difíciles de depurar. 
+
+			Muchas veces es una buena idea separar una expresión compleja en una serie de asignaciones a variables temporales.
+
+			Por ejemplo:
+
+			```
+			self.hands[i].addCard(self.hands[self.findNeighbor(i)].popCard())
+
+			```
+
+			Esto se puede reescribir como:
+
+			```
+			neighbor = self.findNeighbor(i)
+			
+			pickedCard = self.hands[neighbor].popCard()
+			self.hands[i].addCard(pickedCard)
+
+			```
+
+			La versión explícita es más fácil de leer porque los nombres de variable proporcionan documentación adicional, y es más fácil depurar porque puedes verificar los tipos de las variables intermedias y mostrar sus valores en pantalla.
+
+			Otro problema que puede ocurrir con las expresiones grandes es que el orden de evaluación puede que no sea lo que esperas. 
+
+			Por ejemplo, si estás traduciendo la expresión x/2π aPython, podrías  escribir:
+
+			```
+			y = x / 2 * math.pi
+
+			```
+			Eso no es correcto porque la multiplicación y la división tienen la misma prioridad y se evalúan de izquierda a derecha.
+
+			Entonces esta expresión calcula xπ/2.
+
+			Una buena manera de depurar expresiones es agregar paréntesis para hacer que el orden de evaluación sea explícito:
+
+			```
+			y = x / (2 * math.pi)
+
+			```
+			
+			Siempre que no sepas bien del orden de evaluación, utiliza paréntesis. 
+
+			No solo estará correcto el programa (en el sentido de hacer lo que pretendías), también será más legible para otras personas que no han memorizado el orden de las operaciones.
+
+
+		Tengo una función que no devuelve lo que yo espero:
+			
+			Si tienes una sentencia 'retur'n con una expresión compleja, no tienes la posibilidad de imprimir el resultado antes de devolverlo. 
+
+			De nuevo, puedes utilizar una variable temporal.
+
+			Por ejemplo, en lugar de:
+
+			```
+			return self.hands[i].removeMatches()
+
+			```
+			podrías escribir:
+
+			```
+			count = self.hands[i].removeMatches()
+			return count
+
+			```
+			Ahora tienes la oportunidad de mostrar en pantalla el valor de count antes de devolverlo.
+
+
+		De verdad me atasqué y necesito ayuda:
+
+			Primero, intenta alejarte del computador por algunos minutos. 
+
+			Los computadores emiten ondas que afectan al cerebro, causando estos síntomas:
+
+			Frustración e ira.
+			Creencias supersticiosas (“el computador me odia”) y pensamiento mágico (“el pro-
+			grama solo funciona cuando uso mi gorra hacia atrás”).
+			Programación de camino aleatorio (el intento de programar escribiendo cada progra-
+			ma posible y escoger el que hace lo correcto).
+			Si te encuentras sufriendo alguno de estos síntomas, levántate y ve a dar un paseo. 
+
+			Cuando te hayas tranquilizado, piensa en el programa. 
+
+			¿Qué está haciendo? ¿
+
+			Cuáles son algunas posibles causas de aquel comportamiento? 
+
+			¿Cuándo fue la última vez que tuviste un programa eficaz y qué hiciste después?
+
+			A veces solo toma tiempo encontrar un error de programación. 
+
+			A menudo encuentro errores cuando estoy lejos del computador y dejo vagar a mi mente. 
+
+			Algunos de los mejores lugares para encontrar errores son los trenes, las duchas y en la cama, justo antes de dormirte.
+
+
+		No, realmente necesito ayuda:
+			
+			Sucede. 
+
+			Incluso los mejores programadores se atascan ocasionalmente. 
+
+			A veces trabajas en un programa tan largo que no puedes ver el error.
+
+			Necesitas otro punto de vista. 
+
+			Antes de traer a alguien más, asegúrate de tener todo preparado. 
+
+			Tu programa debería ser tan simple como sea posible, y deberías estar trabajando en la entrada más pequeña que causa el error. 
+
+			Deberías tener sentencias print en los lugares apropiados (y la salida que producen debería ser comprensible). 
+
+			Deberías entender el problema lo suficientemente bien como para describirlo de manera concisa.
+
+			Cuando traigas a alguien para que te ayude, asegúrate de darle la información que necesita:
+
+			Si hay un mensaje de error, ¿cuál es y qué parte del programa indica?
+
+			¿Qué fue lo último que hiciste antes de que ocurriera este error?
+
+			¿Cuáles fueron las últimas líneas de código que escribiste o cuál es el nuevo caso de prueba que falla?
+
+			¿Qué has intentado hasta ahora y qué has aprendido?
+
+		Cuando encuentres el error, tómate un segundo para pensar sobre qué podrías haber hecho para encontrarlo de manera más rápida. 
+
+		La próxima vez que veas algo similar, serás capaz de entontrar el error con más rapidez.
+
+		Recuerda, la meta no solo es hacer que el programa funcione. 
+
+		La meta es aprender cómo hacer que el programa funcione.
 
 
 
